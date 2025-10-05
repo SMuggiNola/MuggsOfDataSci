@@ -172,45 +172,46 @@
       color: #d4af37;
       text-decoration: underline;
     }
+
     /* --- Mobile and Tablet Spacing Fix --- */
-@media (max-width: 768px) {
-  body {
-    justify-content: flex-start;
-    padding-top: 4rem;   /* adds breathing room */
-    background-attachment: scroll;
-  }
+    @media (max-width: 768px) {
+      body {
+        justify-content: flex-start;
+        padding-top: 4rem;
+        background-attachment: scroll;
+        overflow-y: auto; /* ✅ allows vertical scrolling */
+      }
 
-  h1 {
-    margin-top: 1rem;
-    font-size: 2rem;
-    line-height: 1.2;
-  }
+      h1 {
+        margin-top: 1rem;
+        font-size: 2rem;
+        line-height: 1.2;
+      }
 
-  h2 {
-    margin-top: 0.5rem;
-    font-size: 1.1rem;
-    padding: 0 1rem;
-  }
+      h2 {
+        margin-top: 0.5rem;
+        font-size: 1.1rem;
+        padding: 0 1rem;
+      }
 
-  p {
-    margin-top: 2rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: justify;
-  }
+      p {
+        margin-top: 2rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: justify;
+      }
 
-  .btn {
-    margin-top: 2.5rem;
-    font-size: 1rem;
-    padding: 0.6rem 1.3rem;
-  }
+      .btn {
+        margin-top: 2.5rem;
+        font-size: 1rem;
+        padding: 0.6rem 1.3rem;
+      }
 
-  footer {
-    margin-top: 2rem;
-    padding-bottom: 2rem;
-  }
-}
-
+      footer {
+        margin-top: 2rem;
+        padding-bottom: 2rem;
+      }
+    }
   </style>
 </head>
 
