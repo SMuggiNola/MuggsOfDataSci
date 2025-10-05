@@ -7,35 +7,232 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
+      color: #f5eedb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      background: #c89b3c;
+      text-align: center;
+      padding: 0.5rem;
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    nav a {
+      color: #fdfaf3;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav a:hover, nav a.active {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 3rem 2rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.8rem;
+      color: #c89b3c;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 6px rgba(200,155,60,0.5);
+    }
+
+    p {
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #efe8d1;
+    }
+
+    .illuminated {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3rem;
+      float: left;
+      color: #d4af37;
+      margin-right: 0.25rem;
+      line-height: 1;
+    }
+
+    /* --- Grid Layout --- */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      align-items: stretch;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,155,60,0.4);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+    }
+
+    .nav-card:hover {
+      background: rgba(200,155,60,0.1);
+      transform: translateY(-4px);
+    }
+
+    .nav-card h3 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #c89b3c;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    .nav-card p {
+      flex: 1;
+      color: #f5eedb;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .nav-card a {
+      color: #c89b3c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-card a:hover {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+
+    /* --- Handle the 3 + 2 layout --- */
+    .nav-grid .nav-card:nth-child(4),
+    .nav-grid .nav-card:nth-child(5) {
+      grid-column: span 1;
+    }
+
+    .nav-grid::after {
+      content: '';
+      grid-column: span 3;
+    }
+
+    @media (max-width: 950px) {
+      .nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #b3a37d;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    footer a {
+      color: #c89b3c;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+
+    .border {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.08;
+      z-index: 0;
+    }
+  </style>
 </head>
+
 <body>
   <div class="border"></div>
 
-  <header>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="lab.html" class="active">Lab</a>
-      <a href="assignments.html">Assignments</a>
-      <a href="../data/">Datasets</a>
-    </nav>
-  </header>
-
+  
   <main>
-    <h1>The Data Lab</h1>
-    <p><span class="illuminated">W</span>elcome to the Lab — where data meets design.
-       Here you’ll collect, clean, and visualize information that connects
-       real-world issues to the science behind them.</p>
+    <h1>The Data Science Lab</h1>
+    <p><span class="illuminated">W</span>elcome to the central hub of Muggs of Data Science.
+      From here you can navigate to course materials, lab projects, and research tools that connect our classroom work with the real-world of data.</p>
 
-    <section>
-      <h2>Today’s Tasks</h2>
-      <ul>
-        <li>Open your project folder</li>
-        <li>Import the latest dataset</li>
-        <li>Run your first visualization script</li>
-      </ul>
-    </section>
+    <div class="nav-grid">
+      <div class="nav-card">
+        <h3>Theoretical Foundations</h3>
+        <p>Lectures, slides, and source material that shape the course.</p>
+        <a href="../materials/">Go to Materials →</a>
+      </div>
+
+      <div class="nav-card">
+        <h3>Lab Activities</h3>
+        <p>Hands-on experiments, project guides, and rubrics for each unit.</p>
+        <a href="assignments.html">Open Assignments →</a>
+      </div>
+
+      <div class="nav-card">
+        <h3>Datasets</h3>
+        <p>Curated sources for your data analysis and modeling projects.</p>
+        <a href="../data/">Browse Datasets →</a>
+      </div>
+
+      <div class="nav-card">
+        <h3>Bibliography Builder</h3>
+        <p>Explore articles and research linked to the UN Sustainable Development Goals.</p>
+        <a href="../bibliography/">Open Bibliography →</a>
+      </div>
+
+      <div class="nav-card">
+        <h3>Assessments</h3>
+        <p>When enabled, complete secure offline assessments here in the lab.</p>
+        <a href="../assessments/">Assessment Portal →</a>
+      </div>
+
+      <div class="nav-card">
+        <h3>Data Science Final Project</h3>
+        <p>DSFP Overview, guidance, rubrics and ideas to help jumpstart your DSFP/Senior Capstone experience.</p>
+        <a href="../assessments/">Assessment Portal →</a>
+      </div>
+
+    </div>
   </main>
 
-  <footer>© 2025 Muggs of Data Science</footer>
+  <footer>
+    Designed and developed by <strong>Sean Muggivan</strong> —
+    content and code released under the
+    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
+    <br>
+    View the project on
+    <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
+  </footer>
 </body>
 </html>

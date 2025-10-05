@@ -19,11 +19,24 @@
       justify-content: center;
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
-      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
       color: #f5eedb;
       overflow: hidden;
+      position: relative;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
     }
 
+    /* --- Book of Kells Watermark --- */
+    .watermark {
+      position: fixed;
+      inset: 0;
+      background: url('book-of-kells.jpg') center/cover no-repeat;
+      opacity: 0.08; /* Adjust for subtlety */
+      filter: sepia(60%) brightness(0.9);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* --- Celtic Border Overlay --- */
     .border {
       position: fixed;
       inset: 0;
@@ -32,10 +45,10 @@
       background-repeat: repeat;
       background-size: 300px;
       opacity: 0.08;
-      z-index: 0;
+      z-index: 1;
     }
 
-    /* --- Text --- */
+    /* --- Text Layers --- */
     h1 {
       font-family: 'Cinzel Decorative', serif;
       font-size: 3.2rem;
@@ -44,7 +57,7 @@
       letter-spacing: 1px;
       margin-bottom: 0.3rem;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     h2 {
@@ -53,7 +66,7 @@
       font-weight: 400;
       margin-top: 0;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     p {
@@ -62,7 +75,7 @@
       line-height: 1.6;
       color: #efe8d1;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       margin-top: 1.5rem;
     }
 
@@ -89,7 +102,7 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.25);
       transition: all 0.2s ease;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .btn:hover {
@@ -103,37 +116,44 @@
       font-size: 0.9rem;
       color: #b3a37d;
       letter-spacing: 0.5px;
-      z-index: 1;
+      z-index: 2;
+    }
+
+    footer a {
+      color: #c89b3c;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #d4af37;
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
+  <!-- Layer 0: Watermark and Border -->
+  <div class="watermark"></div>
   <div class="border"></div>
 
+  <!-- Layer 1: Main Content -->
   <h1>Muggs of Data Science</h1>
-  <h2>The Portal to Muggivan's Data Science Course and Curriculumn.</h2>
+  <h2>The Portal to Muggivan's Data Science Course and Curriculum</h2>
 
   <p>
-    <span class="illuminated">W</span>elcome to the foundation page of our Data Science with AI course —
-a laboratory for learning how data becomes knowledge. Here, you’ll practice the full cycle of inquiry: gathering data, analyzing patterns, and communicating findings with clarity and purpose.
+    <span class="illuminated">W</span>elcome to the foundation page of our <em>Data Science with AI</em> course — 
+    a laboratory for learning how data becomes knowledge. Here, you’ll practice the full cycle of inquiry: gathering data, analyzing patterns, and communicating findings with clarity and purpose.
   </p>
 
   <a href="pages/lab.html" class="btn">Enter the Lab</a>
 
-    <footer>
-    Designed and developed by <strong>Sean Muggivan</strong> —
-    content and code released for educational use under the
-    <a href="https://opensource.org/licenses/MIT" target="_blank" style="color:#c89b3c;text-decoration:none;">
-      MIT License
-    </a>.
+  <footer>
+    Designed and developed by <strong>Sean Muggivan</strong> — 
+    content and code released for educational use under the 
+    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
     <br>
-    View the full project on
-    <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank" style="color:#c89b3c;text-decoration:none;">
-      GitHub
-    </a>.
+    View the full project on 
+    <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
   </footer>
-
-
 </body>
 </html>
