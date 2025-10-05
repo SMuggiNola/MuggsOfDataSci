@@ -2,67 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>The Lab | Muggs of Data Science</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 
   <style>
+    /* --- Base Layout --- */
     body {
       margin: 0;
       font-family: 'Cormorant Garamond', serif;
-      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
       color: #f5eedb;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%),
+        url('../images/book-of-kells.jpg');
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
 
-    header {
-      background: #c89b3c;
-      text-align: center;
-      padding: 0.5rem;
-      font-family: 'Cinzel Decorative', serif;
+    /* --- Decorative Border --- */
+    .border {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.08;
+      z-index: 0;
     }
 
-    nav a {
-      color: #fdfaf3;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1.1rem;
-      letter-spacing: 0.5px;
-    }
-
-    nav a:hover, nav a.active {
-      text-decoration: underline;
-    }
-
-    main {
-      flex: 1;
-      padding: 3rem 2rem;
-    }
-
+    /* --- Typography --- */
     h1 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 6vw, 2.8rem);
       color: #c89b3c;
       margin-bottom: 0.5rem;
       text-shadow: 0 0 6px rgba(200,155,60,0.5);
+      position: relative;
+      z-index: 1;
     }
 
     p {
-      max-width: 650px;
+      max-width: 90%;
       margin: 0 auto 2rem auto;
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
       line-height: 1.6;
       color: #efe8d1;
+      text-align: justify;
+      position: relative;
+      z-index: 1;
     }
 
     .illuminated {
       font-family: 'Cinzel Decorative', serif;
-      font-size: 3rem;
+      font-size: clamp(2.4rem, 7vw, 3rem);
       float: left;
       color: #d4af37;
       margin-right: 0.25rem;
@@ -78,6 +81,8 @@
       gap: 2rem;
       max-width: 1100px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .nav-card {
@@ -102,13 +107,13 @@
       font-family: 'Cinzel Decorative', serif;
       color: #c89b3c;
       margin-bottom: 0.5rem;
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 3.5vw, 1.4rem);
     }
 
     .nav-card p {
       flex: 1;
       color: #f5eedb;
-      font-size: 1rem;
+      font-size: clamp(0.95rem, 3vw, 1rem);
       margin-bottom: 0.8rem;
     }
 
@@ -116,6 +121,7 @@
       color: #c89b3c;
       text-decoration: none;
       font-weight: 600;
+      font-size: clamp(0.95rem, 2.5vw, 1rem);
     }
 
     .nav-card a:hover {
@@ -123,35 +129,38 @@
       text-decoration: underline;
     }
 
-    /* --- Handle the 3 + 2 layout --- */
-    .nav-grid .nav-card:nth-child(4),
-    .nav-grid .nav-card:nth-child(5) {
-      grid-column: span 1;
-    }
-
-    .nav-grid::after {
-      content: '';
-      grid-column: span 3;
-    }
-
+    /* --- Responsive Grid --- */
     @media (max-width: 950px) {
       .nav-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
       }
     }
 
     @media (max-width: 600px) {
       .nav-grid {
         grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      body {
+        background-attachment: scroll;
+        background-blend-mode: overlay;
+      }
+      p {
+        text-align: left;
       }
     }
 
+    /* --- Footer --- */
     footer {
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
       color: #b3a37d;
       background: rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      margin-top: 2rem;
     }
 
     footer a {
@@ -163,24 +172,12 @@
       color: #d4af37;
       text-decoration: underline;
     }
-
-    .border {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
-      background-repeat: repeat;
-      background-size: 300px;
-      opacity: 0.08;
-      z-index: 0;
-    }
   </style>
 </head>
 
 <body>
   <div class="border"></div>
 
-  
   <main>
     <h1>The Data Science Lab</h1>
     <p><span class="illuminated">W</span>elcome to the central hub of Muggs of Data Science.
@@ -222,7 +219,6 @@
         <p>DSFP Overview, guidance, rubrics and ideas to help jumpstart your DSFP/Senior Capstone experience.</p>
         <a href="../assessments/">Assessment Portal →</a>
       </div>
-
     </div>
   </main>
 
