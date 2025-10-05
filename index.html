@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muggs of Data Science</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Base Layout --- */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
+      color: #f5eedb;
+      overflow: hidden;
+    }
+
+    .border {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    /* --- Text --- */
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      color: #1a1410; /* manuscript black */
+      text-shadow: 0 0 6px rgba(200,155,60,0.5);
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #c89b3c;
+      font-weight: 400;
+      margin-top: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #efe8d1;
+      position: relative;
+      z-index: 1;
+      margin-top: 1.5rem;
+    }
+
+    .illuminated {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      float: left;
+      color: #d4af37;
+      margin-right: 0.25rem;
+      line-height: 1;
+    }
+
+    /* --- Button --- */
+    .btn {
+      display: inline-block;
+      background: linear-gradient(145deg, #c89b3c, #a87b25);
+      color: #0e2a1b;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      margin-top: 2rem;
+      text-decoration: none;
+      font-family: 'Cinzel Decorative', serif;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn:hover {
+      background: linear-gradient(145deg, #d4af37, #b8860b);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.9rem;
+      color: #b3a37d;
+      letter-spacing: 0.5px;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="border"></div>
+
+  <h1>Muggs of Data Science</h1>
+  <h2>The Portal to Muggivan's Data Science Course and Curriculumn.</h2>
+
+  <p>
+    <span class="illuminated">W</span>elcome to the foundation page of our Data Science with AI course —
+a laboratory for learning how data becomes knowledge. Here, you’ll practice the full cycle of inquiry: gathering data, analyzing patterns, and communicating findings with clarity and purpose.
+  </p>
+
+  <a href="pages/lab.html" class="btn">Enter the Lab</a>
+
+  <footer>
+  Designed and developed by <strong>Sean Muggivan</strong> —
+  content and code released for educational use under the
+  <a href="https://opensource.org/licenses/MIT" target="_blank" style="color:#c89b3c;text-decoration:none;">
+    MIT License
+  </a>.
+</footer>
+
+</body>
+</html>
