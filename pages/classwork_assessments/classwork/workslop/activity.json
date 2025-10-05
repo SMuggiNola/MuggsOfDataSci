@@ -1,0 +1,133 @@
+{
+  "activity_id": "CW1_WORKSLOP",
+  "title": "Workslop and Authentic Work",
+  "author": "Sean Muggivan",
+  "source": {
+    "title": "AI-Generated 'Workslop' Is Destroying Productivity",
+    "publication": "Harvard Business Review",
+    "authors": [
+      "Kate Niederhoffer",
+      "Gabriella Rosen Kellerman",
+      "Angela Lee",
+      "Alex Liebscher",
+      "Kristina Rapuano",
+      "Jeffrey T. Hancock"
+    ],
+    "date": "September 22, 2025",
+    "link": "https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity",
+    "local_file": "AI-Generated_Workslop_Is_Destroying_Productivity.pdf"
+  },
+  "objective": "Analyze the concept of 'workslop'—AI-generated work that appears polished but lacks real value—and reflect on how thoughtful, authentic AI use applies to schoolwork and collaboration.",
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple_choice",
+      "question": "What term do the authors use for AI-generated work that looks polished but lacks depth or usefulness?",
+      "options": ["AI slop", "Workslop", "Cognitive drift", "Digital filler"],
+      "answer": "Workslop"
+    },
+    {
+      "id": 2,
+      "type": "multiple_choice",
+      "question": "According to the research, approximately what percentage of workers report encountering workslop in the last month?",
+      "options": ["21%", "33%", "41%", "59%"],
+      "answer": "41%"
+    },
+    {
+      "id": 3,
+      "type": "multiple_choice",
+      "question": "The authors describe workslop as different from typical 'cognitive offloading' because:",
+      "options": [
+        "It shifts mental work from humans to machines only.",
+        "It transfers cognitive labor from one human to another.",
+        "It eliminates the need for collaboration.",
+        "It improves data processing accuracy."
+      ],
+      "answer": "It transfers cognitive labor from one human to another."
+    },
+    {
+      "id": 4,
+      "type": "multiple_choice",
+      "question": "What is the average amount of time employees report losing per incident of workslop?",
+      "options": [
+        "About 30 minutes",
+        "1 hour and 56 minutes",
+        "Half a workday",
+        "Less than 10 minutes"
+      ],
+      "answer": "1 hour and 56 minutes"
+    },
+    {
+      "id": 5,
+      "type": "multiple_choice",
+      "question": "Which of the following emotions did more than half of respondents report feeling after receiving workslop?",
+      "options": ["Annoyed", "Grateful", "Inspired", "Motivated"],
+      "answer": "Annoyed"
+    },
+    {
+      "id": 6,
+      "type": "multiple_choice",
+      "question": "What is one interpersonal consequence of workslop described in the article?",
+      "options": [
+        "Colleagues view senders as less competent or trustworthy.",
+        "Work relationships become stronger through shared correction.",
+        "Managers become more confident delegating to AI users.",
+        "Workslop improves team morale over time."
+      ],
+      "answer": "Colleagues view senders as less competent or trustworthy."
+    },
+    {
+      "id": 7,
+      "type": "multiple_choice",
+      "question": "The 'pilot mindset' recommended by the authors combines which two traits?",
+      "options": [
+        "High agency and high optimism",
+        "High speed and high accuracy",
+        "High caution and low risk",
+        "Low effort and high creativity"
+      ],
+      "answer": "High agency and high optimism"
+    },
+    {
+      "id": 8,
+      "type": "multiple_choice",
+      "question": "What is the 'workslop tax' for an organization of 10,000 workers, based on the authors’ estimates?",
+      "options": [
+        "About $900,000 per year",
+        "Around $9 million per year",
+        "$90 million per year",
+        "No measurable cost"
+      ],
+      "answer": "Around $9 million per year"
+    },
+    {
+      "id": 9,
+      "type": "multiple_choice",
+      "question": "According to the authors, indiscriminate mandates to 'use AI everywhere' result in:",
+      "options": [
+        "More creative, high-quality outputs",
+        "Thoughtless copying and pasting of AI responses",
+        "Better understanding of organizational values",
+        "Improved collaboration between teams"
+      ],
+      "answer": "Thoughtless copying and pasting of AI responses"
+    },
+    {
+      "id": 10,
+      "type": "multiple_choice",
+      "question": "Which action do the authors recommend to combat workslop within teams?",
+      "options": [
+        "Set clear guardrails and model thoughtful AI use",
+        "Ban AI entirely from workflow",
+        "Allow AI tools to work unsupervised",
+        "Reward employees for quantity over quality"
+      ],
+      "answer": "Set clear guardrails and model thoughtful AI use"
+    },
+    {
+      "id": 11,
+      "type": "short_answer",
+      "question": "In 3–5 sentences, explain how the idea of 'workslop' might apply to using AI in high school. How can students use AI tools in a way that keeps their work authentic and valuable?"
+    }
+  ]
+}
