@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Workslop and Authentic Work | Muggs of Data Science</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -27,13 +26,14 @@
       color: #c89b3c;
       font-size: clamp(2rem, 6vw, 2.8rem);
       text-shadow: 0 0 6px rgba(200,155,60,0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
       color: #d4af37;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
     }
 
     p {
@@ -120,27 +120,28 @@
 <body>
   <h1>Workslop and Authentic Work</h1>
 
-  <p>
+  <div class="info">
+  <h2>Directions</h2>
+  <p><strong>Access the article:</strong> 
     <a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity" target="_blank">
-      Read on Harvard Business Review →
-    </a>
-    <br>
-    <a href="AI-Generated_Workslop_Is_Destroying_Productivity.pdf" target="_blank">
-      Download Article (PDF)
+      AI-Generated “Workslop” Is Destroying Productivity
+    </a> (Harvard Business Review, 2025).
+  </p>
+  <p><strong>Offline Access:</strong> 
+    <a href="AI-Generated_Workslop_Is_Destroying_Productivity.pdf" download>
+      Download PDF Version
     </a>
   </p>
+  <p><strong>Summary:</strong> This article describes how widespread use of generative AI has produced “workslop”—content that appears polished but lacks substance, offloading cognitive labor onto others and eroding productivity, trust, and collaboration. Research from BetterUp Labs and Stanford found that 41% of workers encountered workslop, losing nearly two hours of rework per instance. The authors urge leaders to model thoughtful AI use and promote a “pilot mindset” combining high agency and optimism.</p>
+  <p><strong>Instructions:</strong> You will answer one question at a time. Once you submit an answer, you cannot return to previous questions. After completing the quiz, respond to at least two reflection questions to finish.</p>
+  <button id="startActivityBtn">Start Activity</button>
+</div>
 
-  <div id="info" class="info">
-    <h2>Ready to Begin?</h2>
-    <p>Click below to start the activity.</p>
-    <button id="startActivityBtn">Start Activity</button>
-  </div>
 
   <div id="question-container" class="question-box" style="display:none;">
     <h2>Loading activity...</h2>
   </div>
 
-  <!-- Back button -->
   <a href="../index.html" class="back-button">← Back to Classwork</a>
 
   <footer>
@@ -150,8 +151,8 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const startBtn = document.getElementById('startActivityBtn');
-      const infoBox = document.getElementById('info');
       const questionBox = document.getElementById('question-container');
+      let activity, questions, currentIndex = 0, responses = {};
 
       startBtn.addEventListener('click', async () => {
         const username = prompt("Enter your username to begin.\n(For now, any name will work.)");
@@ -161,49 +162,58 @@
         }
 
         localStorage.setItem('studentUsername', username.trim());
-        infoBox.innerHTML = `<h2>Welcome, ${username}!</h2><p>Begin your activity below.</p>`;
-        questionBox.style.display = 'block';
+        startBtn.disabled = true;
+        startBtn.innerText = "Activity Started...";
 
         try {
           const response = await fetch('activity.json');
           if (!response.ok) throw new Error("Could not load activity file.");
-          const activity = await response.json();
-          startActivity(activity);
+          activity = await response.json();
+
+          // Randomize and select 5 from each group
+          const groupA = activity.questions.filter(q => q.group === "A").sort(() => Math.random() - 0.5).slice(0, 5);
+          const groupB = activity.questions.filter(q => q.group === "B").sort(() => Math.random() - 0.5).slice(0, 5);
+          questions = [...groupA, ...groupB].sort(() => Math.random() - 0.5);
+
+          showQuestion();
         } catch (err) {
           questionBox.innerHTML = `<p style="color:#ffb347;">Error loading activity: ${err.message}</p>`;
         }
       });
 
-      function startActivity(activity) {
-        const groupA = activity.questions.filter(q => q.group === "A");
-        const groupB = activity.questions.filter(q => q.group === "B");
-        const selectedA = groupA.sort(() => Math.random() - 0.5).slice(0, 5);
-        const selectedB = groupB.sort(() => Math.random() - 0.5).slice(0, 5);
-        const selectedQuestions = [...selectedA, ...selectedB].sort(() => Math.random() - 0.5);
-        renderQuestions(activity, selectedQuestions);
-      }
+      function showQuestion() {
+        if (currentIndex >= questions.length) {
+          showReflections();
+          return;
+        }
 
-      function renderQuestions(activity, selectedQuestions) {
+        const q = questions[currentIndex];
         let html = `
-          <h2>${activity.title}</h2>
-          <p><strong>Objective:</strong> ${activity.objective}</p>
-          <ol>
+          <h2>Question ${currentIndex + 1} of ${questions.length}</h2>
+          <p><strong>${q.question}</strong></p>
         `;
 
-        selectedQuestions.forEach(q => {
-          html += `
-            <li style="margin-bottom:1rem;">
-              <p><strong>${q.question}</strong></p>
-              ${q.options.map(opt => `
-                <label class="option">
-                  <input type="radio" name="${q.id}" value="${opt}"> ${opt}
-                </label>
-              `).join('')}
-            </li>
-          `;
-        });
+        html += q.options.map(opt => `
+          <label class="option">
+            <input type="radio" name="q${q.id}" value="${opt}"> ${opt}
+          </label>
+        `).join('');
 
-        html += `</ol><h3>Reflection Questions (answer at least two):</h3><ol>`;
+        html += `<button id="nextBtn">Next Question →</button>`;
+        questionBox.innerHTML = html;
+        questionBox.style.display = 'block';
+
+        document.getElementById('nextBtn').onclick = () => {
+          const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
+          if (!selected) return alert("Please choose an answer.");
+          responses[q.id] = selected.value;
+          currentIndex++;
+          showQuestion();
+        };
+      }
+
+      function showReflections() {
+        let html = `<h2>Reflection Questions</h2><p>Answer at least two to complete the activity.</p><ol>`;
         activity.reflections.forEach(r => {
           html += `
             <li style="margin-bottom:1rem;">
@@ -212,28 +222,16 @@
             </li>
           `;
         });
-
-        html += `
-          </ol>
-          <button id="submitBtn">Submit Activity</button>
-          <p id="submitMessage" style="margin-top:1rem;"></p>
-        `;
+        html += `</ol><button id="submitBtn">Submit Activity</button><p id="submitMessage" style="margin-top:1rem;"></p>`;
         questionBox.innerHTML = html;
-
-        document.getElementById('submitBtn').addEventListener('click', () => handleSubmit(activity, selectedQuestions));
+        document.getElementById('submitBtn').addEventListener('click', handleSubmit);
       }
 
-      function handleSubmit(activity, selectedQuestions) {
+      function handleSubmit() {
         const username = localStorage.getItem('studentUsername') || "anonymous";
-        const responses = {};
-
-        selectedQuestions.forEach(q => {
-          const selected = document.querySelector(`input[name="${q.id}"]:checked`);
-          responses[q.id] = selected ? selected.value : null;
-        });
-
         const reflectionResponses = {};
         let reflectionCount = 0;
+
         activity.reflections.forEach(r => {
           const val = document.getElementById(r.id).value.trim();
           if (val) reflectionCount++;
@@ -246,8 +244,8 @@
         }
 
         let correct = 0;
-        let total = selectedQuestions.length;
-        selectedQuestions.forEach(q => {
+        let total = questions.length;
+        questions.forEach(q => {
           if (q.answer && responses[q.id] === q.answer) correct++;
         });
         const percent = Math.round((correct / total) * 100);
@@ -264,7 +262,6 @@
           username,
           activity_id: activity.activity_id,
           timestamp: new Date().toISOString(),
-          selected_questions: selectedQuestions.map(q => q.id),
           responses,
           reflections: reflectionResponses,
           score: { correct, total, percent }
