@@ -50,18 +50,20 @@
     }
 
     /* --- Text Layers --- */
-    h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      color: #1a1410;
-      text-shadow: 0 0 6px rgba(200,155,60,0.5);
-      letter-spacing: 1px;
-      margin-top: 3rem;
-      margin-bottom: 0.3rem;
-      position: relative;
-      z-index: 2;
-      padding: 0 1rem;
-    }
+   h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(3rem, 9vw, 5rem);
+  color: #1a1410;
+  text-shadow: 0 0 10px rgba(200,155,60,0.6);
+  letter-spacing: 1.5px;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem;
+  line-height: 1.05;
+}
+
 
     h2 {
       font-family: 'Cinzel Decorative', serif;
@@ -75,25 +77,30 @@
     }
 
     p {
-      max-width: 90%;
-      font-size: clamp(1rem, 3.8vw, 1.2rem);
-      line-height: 1.6;
-      color: #efe8d1;
-      position: relative;
-      z-index: 2;
-      margin-top: 1.5rem;
-      padding: 0 1rem;
-      text-align: justify;
-    }
+  max-width: 65ch; /* narrower measure for manuscript look */
+  margin: 2rem auto; /* centers the paragraph, adds top/bottom space */
+  padding: 0 3rem; /* generous left/right margins */
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+  line-height: 1.8;
+  color: #efe8d1;
+  position: relative;
+  z-index: 2;
+  text-align: justify;
+  text-indent: 2rem; /* slight indent for traditional feel */
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.3px;
+}
 
-    .illuminated {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2.5rem, 7vw, 3.5rem);
-      float: left;
-      color: #d4af37;
-      margin-right: 0.25rem;
-      line-height: 1;
-    }
+.illuminated {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(3rem, 8vw, 4.2rem);
+  float: left;
+  color: #d4af37;
+  margin: 0.2rem 0.5rem 0 0.1rem;
+  line-height: 0.9;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
 
     /* --- Button --- */
     .btn {
@@ -193,11 +200,11 @@
   <div class="border"></div>
 
   <!-- Layer 1: Main Content -->
-  <h1>Muggs of Data Science</h1>
-  <h2>The Portal to Muggivan's Data Science Course and Curriculum</h2>
+  <h1>Muggivan's Data Science</h1>
+  <h2>Course & Curriculumn</h2>
 
   <p>
-    <span class="illuminated">W</span>elcome to the foundation page of our <em>Data Science with AI</em> course — 
+    <span class="illuminated">W</span>elcome to the foundation pages and materials of our <em>Data Science with AI</em> course — 
     a laboratory for learning how data becomes knowledge. Here, you’ll practice the full cycle of inquiry: gathering data, analyzing patterns, and communicating findings with clarity and purpose.
   </p>
 
