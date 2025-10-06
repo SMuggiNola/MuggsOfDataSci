@@ -41,16 +41,36 @@
       z-index: 0;
     }
 
-    /* --- Typography --- */
-    h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      color: #c89b3c;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 6px rgba(200,155,60,0.5);
-      position: relative;
-      z-index: 1;
-    }
+    /* --- Headings --- */
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(3rem, 9vw, 5rem);
+  color: #1a1410; /* rich black ink */
+  text-shadow:
+    0 0 12px rgba(255,180,60,0.55), /* warm gold glow */
+    0 0 20px rgba(255,150,40,0.35); /* deeper orange outer glow */
+  letter-spacing: 1.5px;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem;
+  line-height: 1.05;
+}
+
+/* smaller illuminated headers */
+h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  color: #1a1410; /* same dark ink tone */
+  text-shadow:
+    0 0 6px rgba(255,180,60,0.5),
+    0 0 10px rgba(255,150,40,0.3);
+  letter-spacing: 0.8px;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+  position: relative;
+}
 
     p {
       max-width: 90%;
@@ -101,13 +121,6 @@
     .nav-card:hover {
       background: rgba(200,155,60,0.1);
       transform: translateY(-4px);
-    }
-
-    .nav-card h3 {
-      font-family: 'Cinzel Decorative', serif;
-      color: #c89b3c;
-      margin-bottom: 0.5rem;
-      font-size: clamp(1.2rem, 3.5vw, 1.4rem);
     }
 
     .nav-card p {
@@ -181,32 +194,6 @@
         background-attachment: scroll;
         overflow-y: auto; /* ✅ allows vertical scrolling */
       }
-
-      h1 {
-        margin-top: 1rem;
-        font-size: 2rem;
-        line-height: 1.2;
-      }
-
-      h2 {
-        margin-top: 0.5rem;
-        font-size: 1.1rem;
-        padding: 0 1rem;
-      }
-
-      p {
-        margin-top: 2rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        text-align: justify;
-      }
-
-      .btn {
-        margin-top: 2.5rem;
-        font-size: 1rem;
-        padding: 0.6rem 1.3rem;
-      }
-
       footer {
         margin-top: 2rem;
         padding-bottom: 2rem;
@@ -227,7 +214,7 @@
       <div class="nav-card">
         <h3>Theoretical Foundations</h3>
         <p>Lectures, slides, and source material that shape the course.</p>
-        <a href="../materials/">Go to Materials →</a>
+        <a href="theoretical_foundation/index.html">Go to Materials →</a>
       </div>
 
       <div class="nav-card">
@@ -249,11 +236,10 @@
       </div>
 
       <div class="nav-card">
-  <h3>Classwork & Assessments</h3>
-  <p>Access classwork activities and secure lab-based assessments.</p>
-  <a href="classwork_assessments/index.html">Open Classwork & Assessments →</a>
-</div>
-
+        <h3>Classwork & Assessments</h3>
+        <p>Access classwork activities and secure lab-based assessments.</p>
+        <a href="classwork_assessments/index.html">Open Classwork & Assessments →</a>
+      </div>
 
       <div class="nav-card">
         <h3>Data Science Final Project</h3>
