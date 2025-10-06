@@ -9,8 +9,10 @@ async function loadActivity() {
   const info = document.getElementById("info");
   info.innerHTML = `
     <p><em>${activityData.source.publication}</em> — <strong>${activityData.source.title}</strong></p>
-    <p><a href="${activityData.source.link}" target="_blank">🔗 Read on HBR</a> |
-       <a href="${activityData.source.local_file}" target="_blank">📄 View Local Copy</a></p>
+    <p>
+      <a href="${activityData.source.link}" target="_blank">🔗 Read on HBR</a> |
+      <a href="${activityData.source.local_file}" target="_blank">📄 View Local Copy</a>
+    </p>
     <p>${activityData.objective}</p>
   `;
 
@@ -27,7 +29,7 @@ function showQuestion() {
     return;
   }
 
-  let content = `<h3>Question ${q.id}</h3><p>${q.question}</p>`;
+  let content = `<h3>Question ${currentIndex + 1}</h3><p>${q.question}</p>`;
   if (q.type === "multiple_choice") {
     content += q.options.map(opt => `
       <label><input type="radio" name="q${q.id}" value="${opt}"> ${opt}</label><br/>
@@ -54,25 +56,38 @@ function showQuestion() {
 }
 
 async function submitResponses() {
-  const payload = {
-    activity_id: activityData.activity_id,
-    student_email: prompt("Enter your school email:"),
-    timestamp: Date.now(),
-    ping_method: "cloudflare",
-    responses
-  };
-
-  const res = await fetch("https://activity-data-collector.sean-muggivan.workers.dev/save_activity", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+  const username = localStorage.getItem('studentUsername') || prompt("Enter your username:");
+  const reflectionResponses = {};
+  activityData.reflections.forEach(r => {
+    const el = document.getElementById(r.id);
+    if (el) reflectionResponses[r.id] = el.value.trim();
   });
 
-  const data = await res.json();
-  document.getElementById("question-container").innerHTML = `
-    <p>✅ Submission saved successfully!</p>
-    <p><small>Record ID: ${data.key}</small></p>
-  `;
+  const submission = {
+    username,
+    activity_id: activityData.activity_id,
+    timestamp: new Date().toISOString(),
+    responses,
+    reflections: reflectionResponses
+  };
+
+  try {
+    const res = await fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(submission)
+    });
+    const data = await res.json();
+    document.getElementById("question-container").innerHTML = `
+      <p>✅ Submission saved successfully!</p>
+      <p><small>Record ID: ${data.key}</small></p>
+    `;
+  } catch (err) {
+    document.getElementById("question-container").innerHTML = `
+      <p style="color:#f88;">⚠️ Error saving submission. Your work has been saved locally and can be re-uploaded later.</p>
+    `;
+    localStorage.setItem(`submission_${username}_${activityData.activity_id}`, JSON.stringify(submission));
+  }
 }
 
 loadActivity();

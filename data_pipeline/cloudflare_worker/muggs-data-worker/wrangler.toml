@@ -1,0 +1,8 @@
+name = "muggs-data-worker"
+main = "src/index.ts"
+compatibility_date = "2025-10-06"
+
+[[kv_namespaces]]
+binding = "SUBMISSIONS"
+id = "1d671d5af64645d99d71f800258a8365"
+preview_id = "bf40a9afbc2944d897f827419a60fefc"

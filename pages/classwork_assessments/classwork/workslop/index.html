@@ -59,7 +59,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      text-align: left;;
+      text-align: left;
     }
 
     button {
@@ -90,6 +90,30 @@
       margin-top: 3rem;
       font-size: 0.9rem;
     }
+
+    .option {
+      display: block;
+      margin: 0.4rem 0;
+      cursor: pointer;
+    }
+
+    .back-button {
+      display: inline-block;
+      background-color: #c89b3c;
+      color: #0e2a1b;
+      font-family: 'Cormorant Garamond', serif;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #d4af37;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 
@@ -106,14 +130,165 @@
     </a>
   </p>
 
-  <!-- Quiz + Reflection -->
-  <div id="info" class="info"></div>
-  <div id="question-container" class="question-box"></div>
+  <div id="info" class="info">
+    <h2>Ready to Begin?</h2>
+    <p>Click below to start the activity.</p>
+    <button id="startActivityBtn">Start Activity</button>
+  </div>
+
+  <div id="question-container" class="question-box" style="display:none;">
+    <h2>Loading activity...</h2>
+  </div>
+
+  <!-- Back button -->
+  <a href="../index.html" class="back-button">← Back to Classwork</a>
 
   <footer>
     Designed for <strong>Muggs of Data Science</strong> · Built for educational use only
   </footer>
 
-  <script src="submit.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const startBtn = document.getElementById('startActivityBtn');
+      const infoBox = document.getElementById('info');
+      const questionBox = document.getElementById('question-container');
+
+      startBtn.addEventListener('click', async () => {
+        const username = prompt("Enter your username to begin.\n(For now, any name will work.)");
+        if (!username || username.trim() === "") {
+          alert("Please enter a username to start.");
+          return;
+        }
+
+        localStorage.setItem('studentUsername', username.trim());
+        infoBox.innerHTML = `<h2>Welcome, ${username}!</h2><p>Begin your activity below.</p>`;
+        questionBox.style.display = 'block';
+
+        try {
+          const response = await fetch('activity.json');
+          if (!response.ok) throw new Error("Could not load activity file.");
+          const activity = await response.json();
+          startActivity(activity);
+        } catch (err) {
+          questionBox.innerHTML = `<p style="color:#ffb347;">Error loading activity: ${err.message}</p>`;
+        }
+      });
+
+      function startActivity(activity) {
+        const groupA = activity.questions.filter(q => q.group === "A");
+        const groupB = activity.questions.filter(q => q.group === "B");
+        const selectedA = groupA.sort(() => Math.random() - 0.5).slice(0, 5);
+        const selectedB = groupB.sort(() => Math.random() - 0.5).slice(0, 5);
+        const selectedQuestions = [...selectedA, ...selectedB].sort(() => Math.random() - 0.5);
+        renderQuestions(activity, selectedQuestions);
+      }
+
+      function renderQuestions(activity, selectedQuestions) {
+        let html = `
+          <h2>${activity.title}</h2>
+          <p><strong>Objective:</strong> ${activity.objective}</p>
+          <ol>
+        `;
+
+        selectedQuestions.forEach(q => {
+          html += `
+            <li style="margin-bottom:1rem;">
+              <p><strong>${q.question}</strong></p>
+              ${q.options.map(opt => `
+                <label class="option">
+                  <input type="radio" name="${q.id}" value="${opt}"> ${opt}
+                </label>
+              `).join('')}
+            </li>
+          `;
+        });
+
+        html += `</ol><h3>Reflection Questions (answer at least two):</h3><ol>`;
+        activity.reflections.forEach(r => {
+          html += `
+            <li style="margin-bottom:1rem;">
+              <p><strong>${r.question}</strong></p>
+              <textarea id="${r.id}" rows="4" placeholder="Write your response..."></textarea>
+            </li>
+          `;
+        });
+
+        html += `
+          </ol>
+          <button id="submitBtn">Submit Activity</button>
+          <p id="submitMessage" style="margin-top:1rem;"></p>
+        `;
+        questionBox.innerHTML = html;
+
+        document.getElementById('submitBtn').addEventListener('click', () => handleSubmit(activity, selectedQuestions));
+      }
+
+      function handleSubmit(activity, selectedQuestions) {
+        const username = localStorage.getItem('studentUsername') || "anonymous";
+        const responses = {};
+
+        selectedQuestions.forEach(q => {
+          const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+          responses[q.id] = selected ? selected.value : null;
+        });
+
+        const reflectionResponses = {};
+        let reflectionCount = 0;
+        activity.reflections.forEach(r => {
+          const val = document.getElementById(r.id).value.trim();
+          if (val) reflectionCount++;
+          reflectionResponses[r.id] = val;
+        });
+
+        if (reflectionCount < 2) {
+          alert("Please answer at least two reflection questions before submitting.");
+          return;
+        }
+
+        let correct = 0;
+        let total = selectedQuestions.length;
+        selectedQuestions.forEach(q => {
+          if (q.answer && responses[q.id] === q.answer) correct++;
+        });
+        const percent = Math.round((correct / total) * 100);
+
+        const msg = document.getElementById('submitMessage');
+        msg.style.color = '#d4af37';
+        msg.innerHTML = `
+          ✅ You answered ${correct} out of ${total} correctly.
+          <br><strong>Score: ${percent}%</strong>
+          <br>Submitting your responses to the cloud...
+        `;
+
+        const submission = {
+          username,
+          activity_id: activity.activity_id,
+          timestamp: new Date().toISOString(),
+          selected_questions: selectedQuestions.map(q => q.id),
+          responses,
+          reflections: reflectionResponses,
+          score: { correct, total, percent }
+        };
+
+        fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(submission)
+        })
+          .then(res => res.json())
+          .then(data => {
+            msg.innerHTML += `
+              <br><br>☁️ <strong>Cloudflare submission successful!</strong>
+              <br>Record ID: ${data.key}
+            `;
+          })
+          .catch(err => {
+            msg.innerHTML += `
+              <br><br>⚠️ <strong>Cloudflare submission failed:</strong> ${err.message}
+            `;
+          });
+      }
+    });
+  </script>
 </body>
 </html>
