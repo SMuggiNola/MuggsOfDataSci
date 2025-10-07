@@ -2,6 +2,7 @@ let activityData;
 let currentIndex = 0;
 let responses = {};
 let selectedQuestions = [];
+let username = ""; // 🔹 store temporarily for this session only
 
 document.addEventListener("DOMContentLoaded", () => {
   loadActivity();
@@ -37,6 +38,14 @@ function selectQuestionsBySection(questions) {
 }
 
 function startActivity() {
+  // ✅ Always ask for username on every start
+  username = prompt("Enter your username:");
+  if (!username || !username.trim()) {
+    alert("You must enter a username to start.");
+    return;
+  }
+  username = username.trim();
+
   document.getElementById("startActivityBtn").disabled = true;
   showQuestion();
 }
@@ -85,7 +94,6 @@ function showReflections() {
 }
 
 async function handleSubmit() {
-  const username = localStorage.getItem("studentUsername") || prompt("Enter your username:");
   const reflectionResponses = {};
   let answered = 0;
 
