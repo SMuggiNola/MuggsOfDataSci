@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Activity | Muggs of Data Science</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="save_to_cloudflare.js" defer></script>
+  <script src="submit.js" defer></script>
+
+  <style>
+    body {
+      font-family: "Cormorant Garamond", serif;
+      color: #f5eedb;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%), url("../../../images/book-of-kells.jpg");
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: "Cinzel Decorative", serif;
+      color: #c89b3c;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      text-shadow: 0 0 6px rgba(200, 155, 60, 0.5);
+    }
+
+    .info, .question-box {
+      margin: 1.5rem auto;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(200, 155, 60, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: left;
+    }
+
+    button {
+      background-color: #c89b3c;
+      border: none;
+      color: #0e2a1b;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    button:hover { background-color: #d4af37; }
+    textarea { width: 90%; border-radius: 6px; padding: 0.5rem; font-family: inherit; font-size: 1rem; }
+
+    footer { color: #b3a37d; margin-top: 3rem; font-size: 0.9rem; }
+  </style>
+</head>
+
+<body>
+  <h1 id="activityTitle">Template Activity</h1>
+
+  <div class="info" id="info">
+    <h2>Directions</h2>
+    <p>Access the article, review the objective, and complete each question in sequence.</p>
+    <button id="startActivityBtn">Start Activity</button>
+  </div>
+
+  <div id="question-container" class="question-box" style="display:none;">
+    <h2>Loading activity...</h2>
+  </div>
+
+  <footer>
+    Designed for <strong>Muggs of Data Science</strong> · Built for educational use only
+  </footer>
+</body>
+</html>

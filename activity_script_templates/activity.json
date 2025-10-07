@@ -1,0 +1,17 @@
+{
+  "activity_id": "TEMPLATE_ACTIVITY",
+  "title": "Template Activity Title",
+  "author": "Your Name",
+  "source": {
+    "title": "Source Title",
+    "publication": "Publication Name",
+    "authors": ["Author 1", "Author 2"],
+    "date": "Month Day, Year",
+    "link": "https://example.com",
+    "local_file": "local_copy.pdf"
+  },
+  "objective": "Brief statement describing what students will learn or demonstrate in this activity.",
+  "questions": [],
+  "reflections": [],
+  "reflection_instructions": "Answer all reflection questions if possible; at least two are required."
+}

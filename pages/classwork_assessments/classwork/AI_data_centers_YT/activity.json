@@ -1,0 +1,46 @@
+{
+  "activity_id": "CW2_DATACENTERS",
+  "title": "Exposing the Dark Side of America's AI Data Center Explosion",
+  "author": "Sean Muggivan",
+  "source": {
+    "title": "Exposing the Dark Side of America's AI Data Center Explosion",
+    "publication": "Business Insider",
+    "authors": ["Business Insider Investigative Team"],
+    "date": "2025",
+    "link": "https://www.businessinsider.com/video-link-placeholder",
+    "local_file": "AI_Data_Center_Explosion_Business_Insider.mp4"
+  },
+  "objective": "Understand how the rapid expansion of AI data centers impacts the environment, local communities, and energy infrastructure — and reflect on what this means for the future of technology and sustainability.",
+  "questions": [
+    { "id": "S1Q1", "group": "Section 1", "type": "short_answer", "question": "What are data centers, and what purpose do they serve in our digital world?" },
+    { "id": "S1Q2", "group": "Section 1", "type": "short_answer", "question": "Why are so many new data centers being built across the U.S.?" },
+    { "id": "S1Q3", "group": "Section 1", "type": "short_answer", "question": "How much power and water can a single data center consume compared to a city?" },
+    { "id": "S1Q4", "group": "Section 1", "type": "short_answer", "question": "Why is there so little public information about where these centers are located?" },
+
+    { "id": "S2Q1", "group": "Section 2", "type": "short_answer", "question": "How did journalists discover the true locations of data centers across the country?" },
+    { "id": "S2Q2", "group": "Section 2", "type": "short_answer", "question": "Why do companies often hide behind shell LLCs when building these facilities?" },
+    { "id": "S2Q3", "group": "Section 2", "type": "short_answer", "question": "What patterns appear when data center clusters are mapped across the U.S.?" },
+    { "id": "S2Q4", "group": "Section 2", "type": "short_answer", "question": "Which companies dominate this landscape, and what does that concentration suggest?" },
+
+    { "id": "S3Q1", "group": "Section 3", "type": "short_answer", "question": "What does the inside of a data center look like, and how do servers stay cool?" },
+    { "id": "S3Q2", "group": "Section 3", "type": "short_answer", "question": "Why are cooler climates and strong energy grids appealing to data center builders?" },
+    { "id": "S3Q3", "group": "Section 3", "type": "short_answer", "question": "What kinds of noise or vibration problems do nearby residents experience?" },
+    { "id": "S3Q4", "group": "Section 3", "type": "short_answer", "question": "How have companies or local governments responded to those neighborhood complaints?" },
+
+    { "id": "S4Q1", "group": "Section 4", "type": "short_answer", "question": "How do data centers use water, and why is that a problem in drought-stricken areas?" },
+    { "id": "S4Q2", "group": "Section 4", "type": "short_answer", "question": "What does it mean for a company to promise to be 'water positive' by 2030?" },
+    { "id": "S4Q3", "group": "Section 4", "type": "short_answer", "question": "How are data centers affecting states’ renewable-energy and emissions goals?" },
+    { "id": "S4Q4", "group": "Section 4", "type": "short_answer", "question": "Why might utilities keep coal or gas plants running to meet growing AI power demand?" },
+
+    { "id": "S5Q1", "group": "Section 5", "type": "short_answer", "question": "What kinds of tax breaks or incentives attract data centers to certain regions?" },
+    { "id": "S5Q2", "group": "Section 5", "type": "short_answer", "question": "Do these massive facilities create many permanent local jobs?" },
+    { "id": "S5Q3", "group": "Section 5", "type": "short_answer", "question": "What trade-offs are communities making when they welcome data centers?" },
+    { "id": "S5Q4", "group": "Section 5", "type": "short_answer", "question": "How does Donna’s story reflect the human cost of the AI and cloud-computing boom?" },
+
+    { "id": "S6Q1", "group": "Section 6", "type": "short_answer", "question": "How did this video change the way you think about where 'the cloud' actually lives?" },
+    { "id": "S6Q2", "group": "Section 6", "type": "short_answer", "question": "Which moment or story in the video (Donna, Carlos, the drought, the coal plants, etc.) stuck with you most — and why?" },
+    { "id": "S6Q3", "group": "Section 6", "type": "short_answer", "question": "Do you think the growth of AI and data centers represents progress, danger, or both? Explain your reasoning." },
+    { "id": "S6Q4", "group": "Section 6", "type": "short_answer", "question": "What responsibilities do tech companies — and we as users — have for the environmental and social costs of our digital lives?" }
+  ],
+  "reflection_instructions": "Answer all reflection questions if possible; at least two are required."
+}

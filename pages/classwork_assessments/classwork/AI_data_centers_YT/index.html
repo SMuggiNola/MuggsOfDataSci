@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exposing the Dark Side of America's AI Data Center Explosion | Muggs of Data Science</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="save_to_cloudflare.js" defer></script>
+  <script src="submit.js" defer></script>
+
+  <style>
+    body {
+      font-family: "Cormorant Garamond", serif;
+      color: #f5eedb;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%), url("../../../images/book-of-kells.jpg");
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-attachment: fixed;
+      text-align: center;
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: "Cinzel Decorative", serif;
+      color: #c89b3c;
+      font-size: clamp(2rem, 6vw, 2.8rem);
+      text-shadow: 0 0 6px rgba(200, 155, 60, 0.5);
+    }
+
+    h2 {
+      color: #d4af37;
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0.5rem auto;
+    }
+
+    a {
+      color: #c89b3c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover { color: #d4af37; text-decoration: underline; }
+
+    .info, .question-box {
+      margin: 1.5rem auto;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(200, 155, 60, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    button {
+      background-color: #c89b3c;
+      border: none;
+      color: #0e2a1b;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    button:hover { background-color: #d4af37; }
+    textarea { width: 90%; border-radius: 6px; padding: 0.5rem; font-family: inherit; font-size: 1rem; }
+
+    footer { color: #b3a37d; margin-top: 3rem; font-size: 0.9rem; text-align: center; }
+
+    .back-button {
+      display: inline-block;
+      background-color: #c89b3c;
+      color: #0e2a1b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+    .back-button:hover { background-color: #d4af37; transform: translateY(-2px); }
+  </style>
+</head>
+
+<body>
+  <h1 id="activityTitle">Exposing the Dark Side of America's AI Data Center Explosion</h1>
+
+  <div class="info" id="info">
+    <h2>Directions</h2>
+
+    <p><strong>Video Link:</strong>
+      <a href="https://youtu.be/t-8TDOFqkQA?si=Yqd332lyLgPKHFLH" target="_blank">
+        Exposing the Dark Side of America's AI Data Center Explosion
+      </a>
+      <br>
+      <small>(Business Insider, 2025)</small>
+    </p>
+
+    <p><strong>Summary:</strong> The explosion of AI across every industry has seen hundreds of water- and power-hungry server farms sprout up across the U.S. 
+      Reporters from Business Insider investigate how these massive data centers are transforming local economies, draining resources, and raising new questions 
+      about sustainability and responsibility in the age of AI.
+    </p>
+
+    <p><strong>Instructions:</strong> Watch the video, then answer questions from each section in sequence. 
+      Each section will pull a few random guiding questions, keeping the same order as the video.
+      Complete at least two reflection questions at the end before submitting.
+    </p>
+
+    <button id="startActivityBtn">Start Activity</button>
+  </div>
+
+  <div id="question-container" class="question-box" style="display:none;">
+    <h2>Loading activity...</h2>
+  </div>
+
+  <a href="../index.html" class="back-button">← Back to Classwork</a>
+
+  <footer>
+    Designed for <strong>Muggs of Data Science</strong> · Built for educational use only
+  </footer>
+</body>
+</html>

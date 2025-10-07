@@ -25,7 +25,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       padding: 2rem;
     }
 
@@ -44,12 +43,13 @@
       margin-bottom: 3rem;
     }
 
+    /* ✅ Grid for rows of 3 */
     .nav-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
     }
 
     .nav-card {
@@ -104,22 +104,26 @@
   <h1>Classwork</h1>
   <p>Select a classwork activity to begin. These can be completed on lab computers or at home.</p>
 
+  <!-- ✅ Only ONE grid container -->
   <div class="nav-grid">
-   <div class="nav-card">
-  <h3>Activity 1: Workslop and Authentic Work</h3>
-  <p>Based on the <em>Harvard Business Review</em> article <strong>“AI-Generated Workslop Is Destroying Productivity”</strong> (2025), this activity explores how overreliance on AI can produce polished but empty work—and how authentic human effort creates real value.</p>
-  <a href="workslop/index.html">Start Activity →</a>
-</div>
-
-
-    <!-- You can duplicate this block for each new activity -->
-    <!--
     <div class="nav-card">
-      <h3>Activity 2: AI and Data Ethics</h3>
-      <p>Examine how data can be used responsibly and ethically in real-world contexts.</p>
-      <a href="activity_2_ai_ethics/index.html">Start Activity →</a>
+      <h3>Activity 1: Exposing the Dark Side of America's AI Data Center Explosion</h3>
+      <p>Data centers powering AI and cloud computing are consuming massive amounts of water and electricity, with Virginia alone handling a third of global internet traffic. Business Insider’s investigation exposes how their rapid growth is straining local communities, worsening droughts, and even forcing states to abandon carbon reduction goals.</p>
+      <a href="AI_data_centers_YT/index.html">Start Activity →</a>
     </div>
-    -->
+
+    <div class="nav-card">
+      <h3>Activity 2: Effective Zero Shot Prompting</h3>
+      <p>Effective Zero-Shot Prompting means writing clear, structured prompts that guide an AI to complete a task without any examples. It combines identity, role, task, and response rules to produce focused, consistent, and high-quality outputs.</p>
+      <a href="cognitive_offloading/index.html">Start Activity →</a>
+    </div>
+
+    <div class="nav-card">
+      <h3>Activity 3: Workslop and Authentic Work</h3>
+      <p>Based on the <em>Harvard Business Review</em> article <strong>“AI-Generated Workslop Is Destroying Productivity”</strong> (2025), this activity explores how overreliance on AI can produce polished but empty work—and how authentic human effort creates real value.</p>
+      <a href="workslop/index.html">Start Activity →</a>
+    </div>
+
   </div>
 
   <footer>
