@@ -1,0 +1,190 @@
+Harvard Business Review
+
+AI-Generated “Workslop” 
+Is Destroying Productivity
+Authors: Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano, and Jeffrey T. Hancock
+
+MuggsOfDataSci.net 
+
+Question:
+Have you ever seen work that looked good but didn’t actually say much?
+What made it look convincing?
+What was missing?
+Have you created work like this yourself?
+
+Definition:
+“Workslop” is AI-generated work that masquerades as good work but lacks the substance to move a task forward.
+Looks polished — but forces others to redo or clarify it.
+Examples: 
+Overly long AI summaries 
+Long, rambling slides 
+Filler paragraphs
+
+Is this a Problem with AI…
+… or is it a problem with how we use AI? 
+Workshop happens when we stop thinking and let the AI fill the space. 
+AI offloading is can be very appropriate — unless we offload to other people instead of machines. That’s what makes workslop uniquely harmful.
+
+How Workslop Happens
+Someone uses AI to create fast, polished content
+The content lacks real thought or project context
+A teammate receives it and must fix or interpret it
+Time and trust are lost
+The effort doesn’t disappear — it just shifts to someone else.
+
+The Hidden Costs
+
+The Hidden Costs
+BetterUp Labs Findings:
+
+41% of workers have received workslop
+Each instance wastes ~2 hours of rework
+Cost per 10,000 workers: $9 million/year
+
+
+Emotional toll:
+53% annoyed 😠
+38% confused 😕
+22% offended 😤
+A hidden “Workslop Tax” on productivity and morale.
+
+Emotional & Social Costs
+When people receive workslop…
+They see senders as less capable or less trustworthy
+They avoid working with them again
+Collaboration and morale suffer
+Using AI carelessly doesn’t just affect grades — it affects reputation and relationships. 
+“Workslop” erodes trust.
+
+
+
+Cognitive Offloading
+In neutral terms, it’s neither good nor bad — it simply describes how humans extend their thinking beyond the brain through interaction with the world.
+Cognitive offloading refers to the practice of using external tools, resources, or environments to store, manage, or process information that would otherwise be handled by one’s own memory or thinking. It allows people to reduce the mental effort required to complete a task by shifting part of the cognitive work to something outside the mind.
+
+Cognitive Offloading
+Humans offload mental work to tools all the time:
+Writing → Paper
+Memory → Google
+Math → Calculator
+But with workslop, we offload the hard thinking to other people.
+“Instead of helping my team, I gave them more work.”
+
+
+
+Why Workslop Spreads
+Common Causes:
+Pressure to use AI “everywhere”
+No clear standards for quality
+“Copy and paste” habits
+Leaders model quantity over quality
+Indiscriminate AI use → indiscriminate results.
+
+
+
+
+Are you a Pilot or a Passenger?
+
+
+
+
+
+
+
+**Presenting the authors’ work. I don’t agree 100% with this. 
+	(Which is FINE!)	
+Pilot mindset
+Passenger Mindset
+High Agency + Optimism
+Low Agency + Dependence
+Treats AI as a partner**
+(as a scientific instrument…?)
+Treats AI as a replacement
+Uses AI to enhance creativity 
+Uses AI to avoid work**
+(to keep up with…?)
+
+Authentic Self…?
+Teilhard de Chardin…
+“To be fully ourselves it is by the same movement that we must advance in the direction of greater union with others.” (1927)
+
+“It is not our individuality that isolates us, but our egotism. True personality reached in the union of all.” (1950)
+
+“The more conscious [we become], the more [we become ourselves], and the more [we become] united with others.” (1955)	
+
+A “vicious” Cycle?
+
+
+
+
+
+
+**Visualize, or draw, an inner circle of 3+ AI’s interacting with each other and 
+humans having relegated themselves to the outside. 
+
+Did anybody draw or visualize this?
+
+
+
+
+
+
+
+
+Workslop in the classroom?
+AI Summaries with no reflection
+Copy-Pasted chunks of AI Generated Responses, especially when…
+Not clearly labeled, “AI generated Response”
+Not followed up with, “My Response”
+“Work” Products that look nice, but have no substance
+“All sizzle and no steak.” 
+
+How to Prevent Workslop
+Model thoughtful AI use
+Establish clear class norms
+Ask: “Is AI helping me think, or helping me avoid thinking?”
+Give feedback on AI output before sharing
+Collaborate humans… then AI
+Collaboration Efforts…?
+
+How to Prevent Workslop
+Always ask yourself “How will I use AI?” 
+before actually using AI. 
+Remember, 
+Intentional and Transparent use of AI is smart work, not cheating. 
+
+Is There a DSFP / Capstone Project in Here?
+From Article → Action:
+The Workslop article raises big questions about how AI is being used — responsibly or not — in schools and workplaces.
+
+Can we turn those questions into data-driven investigations?
+
+Is There a DSFP / Capstone Project in Here?
+Behavioral Data…? 
+How is AI actually being used at NHH? 
+Frequency: How often are students or teachers using AI tools?
+Duration: How long do sessions last?
+Intensity: What kinds of tasks are being automated or assisted?
+
+Is There a DSFP / Capstone Project in Here?
+Attitudinal Data…? 
+How does the NHH community feel about AI?
+What attitudes, hopes, or fears exist?
+How do people define “authentic work”?
+Do students feel AI helps or harms their learning?
+
+Is There a DSFP / Capstone Project in Here?
+Demographic Similarities and Differences…? 
+How do these behaviors and attitudes differ across groups?
+Grade level
+Course type (STEM vs Humanities)
+Student vs Teacher
+Frequency of AI use vs reported satisfaction
+
+Is There a DSFP / Capstone Project in Here?
+How do we find all of this out…? 
+Data Sources:
+Anonymous surveys
+AI lab usage logs
+Reflections or “AI journals”
+Focus group transcripts
