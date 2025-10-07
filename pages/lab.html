@@ -21,12 +21,22 @@
       overflow-x: hidden;
       position: relative;
       background:
-        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%),
-        url('../images/book-of-kells.jpg');
+        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
       background-blend-mode: multiply;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+    }
+
+    /* --- Book of Kells Watermark --- */
+    .watermark {
+      position: fixed;
+      inset: 0;
+      background: url('book-of-kells.jpg') center center / cover no-repeat;
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
     /* --- Decorative Border --- */
@@ -38,39 +48,38 @@
       background-repeat: repeat;
       background-size: 300px;
       opacity: 0.08;
-      z-index: 0;
+      z-index: 1;
     }
 
     /* --- Headings --- */
-h1 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(3rem, 9vw, 5rem);
-  color: #1a1410; /* rich black ink */
-  text-shadow:
-    0 0 12px rgba(255,180,60,0.55), /* warm gold glow */
-    0 0 20px rgba(255,150,40,0.35); /* deeper orange outer glow */
-  letter-spacing: 1.5px;
-  margin-top: 2.5rem;
-  margin-bottom: 0.5rem;
-  position: relative;
-  z-index: 2;
-  padding: 0 1rem;
-  line-height: 1.05;
-}
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3rem, 9vw, 5rem);
+      color: #1a1410;
+      text-shadow:
+        0 0 12px rgba(255,180,60,0.55),
+        0 0 20px rgba(255,150,40,0.35);
+      letter-spacing: 1.5px;
+      margin-top: 2.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+      line-height: 1.05;
+    }
 
-/* smaller illuminated headers */
-h3 {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-  color: #1a1410; /* same dark ink tone */
-  text-shadow:
-    0 0 6px rgba(255,180,60,0.5),
-    0 0 10px rgba(255,150,40,0.3);
-  letter-spacing: 0.8px;
-  margin-bottom: 0.5rem;
-  z-index: 2;
-  position: relative;
-}
+    h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      color: #1a1410;
+      text-shadow:
+        0 0 6px rgba(255,180,60,0.5),
+        0 0 10px rgba(255,150,40,0.3);
+      letter-spacing: 0.8px;
+      margin-bottom: 0.5rem;
+      z-index: 2;
+      position: relative;
+    }
 
     p {
       max-width: 90%;
@@ -80,7 +89,7 @@ h3 {
       color: #efe8d1;
       text-align: justify;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .illuminated {
@@ -102,7 +111,7 @@ h3 {
       max-width: 1100px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .nav-card {
@@ -172,7 +181,7 @@ h3 {
       color: #b3a37d;
       background: rgba(0, 0, 0, 0.2);
       position: relative;
-      z-index: 1;
+      z-index: 2;
       margin-top: 2rem;
     }
 
@@ -192,7 +201,7 @@ h3 {
         justify-content: flex-start;
         padding-top: 4rem;
         background-attachment: scroll;
-        overflow-y: auto; /* ✅ allows vertical scrolling */
+        overflow-y: auto;
       }
       footer {
         margin-top: 2rem;
@@ -203,6 +212,7 @@ h3 {
 </head>
 
 <body>
+  <div class="watermark"></div>
   <div class="border"></div>
 
   <main>
@@ -250,11 +260,11 @@ h3 {
   </main>
 
   <footer>
-    Designed and developed by <strong>Sean Muggivan</strong> —
-    content and code released under the
+    Designed and developed by <strong>Sean Muggivan</strong> — 
+    content and code released under the 
     <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
     <br>
-    View the project on
+    View the project on 
     <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
   </footer>
 </body>

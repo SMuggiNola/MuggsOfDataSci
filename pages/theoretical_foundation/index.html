@@ -14,8 +14,7 @@
       font-family: 'Cormorant Garamond', serif;
       color: #f5eedb;
       background:
-        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%),
-        url('../../images/book-of-kells.jpg');
+        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
       background-blend-mode: multiply;
       background-size: cover;
       background-attachment: fixed;
@@ -27,26 +26,33 @@
       padding: 2rem;
     }
 
-    .border {
+    /* --- Book of Kells Watermark --- */
+    .watermark {
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
-      background-repeat: repeat;
-      background-size: 300px;
-      opacity: 0.08;
+      background: url('book_of_kells.jpg') center center / cover no-repeat;
+      opacity: 0.25;
       z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: multiply;
     }
 
     h1 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      color: #c89b3c;
-      text-shadow: 0 0 6px rgba(200,155,60,0.5);
-      position: relative;
-      z-index: 1;
+      font-size: clamp(3rem, 9vw, 5rem);
+      color: #1a1410;
+      text-shadow:
+        0 0 12px rgba(255,180,60,0.55),
+        0 0 20px rgba(255,150,40,0.35);
+      letter-spacing: 1.5px;
+      margin-top: 2.5rem;
       margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+      line-height: 1.05;
     }
+
 
     p {
       max-width: 850px;
@@ -56,7 +62,7 @@
       color: #efe8d1;
       text-align: justify;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .illuminated {
@@ -75,7 +81,7 @@
       max-width: 1100px;
       margin: 0 auto;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .section-card {
@@ -123,13 +129,14 @@
       text-decoration: underline;
     }
 
-    
     footer {
       text-align: center;
       padding: 1rem;
       font-size: 2rem;
       color: #b3a37d;
       margin-top: 3rem;
+      z-index: 2;
+      position: relative;
     }
 
     footer a {
@@ -142,6 +149,38 @@
       text-decoration: underline;
     }
 
+    .return-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 3rem auto 0 auto;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    .return-button a {
+      display: inline-block;
+      background: rgba(200,155,60,0.2);
+      color: #f5eedb;
+      border: 1px solid rgba(200,155,60,0.4);
+      border-radius: 8px;
+      padding: 0.8rem 1.8rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: all 0.25s ease;
+    }
+
+    .return-button a:hover {
+      background: rgba(200,155,60,0.4);
+      color: #fff3c0;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 1rem;
@@ -150,41 +189,12 @@
       p {
         text-align: left;
       }
-      .return-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem auto 0 auto;
-  text-align: center;
-}
-
-.return-button a {
-  display: inline-block;
-  background: rgba(200,155,60,0.2);
-  color: #f5eedb;
-  border: 1px solid rgba(200,155,60,0.4);
-  border-radius: 8px;
-  padding: 0.8rem 1.8rem;
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  transition: all 0.25s ease;
-}
-
-.return-button a:hover {
-  background: rgba(200,155,60,0.4);
-  color: #fff3c0;
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-
     }
   </style>
 </head>
 
 <body>
+  <div class="watermark"></div>
   <div class="border"></div>
 
   <main>
@@ -210,15 +220,14 @@
         <p>Explorations into the philosophy of artificial intelligence, the ethics of automation, and the human–machine relationship.</p>
         <a href="ai_philosophy.html">Explore Topics →</a>
       </div>
+    </div>
 
-
+    <div class="return-button">
+      <a href="../lab.html">← Back to Lab</a>
+    </div>
   </main>
 
   <footer>
-    <a href="../lab.html">← Back to Lab</a>
-  </footer>
-
-    <footer>
     Designed and developed by <strong>Sean Muggivan</strong> — 
     content and code released for educational use under the 
     <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.

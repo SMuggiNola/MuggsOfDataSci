@@ -15,8 +15,7 @@
       text-align: center;
       min-height: 100vh;
       background:
-        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%),
-        url('../../images/book-of-kells.jpg');
+        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
       background-blend-mode: multiply;
       background-size: cover;
       background-position: center;
@@ -26,21 +25,49 @@
       align-items: center;
       justify-content: flex-start;
       padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    h1 {
-      font-family: 'Cinzel Decorative', serif;
-      color: #c89b3c;
-      font-size: clamp(2rem, 6vw, 2.8rem);
-      margin-bottom: 1rem;
-      text-shadow: 0 0 6px rgba(200,155,60,0.5);
+    /* --- Book of Kells Watermark --- */
+    .watermark {
+      position: fixed;
+      inset: 0;
+      background: url('book_of_kells.jpg') center center / cover no-repeat;
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: multiply;
     }
+
+    h1, p, .nav-grid, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+   h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3rem, 9vw, 5rem);
+      color: #1a1410;
+      text-shadow:
+        0 0 12px rgba(255,180,60,0.55),
+        0 0 20px rgba(255,150,40,0.35);
+      letter-spacing: 1.5px;
+      margin-top: 2.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+      line-height: 1.05;
+    }
+
 
     p {
       max-width: 700px;
       font-size: 1.1rem;
       line-height: 1.6;
       margin-bottom: 3rem;
+      color: #efe8d1;
     }
 
     .nav-grid {
@@ -88,10 +115,11 @@
       color: #d4af37;
       text-decoration: underline;
     }
-footer {
+
+    footer {
       text-align: center;
       padding: 1rem;
-      font-size: 2rem;
+      font-size: 1rem;
       color: #b3a37d;
       margin-top: 3rem;
     }
@@ -109,16 +137,17 @@ footer {
 </head>
 
 <body>
+  <div class="watermark"></div>
+
   <h1>Classwork & Assessments</h1>
   <p>Select an option below to access your daily classwork activities or secure assessments completed in the lab.</p>
 
   <div class="nav-grid">
     <div class="nav-card">
-  <h3>Classwork</h3>
-  <p>Interactive activities, labs, and readings completed in class or at home.</p>
-  <a href="classwork/index.html">Open Classwork →</a>
-</div>
-
+      <h3>Classwork</h3>
+      <p>Interactive activities, labs, and readings completed in class or at home.</p>
+      <a href="classwork/index.html">Open Classwork →</a>
+    </div>
 
     <div class="nav-card">
       <h3>Assessments</h3>
@@ -127,11 +156,9 @@ footer {
     </div>
   </div>
 
-     <footer>
+  <footer>
     <a href="../lab.html">← Back to Lab</a>
-  </footer>
-
-    <footer>
+    <br><br>
     Designed and developed by <strong>Sean Muggivan</strong> — 
     content and code released for educational use under the 
     <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
@@ -139,6 +166,5 @@ footer {
     View the full project on 
     <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
   </footer>
-
 </body>
 </html>
