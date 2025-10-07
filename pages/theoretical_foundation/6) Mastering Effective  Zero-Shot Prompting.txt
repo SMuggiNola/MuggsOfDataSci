@@ -1,0 +1,54 @@
+6) Mastering Effective 
+Zero-Shot Prompting
+Objective: Create the most effective prompts possible without giving the AI examples.
+(9thwardAI.net) 
+
+What we know:
+
+	The baseline for effective prompt engineering is 3 components. 
+
+Give the AI an Identity. 
+Define the User’s Role.
+Clearly Specify a Task.
+
+What we know:
+
+
+Sound familiar?
+
+
+	“You are a professor of alternative energies specializing in Floating Photovoltaic Panels (FPVs). I am a high school student working on my senior capstone project. I will give you my capstone research objective and a chunk of an article on FPVs. Tell me if the article chunk will help me with my research objective.” 
+
+The 4th component of 
+an Effective Zero-Shot Prompt: 4) Harnessing the AI.
+
+Clearly define what you are looking for. 
+Clearly define what you are NOT looking for. 
+Clearly define the structure of AI’s response. 
+
+The 4th component of 
+an Effective Zero-Shot Prompt: 4) Harnessing the AI.
+
+I am looking for whether or not the article chunk can help me with my research objective. 
+I am NOT looking for explanations, summaries, or any help understanding the article
+Respond with a simple ‘yes’ or ‘no’ and 1-2 sentences explaining your determination.
+
+One last thing…
+
+	Clearly delineate between the directions portion of your prompt and the data portion of your prompt. 
+
+	Especially in a chat interface, this can help the AI determine between what it is being instructed to do and what it is instructed to it on. 
+
+	This can be as simple as…
+
+ARTICLE CHUNK BELOW:
+
+Putting it all together one last time:
+
+	You are a college professor specializing in Floating Photovoltaic Panels (FPVs). I am a high school student working on my senior capstone project. I have an article on FPVs. I will give you my research objective and a chunk of the article. Tell me if the article chunk helps me with my research objective of [INSERT OBJECTIVE]
+
+I am only looking for if the article chunk has relevance to my research objective. 
+I am NOT looking for summaries, explanations, or help understanding the article chunk. 
+Respond with ‘yes’ or ‘no’ and 1-2 sentences explaining why. 
+
+ARTICLE CHUNK BELOW:

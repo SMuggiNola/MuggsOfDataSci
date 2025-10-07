@@ -1,0 +1,173 @@
+Intro To Prompt Engineering; Part II
+Objective: 
+Prompting with a Clear Purpose
+
+https://9thWardAI.net/NHH-Data-Sci 
+
+Review of Relevant & Key Content: 
+
+The math behind AI’s generative responses is ______________. 
+
+The 3 components of an effective prompt are…
+
+The significance of the “marbles analogy” for our work with AI is…
+
+Funnel Method to Prompting:
+
+The funnel method (as in argumentative writing) is about starting broad and then narrowing the focus so the reader is guided smoothly into your specific claim.
+
+It’s called a “funnel” because your writing moves from wide, general ideas at the top to a tight, focused claim at the bottom.
+
+Funnel Method to Prompting:
+
+Broad opening: Begin with a general idea, background, or context that introduces the topic.
+
+Narrowing: Gradually reduce the scope by addressing more specific aspects of the issue, eliminating side points, and signaling relevance.
+
+Focused thesis: End the introduction with a clear, arguable thesis statement—this is the narrowest point of the funnel, where the paper’s argument becomes precise.
+
+
+
+
+
+
+
+
+
+Funnel Method to Prompting:
+
+
+AI Identity: 
+User Role:
+Clear Task:
+
+
+
+
+Identity Sets Boundaries:
+Giving the AI an identity places it inside a specific domain of expertise.
+
+This filters out irrelevant areas of knowledge and keeps responses “in character.”
+
+Example: “You are an expert car mechanic.”
+The AI now focuses on vehicles, engines, and repairs.
+It won’t wander into cooking recipes, fashion tips, or random trivia.
+
+
+
+
+Role Clarifies the Perspective:
+Defining the user’s role signals the AI how much detail, tone, or depth to use.
+
+It frames the relationship between expert and learner.
+
+Example: “You are the owner of the car, who knows a little but not much.”
+The AI avoids overly technical jargon.
+It tailors explanations for a curious but non-expert audience.
+
+
+
+
+Task Pinpoints the Action:
+A clear task narrows the funnel to a specific action or problem.
+
+This prevents vague or wandering responses by anchoring the AI to one job.
+
+Example: “The engine won’t turn over, no lights on the dash — help me figure out what’s wrong.”
+The AI is locked onto troubleshooting this scenario.
+Very few interpretive options remain.
+
+
+
+
+Task Pinpoints the Action:
+A clear task narrows the funnel to a specific action or problem.
+
+This prevents vague or wandering responses by anchoring the AI to one job.
+
+Example: “The engine won’t turn over, no lights on the dash — help me figure out what’s wrong.”
+The AI is locked onto troubleshooting this scenario.
+Very few interpretive options remain.
+
+
+
+
+Funnel Method to Prompting:
+
+
+AI Identity: mechanic ->
+auto mechanic -> 
+Honda Certified Specialist
+User Role: Knows something about cars, vs, afraid to pop the hood
+Clear Task: “I want to learn to work on cars” vs “I want to change the oil on my 2010 Subaru Outback” 
+
+
+
+
+Funnel Method to Prompting:
+
+Try it out: “I’m struggling with math.”
+AI Identity:
+“You are a…”
+
+User Role: 
+“You are helping/assisting/tutoring…”
+
+Clear Task:
+State the task clearly w/ 3 specifics
+
+
+
+
+
+Funnel Method to Prompting:
+
+Try it out: “I want to write a paper for civics.”
+AI Identity:
+“You are a…”
+
+User Role: 
+“You are helping/assisting/tutoring…”
+
+Clear Task:
+State the task clearly w/ 3 specifics
+
+
+
+
+
+Where we are heading next:
+
+
+Agent AI
+An AI that acts like an agent. It is built to take actions in the world to reach goals. It plans, makes choices, and tries to achieve outcomes. This kind of AI often does things for us—solving problems or completing tasks on its own. That power can be useful, but also risky if its goals don’t line up with ours.
+
+
+
+
+Where we are heading next:
+
+Scientist AI
+An AI that acts like a scientist. Instead of chasing goals, it focuses on understanding the world. It looks at data, builds explanations, and makes predictions with probabilities. This kind of AI works with us—we bring the questions or data, and it helps us reason, test ideas, and learn more clearly.
+
+
+
+
+
+Where we are heading next:
+
+Risky Use of AI for Data Analysis:
+What people do:
+Ask the LLM to analyze or summarize from its training data (instead of supplying real data).
+
+Why it’s risky:
+The LLM’s training data may be outdated, biased, or simply wrong.
+Results can sound convincing but lack evidence or accuracy.
+It discourages students from learning how to work with actual datasets.
+
+
+
+
+
+Where we are heading next:
+

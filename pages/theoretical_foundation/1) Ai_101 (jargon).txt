@@ -1,0 +1,554 @@
+Ai_101
+Getting to know the jargon
+https://9thWardAI.net/NHH-Data-Sci 
+
+Artificial Intelligence
+
+Computers performing tasks that usually require human thinking.
+
+Different than programing, were a computer follows directions. 
+
+“Autonomy” - freedom from external control or influence
+
+Machine Learning (ML) 
+
+Teaching computers to find patterns in data.
+
+Image Recognition
+
+Model
+
+The trained “brain” of an AI system.
+
+
+When you program, you write instructions:
+
+“Step 1: Pick up the marker. Step 2: Uncap the marker. Step 3: Write the word ‘AI’ on the board.”
+
+When you train a model, you demonstrate the task over and over until the computer learns the pattern.
+
+
+Large Language Model (LLM)
+
+ A type of AI trained on massive amounts of text; “large” = billions of parameters.
+
+
+
+Train a Model
+
+When you train a model, you demonstrate the task over and over until the computer learns the pattern.
+If I show the AI 100 examples of me writing different words on the board, it learns:
+“Marker uncaps before writing.”
+“Letters have certain shapes.”
+“Words appear left-to-right.”
+Now, if I hand it a new word, the model can perform the task without being told every single step.
+
+
+Training Data
+
+The examples (text, images, etc.) the AI learns from.
+Concerns of plagiarism
+HUGE amounts go into training LLMs (Mistral, ChatGPT…)
+
+
+
+Parameters
+
+Tiny adjustable settings inside the model that store learned patterns.
+What more parameters mean:
+Parameters = weights inside the neural network. Each one is like a dial that controls how strongly one concept or feature influences another.
+More parameters = more capacity to represent patterns, relationships, and nuances in data.
+Large models (billions of parameters) can capture very subtle structures in language or images, while small models (millions) are faster but less detailed.
+
+
+
+
+Parameters
+
+Analogy
+Think of parameters as knobs on a giant soundboard:
+A small soundboard with 100 knobs lets you tune basic sounds.
+A massive one with 1,000,000 knobs can capture much richer, more precise variations — but is slower, harder to run, and requires more memory.
+
+
+
+Parameters
+
+Analogy
+
+
+
+
+Parameters
+
+~500M parameters
+
+Very Small, lightweight models.
+
+Run fast on laptops or phones.
+
+Good for simple tasks, but limited depth/accuracy.
+
+
+
+
+
+
+Parameters
+
+~1-2billion parameters
+
+Small, lightweight models.
+
+Run fast on laptops or phones.
+
+Good for simple tasks, but limited depth/accuracy.
+
+
+
+
+
+
+Parameters
+
+~7B–70B parameters
+
+Medium to large models (Mistral, LLaMA, GPT-3 class).
+
+Need good GPUs. *Windows Central Article
+
+Handle complex reasoning and nuanced text.
+
+
+
+
+
+
+Parameters
+
+~100B–500B parameters
+
+We’re pushing into Commercial/Cloud
+
+Require clusters of GPUs to train/run.
+
+Capture broad world knowledge with more detail.
+
+
+
+
+
+
+Parameters
+
+~1 Trillion+ parameters
+
+Experimental “mega models.”
+
+Massive compute + storage cost.
+
+Can model extremely subtle patterns, but efficiency becomes a problem.
+
+
+
+
+
+
+The “Hardware Stack”
+
+CPU (Central Processing Unit)
+
+General: The “brain” of the computer that handles most instructions and coordinates other components.
+
+Offline AI: Runs model logic when GPU isn’t available, manages data flow between RAM and GPU, and handles preprocessing/postprocessing of AI tasks.
+
+Student PCs have 8th gen Ryzen 7 CPUs
+
+
+
+
+The “Hardware Stack”
+
+RAM (Random Access Memory)
+
+General: Temporary workspace for active data and programs; faster than storage but erased when powered off.
+
+Offline AI: Holds model weights and context windows during inference; more RAM means larger models or multiple models can be run without crashing.
+
+These PCs have 32 gb DDR5 RAM
+
+
+
+
+The “Hardware Stack”
+
+GPU (Graphics Processing Unit)
+
+General: Designed for parallel processing—originally for rendering graphics but now widely used for computation.
+
+Offline AI: Accelerates neural network inference by handling thousands of calculations at once; VRAM size directly limits the maximum model size that can be loaded.
+
+
+
+
+The “Hardware Stack”
+
+SSD (Solid-State Drive)
+
+General: Fast, persistent storage for operating system, apps, and files. Much quicker than hard drives.
+
+Offline AI: Stores massive model files (often several GB each) and enables quick loading into RAM/GPU memory; high read speeds reduce startup/transfer lag.
+
+
+
+
+A model’s “Lifespan”
+
+Training → 
+
+			“Freeze” → 
+
+								Inference
+
+
+
+
+
+
+
+Training → 
+
+The model is exposed to a massive dataset (text, images, etc.).
+Its billions of parameters (weights) are adjusted so it learns patterns, probabilities, and representations.
+Training is compute-heavy and only happens once (or in limited stages like fine-tuning).
+
+
+
+
+
+“Freeze” → 
+
+Once training ends, the weights are frozen—they no longer change.
+
+The model becomes a static function: given some input, it transforms that input into an output based on its learned parameters.
+
+At this point, the model “knows what it knows”; it won’t gain new knowledge unless retrained or fine-tuned.
+
+
+
+
+
+Inference
+
+Inference is when the frozen model is actually used.
+You feed it input (a prompt, image, etc.), and it computes a response by running signals through its fixed network of weights.
+This stage is much cheaper than training but limited to what was captured during training + whatever context you provide.
+
+
+
+
+“Running Inference”
+
+
+The word inference in AI and in statistics doesn’t mean exactly the same thing, but they both boil down to:
+
+Using patterns in data to make predictions about something new.
+
+
+
+“Running Inference”
+
+Inferential statistics:
+
+You don’t have the whole population.
+
+You use a sample to infer properties about the population.
+
+Example: Survey 1,000 voters → predict outcome for millions.
+
+
+
+“Running Inference”
+
+Running inference in AI:
+
+The model doesn’t have the “true answer” stored.
+It uses the patterns learned during training to infer the most likely next word(s).
+Example: You type “The capital of France is ___” → it infers “Paris” because that’s the strongest pattern in its training.
+
+
+
+What do these things need to run?
+
+“Hardware Stack”
+
+
+
+CPU (Central Processing Unit)
+
+General-purpose chip that runs everyday computing tasks.
+
+
+
+GPU (Graphics Processing Unit)
+
+ Specialized chip designed for heavy math; crucial for AI.
+
+Windows Central Article
+
+RAM (Random Access Memory)
+
+Short-term memory used while running programs.
+
+
+
+VRAM (Video RAM)
+
+ Memory on the GPU used to store and run AI models.
+
+Storage (SSD/HDD)
+Where models, datasets, and software are saved.
+SSD is critical
+
+What is a token?
+
+A token is a piece of text (word, sub-word, or character) the model uses to read and generate responses.
+
+
+
+Why it matters:
+
+Every model has a limit on how many tokens it can handle at once (input + output combined).
+
+Long text → more tokens → more cost + more memory used.
+
+
+
+Context Window
+
+Definition: The maximum number of tokens a model can “keep in mind” during a conversation. The model’s “short term memory”.
+
+It’s like a whiteboard — once it fills up, the model erases older text to make room for new.
+
+Typical sizes:
+
+Small models: 2k–8k tokens (a few pages of text).
+
+Big models: 32k–200k tokens (whole books).
+
+Once the context window is full, the model forgets — even if it feels like a “chat.”
+
+Chat UIs (ChatGPT, LM Studio, etc.)
+
+What we see: Feels like a scrolling conversation.
+
+The simplest transaction between a user and a model is the “prompt/generated response” exchange.
+
+
+
+But what’s actually happening during a chat interface session? 
+
+Each new message re-sends the chat history to the model (up to the context limit).
+
+Risk: Chats get “bloated” → model uses tokens on old text instead of focusing on the new task.
+
+
+
+
+
+
+
+What causes the “bloat”? 
+
+The same thing that gives us the illusion that we are having a conversation with another person…
+
+Persistent Memory
+
+
+
+Persistent Memory - A system feature where your conversations or notes are stored and added automatically.
+
+Tradeoff:
+
+✅ Feels like the model “remembers you.”
+
+❌ Eats up context window space with every use.
+
+
+
+
+Why it matters for offline AI: 
+
+Smaller local models usually don’t have giant context windows, so persistent memory can crowd out the space you need for your current work.
+
+
+
+Why it matters for offline AI: 
+
+Smaller local models usually don’t have giant context windows, so persistent memory can crowd out the space you need for your current work.
+
+
+The Basics 
+Of 
+Prompt Engineering
+
+
+Prompt: The text or instructions you give an AI model to guide its response.
+
+Prompting: The practice of designing and refining those instructions to get clearer, more useful, or more accurate outputs.
+
+
+
+
+
+Think of a prompt as the directions, and prompting as the developing them to be more effective.
+
+
+Agentic AI:
+
+
+Systems that observe, plan, and act autonomously to pursue goals.
+
+Key Traits: Goal-directed, capable of long-term planning, able to influence the world.
+
+
+
+Agentic AI:
+
+
+Opportunities: Useful for automation, assistants, and task execution.
+
+Risks: Misaligned goals, deception, self-preservation, and potential loss of human control.
+
+
+
+Scientist AI
+
+Definition: AI systems designed to explain, model, and answer questions — not act in the world.
+
+Key Traits: Builds theories from data, emphasizes uncertainty, and provides transparent reasoning.
+
+
+Scientist AI
+
+Opportunities: Accelerates research, supports human decision-making, serves as a guardrail against unsafe agentic AIs.
+
+Safety Advantage: Non-agentic by design → avoids self-preservation, goal-pursuit, or deceptive behaviors
+
+
+
+Agentic Prompting
+
+Prompts that tell the AI to act like an agent — pursuing goals or producing final outputs on the user’s behalf.
+
+Directs AI to do the task for you.
+
+Often requests complete products (essays, answers, solutions).
+
+
+
+Agentic Prompting
+
+Example Prompts:
+
+“Write my essay on renewable energy.”
+
+“Solve this math problem and give me the answer.”
+
+
+
+Agentic Prompting
+
+Example Prompts:
+
+“Write my essay on renewable energy.”
+
+“Solve this math problem and give me the answer.”
+
+Risk: Student thinking is replaced by AI output (mirrors risks of Agentic AI: loss of control, over-reliance).
+
+Agentic Prompting
+
+Example Prompts:
+
+“Write my essay on renewable energy.”
+
+“Solve this math problem and give me the answer.”
+
+Risk: Student thinking is replaced by AI output (mirrors risks of Agentic AI: loss of control, over-reliance).
+
+Scientist Prompting
+
+Prompts that position the AI as an explainer, analyst, or model-builder — helping the user think rather than acting for them.
+
+Key Traits:
+
+Guides AI to analyze, compare, or clarify.
+Keeps humans in charge of final decisions.
+
+Scientist Prompting
+
+Example Prompts:
+
+“Summarize the key arguments in this article and suggest 2 follow-up questions.”
+
+“Show me how to set up this math problem, but don’t solve it for me.”
+
+Benefit: Strengthens human learning, aligns with Scientist AI principles (understanding > acting
+
+Prompt Sorting Activity
+
+Which of these are Agentic prompts and which are Scientist prompts?
+
+Write a 5-paragraph essay on climate change solutions.
+
+Summarize this article and explain two terms that might confuse a 10th grader.
+
+Solve this equation and give me the final answer.
+
+
+
+Prompt Sorting Activity
+
+Show me how to set up the first step of this equation, but stop before solving.
+
+Create a complete project outline for me.
+
+Compare the arguments in these two sources and suggest a question I should ask next.
+
+
+
+Improving a Prompt (Scientist Prompting)
+
+Agentic: “Write my essay on renewable energy.”
+
+
+Scientist? 
+
+Improving a Prompt (Scientist Prompting)
+
+Agentic: “Write my essay on renewable energy.”
+
+
+Scientist? 
+
+“List 3 key arguments from this article on renewable energy and suggest how I might organize them in an essay.”
+
+Improving a Prompt (Scientist Prompting)
+
+Agentic: “Write my essay on renewable energy.”
+
+
+Scientist? 
+
+“List 3 key arguments from this article on renewable energy and suggest how I might organize them in an essay.”
+
+
+
+
+Why Scientist Prompting? 
+
+
+
+
+Why Scientist Prompting? 

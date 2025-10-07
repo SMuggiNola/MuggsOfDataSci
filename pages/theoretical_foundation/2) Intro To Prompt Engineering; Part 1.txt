@@ -1,0 +1,161 @@
+Intro To Prompt Engineering; PartI
+Objective: 
+Writing More Effective Prompts
+https://9thWardAI.net/NHH-Data-Sci 
+
+What are prompts?
+
+A prompt is how we “engage” an AI to do a task.
+
+
+In data science, prompts tell AI what to do with information we bring (like an article or dataset).
+
+It is quite possible to think of EVERYTHING as data.
+
+
+What are prompts?
+
+The basic structure of an effective prompt: 
+
+
+AI IDENTITY + USER ROLE + TASK = EFFECTIVE PROMPTING
+
+
+Why Prompts Matter in Data Science:
+
+A clear prompt helps the AI better understand what you want from it. 
+
+“Summarize this article for me”
+
+“Compare this evidence to my project goals”
+
+The better the setup, the better the analysis.
+
+Garbage in, Garbage out
+
+
+Assigning an IDENTITY to the AI: 
+
+What it looks like:
+
+“You are a science reporter/journalist for a major newspaper…”
+
+How might this differ than a science expert?
+
+“You are a skeptical researcher double-checking every fact.”
+
+
+
+Assigning an IDENTITY to the AI:
+
+Why it is important: 
+
+It Shapes the Voice
+
+
+AI will respond differently as a “science journalist” vs. a “skeptical researcher.”
+
+
+
+
+
+Assigning an IDENTITY to the AI:
+
+Why it is important: 
+
+It Sets the Method
+
+A “teacher” identity might explain step-by-step.
+
+An “engineer” identity might break things into diagrams or systems.
+
+
+
+
+
+Assigning an IDENTITY to the AI:
+
+Why it is important: 
+
+It Creates Consistency
+
+
+Without an identity, AI answers can feel generic.
+
+
+
+
+
+
+Assigning an IDENTITY to the AI:
+
+Why it is important: 
+
+It Encourages Critical Thinking
+
+Learn to choose the right perspective for the task. (“do this for me” vs “show me how”)
+
+“The math class quandary”
+
+
+
+
+
+
+
+Assigning a Role to the User:
+
+“I am a student researcher.”
+
+“I am a policymaker.”
+
+“I am a community member.”
+
+Assigning a Role to the User:
+
+Clarifies Purpose – A “student researcher” working on a capstone project needs evidence; a “policy maker” heading into a debate needs pros/cons; a “community member” needs to know if their neighborhood will have more or less smoke.
+
+Sets Audience – The AI will adjust tone (simple language for middle schoolers vs. technical depth for experts).
+
+Assigning a Role to the User:
+
+
+Guides Depth – Your role determines whether the AI gives you broad summaries, technical details, or policy-level takeaways.
+
+Focuses the Conversation – Instead of vague answers, the AI tailors its response to your specific lens.
+
+
+Assigning the Task:
+
+Tasks connect directly to your project or article:
+
+“Summarize the key findings of this article in 3 bullet points.”
+
+“Compare the article’s evidence to my research objectives.”
+
+“List pros and cons of floating solar panels from this source.”
+
+
+Putting It All Together:
+
+Full Example Prompt:
+
+“You are an expert in the field of floating solar panels speaking on background. I am a reporter writing for a magazine that helps middle school readers understand complex but important scientific research. Help me explain to middle schoolers what the abstract of the following article covers, using clear and simple language.”
+
+
+Putting It All Together:
+
+Full Example Prompt:
+
+
+AI’s identity + USER’s role + task = EFFECTIVE PROMPT
+
+
+
+Putting It All Together:
+
+Words Of Wisdom: 
+
+“You can’t change the model with your prompting. So if you want to change the model’s analysis of your data, you need to change ___________________.”
+
+

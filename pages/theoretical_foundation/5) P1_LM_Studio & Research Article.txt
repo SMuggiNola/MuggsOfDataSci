@@ -1,0 +1,148 @@
+P1_LM_Studio & Research Article
+“Should I spend time on this article…”
+https://9thWardAI.net/NHH-Data-Sci 
+
+The Scientific Method
+
+Define a Question: Observations and data spark a question to investigate.
+
+Make Predictions: Form a hypothesis — a testable explanation based on evidence.
+
+Gather Data: Collect evidence through observation, experiment, or models. Ensure procedures can be repeated.
+
+Analyze Data: Organize results into tables, graphs, or diagrams; look for patterns.
+
+Draw Conclusions: Decide if evidence supports the hypothesis. Share results and refine with new questions.
+
+Why We Document the Tech Stack:Science is reproducible
+Other researchers must be able to repeat your work with the same tools and methods.
+
+AI is part of your methods
+Hardware (CPU, RAM, GPU, storage), software (Ollama, Streamlit, Excel), and models (Mistral, Gemma) all affect results.
+
+Tech stack = lab equipment
+Just like scientists list microscopes or chemicals, you must list your computing setup.
+
+
+
+Why We Document the Tech Stack:Equity through minimum requirements
+Sharing the lowest specs needed lets others try your project on their own devices.
+
+Adherence to a Data Scientific Method
+Careful documentation of tools and constraints ensures your project is credible, testable, and reproducible.
+
+Integrity & trust
+Transparent methods are your best defense against accusations of misusing AI—clear documentation proves you did the work responsibly.
+
+Hardware Stack: What we have in class: 
+
+CPU: AMD Ryzen 7 8745H
+RAM: 32GB DDR5
+Graphics: Radeon 780M integrated GPU
+Storage: 1TB SSD
+
+
+Hardware Stack: 
+
+Minimum Hardware to Reproduce:
+
+CPU: Intel i5 (10th gen or newer) / AMD Ryzen 5 (5000 series or newer)
+
+RAM: 16GB DDR4/DDR5
+
+Storage: SSD (256GB+)
+
+Note: A discrete GPU (e.g., RTX 3060+) improves speed but is not required.
+
+The Activity Objective: 
+
+A student is working on their Senior Capstone Project. They want to do their work on “floating solar panels.” They have identified 3 research objectives that, if accomplished, will make a very successful project. 
+
+The student found an article online. It definitely meets criteria for a credible source (see next slides). 
+
+We will use an AI to help us determine if a research article can help a student achieve their research objectives. 
+
+Credible Academic Source
+
+Author & Institution: Written by an expert or reputable organization with clear credentials.
+
+Publication Venue: Appears in a peer-reviewed journal, academic press, or official conference — not just a blog or news site.
+
+Methodology & Evidence: Explains how data was collected/analyzed and presents empirical evidence (data, graphs, tables).
+
+
+Credible Academic Source
+
+
+4) 	References & Citations: Connects to prior research 
+through citations and a bibliography.
+
+5) Objectivity & Currency: Written in formal, neutral 
+language, acknowledges limitations, and is recent 
+enough to be relevant.
+
+
+The Activity Objective: 
+
+Hypothetical Student Objectives (3): 
+
+Objective 1 — Measure energy production
+
+Question: Does the article give estimates of renewable energy potential from floating solar panels or “Floating PhotoVoltaic Panels (FPVs)?
+
+The Activity Objective: 
+
+Hypothetical Student Objectives: 
+
+Objective 2 — Identify environmental or technical co-benefits
+
+Question: Does the article describe efficiency improvements, evaporation reduction, or hydropower synergies?
+
+The Activity Objective: 
+
+Hypothetical Student Objectives: 
+
+Objective 3 — Compare cost-effectiveness vs. fossil fuels
+
+Question: Does the article show whether FPV is cheaper or more expensive than fossil fuel energy?
+
+The Activity Objective: 
+
+Engineer your “Prompt Template” for this activity: 
+
+Identity: 
+
+Role: 
+
+Task: 
+Research Objective 
+“from the article below”
+
+The Activity Objective: 
+
+The overall process…
+
+Feed the article a chunk at a time into an LM Studio Chat along with your prompt template. 
+
+Each Prompt will have 2 pieces: 
+Prompt Template
+Article Chunk
+
+A note on how LM Studio Works: 
+
+Each “conversation” is a folder. 
+You can create these
+
+Each “chat” is a file in a folder. 
+You can create these
+
+You can organize all of the above.
+
+TODAY’S TASK
+
+Engineer a prompt template. What you know about the scenario: 
+A student has specific research objectives.
+A student has an article on Floating Photovoltaic Panels. 
+A student wants to know if the article can help them with their research objectives.
+
+What is the prompt template looking like?  

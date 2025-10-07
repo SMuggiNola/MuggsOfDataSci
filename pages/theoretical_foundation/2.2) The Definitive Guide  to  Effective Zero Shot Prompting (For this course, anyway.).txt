@@ -1,0 +1,159 @@
+The Definitive Guide 
+to 
+Effective Zero Shot Prompting
+(For this course, anyway.)
+Objective: Learn to write powerful, consistent prompts with zero examples — and understand why clarity, structure, and writing mechanics matter.
+
+MuggsOfDataSci.net 
+
+What Is a Prompt?
+A prompt is how we engage an AI to do a task.
+In data science, prompts tell AI what to do with the data we bring — like an article, dataset, or transcript.
+Remember: Everything is data.
+
+ The Structure of an Effective Prompt
+Formula:
+AI IDENTITY + USER ROLE + TASK = EFFECTIVE PROMPT
+Where: 
+The Identity shapes the voice and reasoning method of the model.
+The Role defines who the audience is and what’s their purpose with the AI generated response.
+The Task anchors the AI to a specific action.
+
+Why Prompts Matter in Data Science
+A clear prompt = clear analysis
+A vague prompt = vague results
+GARBAGE IN = GARBAGE OUT
+
+ Assigning an AI Identity
+Example: 
+“You are a skeptical researcher double-checking every fact.”
+Why it matters:
+Shapes the voice (reporter vs scientist)
+Sets the method (teacher explains vs engineer diagrams)
+Creates consistency
+Encourages critical thinking
+
+ Assigning a User Role
+Examples:
+“I am a student researcher.”
+“I am a policymaker.”
+“I am a community member.”
+Why it matters:
+Clarifies purpose
+Sets audience tone and level
+Guides depth of explanation
+Focuses the conversation
+
+Assigning the Task
+Tasks connect directly to what you need:
+“Summarize the article in 3 bullet points.”
+“Compare the evidence to my research objectives.”
+“List pros and cons of floating solar panels.”
+
+The Funnel Method to Prompting
+The Funnel Method to Prompting
+Start broad → 
+Narrow the focus → 
+finish precise
+
+
+The Funnel Method to Prompting
+Example:
+Broad: “You are a mechanic.”
+Narrower: “You are a Subaru-certified auto mechanic.”
+Focused: “Help me change the oil on my 2010 Subaru Outback.”
+Result: The prompt stays tight and relevant.
+
+
+
+The Funnel Method to Prompting
+Another Example:
+How do I change my oil? 
+How do I change the oil on a 2010 Subaru Outback
+I have never changed oil before, help me change the oil on a 2010 Subaru Outback
+You are a patient auto mechanic instructor certified to work on Subarus. I am changing the oil on my 2010 Outback for the first time. Patiently walk me through the steps to changing the oil. Start for what do I need to make sure I have before I start. 
+
+
+
+The Four Components of Zero-Shot Prompting
+AI Identity
+User Role
+Clear Task
+Harnessing the AI
+
+
+
+Harnessing the AI
+Tell the AI exactly:
+WHAT YOU WANT
+WHAT YOU DON’T WANT
+HOW TO RESPOND
+
+
+
+Harnessing the AI
+Example:
+I am looking for whether the article chunk helps my research objective.
+I am NOT looking for explanations or summaries.
+Respond only with “Yes” or “No” and 1–2 sentences explaining why.
+
+
+
+Directions vs Data
+	We can think of an effective prompt as broken into 2 main portions: 
+The directions portion that tells the AI what to do. 
+The data portion of that tells the AI what to do it on.
+
+
+
+Directions vs Data
+	So an AI must know what part, exactly, of the prompt is the directions that it is to follow, and what part of the prompt is the data that it is to follow those directions on. When engaging with an AI in a chat interface, it can be easy for the AI to get confused. The best fixes are sometimes the simplest. In this case, simply marking the where the directions end and the data begins can be very effective:
+ARTICLE CHUNK BELOW: 
+
+
+
+Writing Mechanics Matter
+
+
+
+Attribute
+What it controls
+Example 
+Impact
+Punctuation
+Separates thoughts
+“You are a professor. 
+I am a student.”
+Highest
+Syntax
+Keeps logic in order
+“Determine if the article provides estimates.”
+High
+Capitalization
+Adds clarity
+“Floating Photovoltaic Panels (FPVs)”
+Medium
+Spelling
+Shows Professionalism
+“Does the article provide…”
+Lower
+
+Using CAPITALS for Emphasis
+Capital letters act like highlighters for the AI.
+✅ Effective: “I am NOT looking for summaries.”
+⚠️ Overused: “YOU ARE A PROFESSOR I AM A STUDENT TELL ME IF...”
+
+Rule: If EVERYTHING is in all caps, nothing stands out.
+Use ALL CAPS sparingly for clarity and emphasis.
+
+
+
+Using CAPITALS for Emphasis
+Capital letters act like highlighters for the AI.
+✅ Effective: “I am NOT looking for summaries.”
+⚠️ Overused: “YOU ARE A PROFESSOR I AM A STUDENT TELL ME IF...”
+
+Rule: If EVERYTHING is in all caps, nothing stands out.
+Use ALL CAPS sparingly for clarity and emphasis.
+
+

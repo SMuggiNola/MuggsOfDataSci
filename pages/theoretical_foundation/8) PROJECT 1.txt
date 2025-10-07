@@ -1,0 +1,300 @@
+Project 1: 
+Should I Spend The Time…
+OBJECTIVE: Using LM Studio, Mistral 7b to determine if an article supports your research objectives. 
+(9thwardai.net) 
+
+Notes for next go around…
+
+Make sure to include the section of the article you are pulling chunks from in your prompt…“I am going to feed chunks of the text from the methodology section of the article.” 
+
+Complete an exemplar and use that in the prompt to compare student responses to
+“Flesh out” specifics from the article. And that it is an article chunk/passage
+
+Objective:
+
+A student is working on their senior capstone project. They have specific research objectives that have been approved by their instructors. They also have a research article that appears to be on topic, but the scientific jargon is particularly dense. 	Can we use AI to help determine if the article can help the student with their research objectives? 
+
+Tech Stack: 
+
+Hardware
+Data Science Computer Lab PCs
+
+Software:
+LM Studio w/ Mistral 7b loaded
+PDF of article student found
+
+LM Studio & Windows File Explorer:
+
+In LM Studio…
+Folders are called 
+“conversations”
+Files are 
+called “chats” 
+“Project 1” is the 
+main folder
+Objective 1 is a 
+subfolder
+Intro, Methods…
+Are chats (files)
+
+
+
+LM Studio & Windows File Explorer:
+
+In File Explorer…
+
+
+
+
+
+LM Studio & Windows File Explorer:
+
+
+LM Studio gives you a way to create and organize files and folders on your computer’s local drive from inside of LM Studio’s app. 
+
+You should be doing all of your work in LM Studio and just copy/pasting the necessary responses to the class intranet portal. 
+
+You need to be logged into a PC with your credentials so that you will be able to save your work. 
+
+The portal cannot “lose your work.” At most you will need to re-submit it. 
+
+
+
+
+
+The Prompt: 
+
+If the prompt you wrote is not as good as this one, use the following prompt
+ 
+You will have plenty of opportunities in the future to improve your prompt engineering skills. 
+
+
+
+
+
+The Prompt: 
+
+You are a professor of alternative energies specializing in Floating Photovoltaic Panels (FPVs). I am a high school senior working on my capstone project. I have research objectives and an article on FPVs. Below is my OBJECTIVE and a chunk of the article Help me determine if the article has relevance to my research. 
+
+I am NOT looking for summaries, explanations or help understanding the article. 
+I am looking for if the article has any relevance to my research objective. 
+Answer “yes” or “no” and explain why in 1-2 sentences. 
+
+OBJECTIVE: [insert objective here]
+
+ARTICLE CHUNK BELOW:
+
+
+
+
+
+2 Major Parts of A Prompt: 
+
+
+
+
+
+Directions Portion:
+
+Tells the AI what you want it to do.
+
+
+Data Portion:
+
+Tells the AI what do the work on
+
+If you use your own prompt, make sure you use… 
+
+Effective Zero-Shot Prompting: 
+
+AI Identity
+User Role
+Specific Task
+Harness the AI
+
+Mastering Effective Zero-Shot Prompting 
+
+
+
+
+
+
+The Workflow: 
+
+Open LM Studio & Article 
+Set up your Project # 1 Folder
+New Folder -> “Project 1”
+New Subfolder -> “Objective 1”
+New Chat -> Intro
+New Chat -> Method 1
+New Chat -> Method 2
+…
+
+
+
+
+
+
+The Workflow: 
+
+
+
+
+
+
+
+The Workflow: 
+
+3) Load a model:
+
+
+
+
+
+4) Click on Introduction Chat
+5) Write your prompt (directions & data) 
+into the chat box.
+
+
+
+  
+
+
+
+
+
+
+The Workflow: 
+
+
+
+
+  
+
+
+
+
+
+
+The Workflow: 
+
+    6) Copy/Paste chunks
+    of the article into
+    chat box beneath 
+    your prompt. Be 
+    to keep an eye on 
+    your token count. 
+
+  
+
+
+
+
+
+
+A Note on Token Counts and Context Windows: 
+
+	The variant of Mistral 7b we are using has a contect window of 32,768 tokens. This means that the the model could pretty much handle the all the text of the article. 
+
+	However, although our PCs are fairly powerful (8th gen Ryzen 7 CPUs, 32gb DDR5 RAM, Radeon 780m iGPUs…), they lack dedicated GPUs. From students’ experiences, 2500-3000 tokens seems to be the upper limit of our hardware with this model. Beyond this, you hit exponential slowdowns. 
+	If you are attempting this project on lesser specced hardware (older/less powerful CPU, less RAM…), consider a smaller context window, closing all unnecessary apps, and maybe a more quantized variant.   
+
+  
+
+
+
+
+
+
+The Workflow: 	7) “Rinse & Repeat”
+
+The entire Introduction appears to easily fit into our goal context window of less than 2500-3000 tokens
+Students report the same for Results, Discussion and Conclusion. 
+So you can use the same process for each of these sections. 
+To hard return in the chat box, use “Shift+Enter”
+
+The Workflow: 	8) Methodology is quite a bit larger, so…
+Create multiple Methodology chats.
+Method 1, Method 2, Method 3 
+Copy/Paste your prompt into these chats. 
+Paying attention to your context window, copy/paste chunks of your methods section into these chats until you hit 2500-3000 tokens. 
+When you hit that limit, move on to the next Methodology Chat.   
+When you have all of Methodology completed, create a Methodology All chat. 
+
+  
+
+  
+
+
+
+
+
+
+The Workflow: 	9) “Method All”
+
+Create a basic prompt instruction the model to analyze the different Method AI responses and give you an overall summary. 
+“Below are 3 AI generated responses on the relevance of an article to my research objective. What is the AI analysis overall on the article’s relevance to my objective?”
+ Copy/Paste the different AI responses from Methods 1, Methods 2… and send them along with the prompt. 
+
+  
+
+  
+
+
+
+
+
+
+The Workflow: 	10) “Article All”
+
+Create a basic prompt instruction the model to analyze the different different AI responses to all of the article chunks responses and give you an overall summary. 
+“Here are all of the AI generated responses on the relevance of an article to my research objective. What is the AI analysis overall on the article’s relevance to my objective?”
+ Copy/Paste all of the AI responses from the entire article and send them along with the prompt. 
+
+  
+
+  
+
+
+
+
+
+
+The Workflow:     To submit your work on the portal, 
+copy/paste each of the AI generated 
+responses for each section into the 
+corresponding fields on the objective’s
+portal page. 
+
+For Methods All and Article All, 
+just paste those overall AI generated 
+responses. 
+
+Be sure to include the prompt you
+engineered for completing this 
+activity.
+
+  
+
+  
+
+
+
+
+
+
+The Workflow: 
+For the Overall Reflection piece
+of this activity, copy/paste the 
+final reflections from each of the 3
+objectives into the first 3 fields. 	In a new chat on LM Studio, run 
+those 3 AI Generated responses 
+
+  
+
+  
+
+
+
+
+

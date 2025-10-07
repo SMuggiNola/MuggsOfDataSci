@@ -1,0 +1,274 @@
+Applying AI to Data Science
+New Harmony High’s 
+Ai & Data Science Lab
+https://9thWardAI.net/NHH-Data-Sci 
+
+Meet the Teacher: 
+
+Sean Muggivan
+Masters of Social Work (LCSW)
+Finishing a Certification in Teaching
+5+ years social work experience
+Working mostly with adolescents
+10+ years of teaching experience
+Middle & High School
+General & Special Education
+Mostly teaching math
+2nd year teaching Data Science
+
+Meet the Tech Stack: Hardware 
+
+Student AI Workstations
+
+Mini PCs (Ryzen 7 8745H, Radeon 780M iGPU, 32GB DDR5, NVMe SSD)
+
+Chosen for offline AI inference (fast, local processing without internet).
+
+Supports LM Studio + local models (Mistral 7B, Phi-2, Gemma, etc.).
+
+Capable of running data science pipelines and AI experiments.
+
+Student AI Workstations
+
+SPECIAL THANKS TO THE FOLLOWING…
+
+Walter Isaacson 
+
+11:11 Philosophers Group Donations 
+
+$1k - Rene Peck, Times Picayune
+
+Fundraising supported & organized by 
+AI For Every Student Initiative 
+
+
+
+Meet the Tech Stack: Hardware 
+
+Dedicated AI Teacher Server: 
+
+4090 Rig: NVIDIA RTX 4090, Intel Ultra 9 285K, 96GB DDR5 RAM.
+
+Runs larger models (Gemma-12B/27B, Mistral-24B).
+
+Will be accessible by students/teachers on the local school network.
+
+Acts as the sandbox hub for more demanding AI tasks.
+
+Special thanks to Jeff Bezos for Amazon’s 0% Financing.
+
+
+Meet the Tech Stack: Software 
+
+LM Studio
+Basic RAG Feature, Chat Interface & System Prompts
+Access to GINORMOUS Model Repository
+Streamlit
+A Python Library that turns scripts into apps
+Very useful for making quick UIs, delivering curriculum, getting completed work back from students and assessing that work
+Makes for very capable pipelines
+
+
+Meet the Tech Stack: Offline AI Models
+
+Very much the same as Online Models
+
+A predictive model trained on huge amounts of data
+
+When a prompt is entered, it predicts (generates) the most likely next word(s)
+
+“The cat in the…” 
+
+Just like Online AI, Offline is not…
+
+All knowing
+It doesn’t know everything, it predicts
+
+A replacement for data collection
+95% of companies invested heavily in AI have failed to find ROI
+
+A replacement for people
+Despite some companies’ best efforts
+
+Not a shortcut to quality Data Science
+
+Most simply put, these Models exist in 3 distinct stages:
+
+Training → Learning patterns from data.
+
+Freezing → Model is locked; doesn’t change.
+Means a model cannot “learn” about us
+
+Inference → Predicting responses from user prompts.
+The way the VAST majority of people engage with AI
+
+AI is not Computer Programming: 
+
+
+
+
+
+
+
+
+
+
+*One of our activities on the computers grew directly from this distinction. 
+Computer Program
+AI Predictive Model
+Follows instructions
+Predicts next token
+Same input = Same output
+Same input ≅ Similar output 
+Human writes rules
+Model learns patterns
+Deterministic
+Probabilistic
+
+Key Differences: Online vs Offline
+
+Attribute
+Online AI
+Offline AI (Sandbox)
+Privacy
+Student Data leaves School Network
+100% local, no data leaves
+Equity
+Paywalls & Subscriptions
+One-time PC cost, universal access
+Control
+Companies control models, updates, system prompts
+Teacher controls models and system prompts
+Integrity
+Easy copy-paste “cheating”
+Structured, sandboxed use
+Access
+Internet-dependent
+Works offline, resilient
+Ownership
+Students = consumers 
+Students = makers
+
+Meet the Lab: Secure Offline “Sandbox”
+
+
+A sandbox is a safe, controlled environment where students can explore AI and computers without outside distractions.
+
+Going offline creates focus: students only access the tools and resources needed for their projects.
+
+I can monitor and guide their efforts through AI chat logs and project work.
+
+This is not about restriction—it’s about challenge
+
+Shift from consumption → creation
+
+Build a new, healthier relationship with computers.
+
+Do this look familiar…? 
+
+
+
+
+
+
+
+	At its root, AI is also just a branch of 
+Computer Science, right??
+
+
+
+Brief Summary of Comp Sci Standards and NHH Data Science Course: 
+
+
+1) Computing Systems:
+H.CS.1A – Hardware/software interactions (CPU, GPU, RAM, SSD for inference).
+H.CS.1B – Abstractions (UIs like LM Studio/Open WebUI hiding complexity).
+H.CS.2A – Troubleshooting strategies (RAM/VRAM issues, token limits, model loading).
+
+2) Networks & the Internet: 
+H.NI.1A – Network scalability & reliability (classroom router + local sandbox).
+H.NI.1B – Tracing data through a network (prompt → router → server → back).
+H.NI.2A – Security trade-offs (offline vs. open internet).
+
+
+
+Brief Summary of Comp Sci Standards and NHH Data Science Course: 
+
+3) Data & Analysis: 
+H.DA.3A – Data storage trade-offs (local logs, privacy, access speed).
+H.DA.2B – Personal/legal impacts of logged data. 
+This is before we actually get into the content of the Data Science course. 
+
+4) Algorithms & Programing: (NOTE: This is not a coding course.)
+H.AP.1A–1E (Variables & Algorithms): Python variables, data types, simple data-cleaning pipelines (I want students to see how AI “looks” in typical data analysis.) 
+H.AP.4A–4G (Program Development): iterative dashboard building, open-source libraries (Pandas, Streamlit, Matplotlib)
+
+5) Impacts of Computing: 
+H.IC.1B – Innovations in AI enabling other fields (therapy, social sciences, data science).
+H.IC.3A–3E – Ethics, laws, and responsible sandbox design (privacy vs. oversight)
+
+
+
+Speaking of Ethical Use of AI…
+
+	“You are an expert in the field of floating solar panels speaking on background. I am a reporter writing for a magazine that helps middle school readers understand complex but important scientific research. Help me explain to middle schoolers what the abstract of the following article covers, using clear and simple language.”
+
+(AI Identity + User Role + Clear Task = Effective Prompting)
+
+
+
+An interesting “dissection” of ChatGPT: 
+
+
+Is ChatGPT a magic answer box? 
+
+Is it alien technology? 
+
+Is it clever file management in a well polished user interface? 
+
+A message from the “Cubes”: 
+
+Mark Cuban (TBPN, Aug 25, 2025): Hire People Who Can Do AI, Not Just Join Google.
+
+“Go into any other company that has no idea about AI but needs it to compete. There’ll be more jobs than people for a long, long time.”
+
+Become an “AI integrator” not a big‑tech job seeker.
+
+
+
+
+A message from the “Cubes”: 
+
+Huge opportunity: 33 million U.S. companies, most without AI budgets or staff
+
+DIY advantage: Students serious about Streamlit—and then more sophisticated tools—can walk in and show value
+
+Strategic mindset shift: Focus on implementation, not just employment
+
+What this may mean for students whose primary interests (passion) is not necessarily in computers and coding… FOLLOW YOUR PASSION.
+
+
+
+
+Ready to get on some computers!!!
+
+Experiential Activity 1:
+Does hardware make a difference?
+
+Experiential Activity 2: 
+Programing or Inference?  
+
+
+
+
+
+
+Now you are ready for class!
+
+Class Activity: 
+Should I Spend My Time On This? 
+
+
+
+
+

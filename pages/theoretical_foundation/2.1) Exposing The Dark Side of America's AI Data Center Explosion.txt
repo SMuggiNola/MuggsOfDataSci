@@ -1,0 +1,47 @@
+Exposing The Dark Side of America's AI Data Center Explosion
+Guiding Questions
+Business Insider
+
+VIDEO LINK 
+
+Video Summary:
+The explosion of AI across every industry has seen hundreds of water- and power-hungry server farms sprout up across the US. Already, one-third of the world's internet traffic flows through data centers in just one US state: Virginia.
+However, until now, there has been no official record of the number of data centers in America, who owns them, or how much electricity they consume.
+In an exclusive deep dive into the industry, Business Insider reporters cracked the code and, for the first time, revealed the true cost of the data warehouses feeding our growing appetite for cloud computing and AI. We travelled to Virginia to meet people living in the shadow of 80-foot-high boxes that emit a constant drone, and to the drought-ridden state of Arizona, where some data centers are using as much as a million gallons of water a day to help cool their computer servers.
+Business Insider also discovered that the power needs of data centers have forced some states to withdraw from their carbon emissions targets. Power companies are even looking to extend the life of coal and gas plants to help meet the unprecedented demand.
+
+Section 1 – What Are Data Centers? (0:00–5:00)
+What are data centers, and what purpose do they serve in our digital world?
+Why are so many new data centers being built across the U.S.?
+How much power and water can a single data center consume compared to a city?
+Why is there so little public information about where these centers are located?
+
+Section 2 – Mapping and Ownership (5:00–10:00)
+How did journalists discover the true locations of data centers across the country?
+Why do companies often hide behind shell LLCs when building these facilities?
+What patterns appear when data center clusters are mapped across the U.S.?
+Which companies dominate this landscape, and what does that concentration suggest?
+
+Section 3 – Inside and Around the Centers (10:00–17:30)
+What does the inside of a data center look like, and how do servers stay cool?
+Why are cooler climates and strong energy grids appealing to data center builders?
+What kinds of noise or vibration problems do nearby residents experience?
+How have companies or local governments responded to those neighborhood complaints?
+
+Section 4 – Water, Energy, and the Environment (17:30–25:30)
+How do data centers use water, and why is that a problem in drought-stricken areas?
+What does it mean for a company to promise to be “water positive” by 2030?
+How are data centers affecting states’ renewable-energy and emissions goals?
+Why might utilities keep coal or gas plants running to meet growing AI power demand?
+
+Section 5 – Costs, Jobs, and the Future (25:30–End)
+What kinds of tax breaks or incentives attract data centers to certain regions?
+Do these massive facilities create many permanent local jobs?
+What trade-offs are communities making when they welcome data centers?
+How does Donna’s story reflect the human cost of the AI and cloud-computing boom?
+
+Section 6 – Reflection and Impact (After Viewing)
+How did this video change the way you think about where “the cloud” actually lives?
+Which moment or story in the video (Donna, Carlos, the drought, the coal plants, etc.) stuck with you most — and why?
+Do you think the growth of AI and data centers represents progress, danger, or both? Explain your reasoning.
+What responsibilities do tech companies — and we as users — have for the environmental and social costs of our digital lives?
