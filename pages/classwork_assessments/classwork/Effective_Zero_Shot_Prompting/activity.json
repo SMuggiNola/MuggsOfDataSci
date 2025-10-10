@@ -1,0 +1,171 @@
+{
+  "activity_id": "CW2_Effective_Zero_Shot",
+  "title": "Effective Zero-Shot Prompting",
+  "author": "Sean Muggivan",
+  "source": {
+    "title": "Effective Zero-Shot Prompting",
+    "publication": "Muggs of Data Science | Class AI Curriculum",
+    "authors": ["Sean Muggivan"],
+    "date": "2025",
+    "link": "https://muggsofdata.net/classwork/effective_zero_shot_prompting"
+  },
+  "objective": "Understand what makes a zero-shot prompt effective, including structure, writing mechanics, and proofreading for clarity in small models like Mistral 7B.",
+  "questions": [
+
+    {
+      "id": "S1Q1",
+      "group": "Section 1: Foundations",
+      "type": "information",
+      "question": "📘 <strong>Zero-Shot Prompting Basics</strong><br><br>Zero-shot prompting means giving an AI model an instruction without showing it any examples of what the answer should look like. The model must rely entirely on its pre-training — all the patterns, texts, and examples it learned from millions of documents — plus the wording of your prompt to figure out what you want.<br><br>In large commercial systems like ChatGPT, this process is mostly invisible because those models carry massive context windows and reinforcement training to interpret vague human language. Smaller open-source models, however, like <strong>Mistral 7B</strong>, do not automatically guess what you mean unless you clearly tell them. Mistral 7B has about seven billion parameters — each one a mathematical connection that helps it predict the next word. That’s powerful, but compared to models with hundreds of billions of parameters, it leaves much less room for guessing tone, audience, or task. As a result, the model performs far better when your prompt spells out roles, goals, and format explicitly.<br><br>When you write a zero-shot prompt, you are not just giving instructions — you are designing the entire context in which reasoning will happen. A clear identity line ('You are a data scientist…'), a specific goal ('My goal is…'), and a precise format ('Write your answer as…') give the model boundaries that mimic a few-shot example without actually providing one. That’s why effective prompting is both a writing skill and a reasoning skill. The better your structure and clarity, the more accurate and useful the model’s output will be, even from a small local model running entirely on your classroom computer."
+    },
+    {
+      "id": "S1Q2",
+      "group": "Section 1: Foundations",
+      "type": "multiple_choice",
+      "question": "Which statement best defines <em>zero-shot prompting</em>?",
+      "options": [
+        "Giving the model one short example to follow",
+        "Providing only an instruction, no examples",
+        "Training the model with your own dataset",
+        "Asking multiple models the same question"
+      ],
+      "answer": "Providing only an instruction, no examples"
+    },
+    {
+      "id": "S1Q3",
+      "group": "Section 1: Foundations",
+      "type": "multiple_choice",
+      "question": "Why do smaller models like Mistral 7B benefit from structured zero-shot prompts?",
+      "options": [
+        "They infer tone and context automatically",
+        "They perform better when roles and outputs are explicit",
+        "They ignore all formatting cues",
+        "They only work with few-shot examples"
+      ],
+      "answer": "They perform better when roles and outputs are explicit"
+    },
+
+    {
+      "id": "S2Q1",
+      "group": "Section 2: The Prompt Blueprint",
+      "type": "information",
+      "question": "🧱 <strong>Blueprint for Effective Zero-Shot Prompts</strong><br><br><strong>Model Identity</strong> — Establishes expertise, tone, and domain vocabulary.<br><strong>Example:</strong> 'You are a professor of environmental science.' Smaller models like <strong>Mistral 7B</strong> rely heavily on this explicit role priming.<br><br><strong>User Role</strong> — Clarifies audience and purpose.<br><strong>Example:</strong> 'I am a high school student working on a data science project.' This keeps the model’s reasoning simple and readable.<br><br><strong>Goal Statement</strong> — Defines what the user wants to achieve.<br><strong>Example:</strong> 'My goal: determine whether the article is relevant to renewable energy potential.' This focuses the model’s reasoning.<br><br><strong>Rules</strong> — Creates clear task boundaries.<br><strong>Example:</strong> 'Do NOT summarize or explain the text.' Negative instructions prevent drift and confusion.<br><br><strong>Output Format</strong> — Tells the model exactly how to respond.<br><strong>Example:</strong> 'Relevance: [Yes/No]  Reason: [1–2 sentences].' This ensures consistency across outputs.<br><br><strong>Objective + Input Section</strong> — Separates your instructions from the data itself, giving the model clear start and stop cues."
+    },
+    {
+      "id": "S2Q2",
+      "group": "Section 2: The Prompt Blueprint",
+      "type": "multiple_choice",
+      "question": "What is the main purpose of the <em>Rules</em> section in a structured prompt?",
+      "options": [
+        "To make the prompt longer and more detailed",
+        "To encode clear boundaries and prevent the model from drifting off-task",
+        "To provide examples of correct answers",
+        "To hide the user’s true intent"
+      ],
+      "answer": "To encode clear boundaries and prevent the model from drifting off-task"
+    },
+    {
+      "id": "S2Q3",
+      "group": "Section 2: The Prompt Blueprint",
+      "type": "short_answer",
+      "question": "In your own words, why does defining both the model’s role and the user’s role improve response quality?"
+    },
+
+    {
+      "id": "S3Q1",
+      "group": "Section 3: The Template",
+      "type": "information",
+      "question": "🧠 <strong>Reusable Prompt Template</strong><br><br>You are a [EXPERT ROLE] specializing in [DOMAIN].<br>I am a [USER ROLE] working on [PROJECT OR CONTEXT].<br><br>My goal: [CLEAR TASK STATEMENT].<br><br>Rules:<br>1. [Positive instruction]<br>2. [Negative instruction]<br>3. Format your answer exactly as:<br>&nbsp;&nbsp;&nbsp;&nbsp;[EXPECTED OUTPUT TEMPLATE]<br><br>[Optional context: Objective, Dataset, Question, etc.]"
+    },
+    {
+      "id": "S3Q2",
+      "group": "Section 3: The Template",
+      "type": "multiple_choice",
+      "question": "Which line in the template tells the model how to format its final response?",
+      "options": [
+        "My goal: [CLEAR TASK STATEMENT]",
+        "Rules → #3 Format your answer exactly as:",
+        "You are a [EXPERT ROLE] specializing in [DOMAIN]",
+        "I am a [USER ROLE] working on [PROJECT]"
+      ],
+      "answer": "Rules → #3 Format your answer exactly as:"
+    },
+
+    {
+      "id": "S4Q1",
+      "group": "Section 4: Example Analysis",
+      "type": "information",
+      "question": "📘 <strong>Example Prompt – FPV Relevance Checker</strong><br><br>You are a professor of alternative energies specializing in Floating Photovoltaic Panels (FPVs).<br>I am a high-school senior completing a capstone project on FPVs.<br><br>My goal: determine whether the following article chunk is relevant to my research objective.<br><br>Rules:<br>1. Do NOT summarize or explain the article.<br>2. Only state if the chunk is relevant.<br>3. Format your answer exactly as:<br>&nbsp;&nbsp;&nbsp;&nbsp;Relevance: [Yes/No]<br>&nbsp;&nbsp;&nbsp;&nbsp;Reason: [1–2 sentences only]<br><br>Objective: [INSERT OBJECTIVE]<br>Article Chunk: [TEXT]"
+    },
+    {
+      "id": "S4Q2",
+      "group": "Section 4: Example Analysis",
+      "type": "multiple_choice",
+      "question": "Which part of the FPV prompt ensures consistency when many chunks are analyzed?",
+      "options": [
+        "The User Role statement",
+        "The explicit output format (Relevance/Reason)",
+        "The opening sentence about Floating Photovoltaics",
+        "The negative instruction about summaries"
+      ],
+      "answer": "The explicit output format (Relevance/Reason)"
+    },
+    {
+      "id": "S4Q3",
+      "group": "Section 4: Example Analysis",
+      "type": "short_answer",
+      "question": "Identify one element in this FPV prompt that could be shortened or simplified while keeping the same clarity. Explain why."
+    },
+
+    {
+      "id": "S5Q1",
+      "group": "Section 5: Mechanics",
+      "type": "information",
+      "question": "✍️ <strong>Writing Mechanics Hierarchy & AI Prompting</strong><br><br><strong>Punctuation</strong> — Acts as signal markers for instruction changes. For example, colons and periods create clear boundaries between tasks (e.g., 'Rules:' vs 'My goal:').<br><br><strong>Syntax</strong> — The logical order and structure of the sentences. In prompts, the sequence 'You are...' before 'I am...' mirrors conversational hierarchy and establishes authority. Good syntax helps the AI follow reasoning in the same structured order as a human reader.<br><br><strong>Capitalization</strong> — Marks section headers and provides emphasis. Capital letters signal importance and transitions between ideas. In prompting, consistent capitalization shows where one instruction begins and another ends. Too much capitalization, however, creates visual noise—when everything is emphasized, nothing is.<br><br><strong>Spelling</strong> — Controls token clarity. Even small typos can mislead tokenization, changing how the model interprets words or breaking command patterns."
+    },
+    {
+      "id": "S5Q2",
+      "group": "Section 5: Mechanics",
+      "type": "short_answer",
+      "question": "How can small errors in punctuation, capitalization, or spelling change a model’s behavior or output?"
+    },
+
+    {
+      "id": "S6Q1",
+      "group": "Section 6: Prompt Audit",
+      "type": "information",
+      "question": "🔍 <strong>Prompt Audit Activity</strong><br><br><strong>Blueprint Review:</strong> Each component of a prompt—Identity, User Role, Goal, Rules, and Output Format—serves a distinct purpose. Together they create predictability, reduce drift, and enhance clarity.<br><br><strong>Task:</strong> Read the following prompt. It was written to help a student design the <em>Methods Section</em> of their Data Science Final Project. Then, respond to the three questions below.<br><br><strong>Prompt to Audit:</strong><br><br>You are a high school data science teacher.<br>I am a student trying to design the methods section for my capstone project on renewable energy awareness.<br>My goal is to describe how I will collect, organize, and analyze my data.<br><br>Rules:<br>1. Provide examples of tools and techniques students can use to collect their data.<br>2. Explain how these methods connect to their project goals.<br>3. Keep your explanation under 150 words.<br><br>Format your answer as:<br>&nbsp;&nbsp;&nbsp;&nbsp;Methods Summary: [text here]"
+    },
+    {
+      "id": "S6Q2",
+      "group": "Section 6: Prompt Audit",
+      "type": "short_answer",
+      "question": "Describe the components the prompt contained and how well you believe these components were engineered."
+    },
+    {
+      "id": "S6Q3",
+      "group": "Section 6: Prompt Audit",
+      "type": "short_answer",
+      "question": "What pieces are missing from the prompt and what challenges might this cause for the AI?"
+    },
+    {
+      "id": "S6Q4",
+      "group": "Section 6: Prompt Audit",
+      "type": "short_answer",
+      "question": "Re-engineer the prompt to strengthen its clarity, completeness, and consistency."
+    },
+
+    {
+      "id": "S7Q1",
+      "group": "Section 7: Reflection",
+      "type": "reflection",
+      "question": "Thinking back over Quarter 1, describe the skills Mr. Mugg is teaching his students and describe the computer lab that Mr. Mugg is trying to build. Write 3–5 sentences adhering to the same writing mechanics guidelines used for prompting an AI."
+    },
+    {
+      "id": "S7Q2",
+      "group": "Section 7: Reflection",
+      "type": "reflection",
+      "question": "Based on your response to Question 1, why do you believe Mr. Mugg showed his students the Business Insider investigative piece on the Explosion of AI Data Centers? Write 3–5 sentences adhering to the same writing mechanics guidelines used for prompting an AI."
+    }
+  ]
+}

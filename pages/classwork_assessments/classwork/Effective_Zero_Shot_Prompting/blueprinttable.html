@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<style>
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    color: #f5eedb;
+    background: transparent;
+    line-height: 1.6;
+    padding: 1rem;
+  }
+  h2 {
+    color: #c89b3c;
+    font-family: 'Cinzel Decorative', serif;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(200,155,60,0.4);
+    border-radius: 8px;
+  }
+  th, td {
+    border: 1px solid rgba(200,155,60,0.4);
+    padding: 0.75rem;
+    vertical-align: top;
+    text-align: left;
+  }
+  th {
+    background-color: rgba(200,155,60,0.15);
+    color: #ffd47b;
+  }
+  tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.02);
+  }
+</style>
+</head>
+<body>
+  <h2>🧱 S2 Blueprint Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Structural Element</th>
+        <th>Purpose</th>
+        <th>Why It’s Ideal for Mistral 7B</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Model Identity</strong><br>“You are a professor of…”</td>
+        <td>Establishes expertise, tone, and domain vocabulary.</td>
+        <td>Mistral 7B relies heavily on explicit role priming —it doesn’t infer professional tone automatically like larger models.</td>
+      </tr>
+      <tr>
+        <td><strong>User Role</strong><br>“I am a high-school student…”</td>
+        <td>Clarifies audience and purpose so responses stay focused and readable.</td>
+        <td>Smaller models over-explain or wander without a clear audience; this fixes that.</td>
+      </tr>
+      <tr>
+        <td><strong>Goal Statement</strong><br>“My goal: determine whether…”</td>
+        <td>Defines the task in measurable terms.</td>
+        <td>Keeps reasoning bounded; Mistral 7B performs best with one explicit objective.</td>
+      </tr>
+      <tr>
+        <td><strong>Rules (1–3 lines)</strong></td>
+        <td>Encodes boundaries (“Do NOT summarize…”).</td>
+        <td>Negative instructions are especially effective with mid-size models —they prevent drift.</td>
+      </tr>
+      <tr>
+        <td><strong>Explicit Output Format</strong><br>“Relevance: … Reason: …”</td>
+        <td>Forces a predictable structure for parsing or logging.</td>
+        <td>Mistral 7B benefits from clear formatting cues that prevent narrative tangents.</td>
+      </tr>
+      <tr>
+        <td><strong>Objective + Input Section</strong></td>
+        <td>Separates instructions from data.</td>
+        <td>Layout cues (“Objective: … Article Chunk: …”) help the model know when to stop reading directions and start reasoning.</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
