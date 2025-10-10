@@ -10,37 +10,292 @@
     "link": "https://www.businessinsider.com/video-link-placeholder",
     "local_file": "AI_Data_Center_Explosion_Business_Insider.mp4"
   },
-  "objective": "Understand how the rapid expansion of AI data centers impacts the environment, local communities, and energy infrastructure — and reflect on what this means for the future of technology and sustainability.",
+  "objective": "Understand how the rapid expansion of AI data centers impacts the environment, local communities, and energy infrastructure — and connect those impacts to data-science thinking, tradeoffs, and evidence.",
   "questions": [
-    { "id": "S1Q1", "group": "Section 1", "type": "short_answer", "question": "What are data centers, and what purpose do they serve in our digital world?" },
-    { "id": "S1Q2", "group": "Section 1", "type": "short_answer", "question": "Why are so many new data centers being built across the U.S.?" },
-    { "id": "S1Q3", "group": "Section 1", "type": "short_answer", "question": "How much power and water can a single data center consume compared to a city?" },
-    { "id": "S1Q4", "group": "Section 1", "type": "short_answer", "question": "Why is there so little public information about where these centers are located?" },
 
-    { "id": "S2Q1", "group": "Section 2", "type": "short_answer", "question": "How did journalists discover the true locations of data centers across the country?" },
-    { "id": "S2Q2", "group": "Section 2", "type": "short_answer", "question": "Why do companies often hide behind shell LLCs when building these facilities?" },
-    { "id": "S2Q3", "group": "Section 2", "type": "short_answer", "question": "What patterns appear when data center clusters are mapped across the U.S.?" },
-    { "id": "S2Q4", "group": "Section 2", "type": "short_answer", "question": "Which companies dominate this landscape, and what does that concentration suggest?" },
+    {
+      "id": "S1Q1",
+      "group": "S1 Intro & Boom",
+      "type": "multiple_choice",
+      "question": "According to the video’s opening, how fast are large data centers appearing across the U.S.?",
+      "options": ["About one per month", "About two per week", "Fewer than ten per year", "Growth has largely stopped"],
+      "answer": "About two per week"
+    },
+    {
+      "id": "S1Q2",
+      "group": "S1 Intro & Boom",
+      "type": "multiple_choice",
+      "question": "Why do tech companies cluster data centers in specific regions like Northern Virginia?",
+      "options": ["To avoid all taxes entirely", "To be near ports for shipping servers", "Reliable power, access to water, tax incentives, and affordable land", "Because deserts are uninhabited"],
+      "answer": "Reliable power, access to water, tax incentives, and affordable land"
+    },
+    {
+      "id": "S1Q3",
+      "group": "S1 Intro & Boom",
+      "type": "multiple_choice",
+      "question": "What key point does the narrator make about public records on data centers?",
+      "options": ["There is a single national registry with exact locations", "Local newspapers list every facility", "There’s no official, comprehensive public directory of data centers", "Companies must publish coordinates on their websites"],
+      "answer": "There’s no official, comprehensive public directory of data centers"
+    },
+    {
+      "id": "S1Q4",
+      "group": "S1 Intro & Boom",
+      "type": "multiple_choice",
+      "question": "What nickname is used for Loudoun County, Virginia?",
+      "options": ["Server Strip", "Data Center Alley", "Cloud Corridor", "GPU Gulch"],
+      "answer": "Data Center Alley"
+    },
+    {
+      "id": "S1Q5",
+      "group": "S1 Intro & Boom",
+      "type": "multiple_choice",
+      "question": "Roughly what fraction of global internet traffic is said to flow through Virginia?",
+      "options": ["About one tenth", "About one third", "About one half", "Nearly all of it"],
+      "answer": "About one third"
+    },
 
-    { "id": "S3Q1", "group": "Section 3", "type": "short_answer", "question": "What does the inside of a data center look like, and how do servers stay cool?" },
-    { "id": "S3Q2", "group": "Section 3", "type": "short_answer", "question": "Why are cooler climates and strong energy grids appealing to data center builders?" },
-    { "id": "S3Q3", "group": "Section 3", "type": "short_answer", "question": "What kinds of noise or vibration problems do nearby residents experience?" },
-    { "id": "S3Q4", "group": "Section 3", "type": "short_answer", "question": "How have companies or local governments responded to those neighborhood complaints?" },
+    {
+      "id": "S2Q1",
+      "group": "S2 Living Next Door",
+      "type": "multiple_choice",
+      "question": "Which neighborhood concern does Donna describe after data centers rose nearby?",
+      "options": ["Stronger cell service", "Constant tonal noise and anxiety affecting sleep", "Lower electricity bills", "Fewer trucks on local roads"],
+      "answer": "Constant tonal noise and anxiety affecting sleep"
+    },
+    {
+      "id": "S2Q2",
+      "group": "S2 Living Next Door",
+      "type": "multiple_choice",
+      "question": "What planning change escalated tensions in Prince William County?",
+      "options": ["A data center was converted into a park", "A housing plot was re-zoned to allow data centers", "All data centers were capped at 2 stories", "A moratorium banned new centers countywide"],
+      "answer": "A housing plot was re-zoned to allow data centers"
+    },
+    {
+      "id": "S2Q3",
+      "group": "S2 Living Next Door",
+      "type": "multiple_choice",
+      "question": "What health-related risk is linked to chronic noise exposure by public-health guidance cited in the video?",
+      "options": ["Vitamin deficiency", "Cardiovascular problems and increased stress", "Common cold", "Allergies only"],
+      "answer": "Cardiovascular problems and increased stress"
+    },
+    {
+      "id": "S2Q4",
+      "group": "S2 Living Next Door",
+      "type": "multiple_choice",
+      "question": "Which mitigation steps were described after residents complained about noise?",
+      "options": ["Closing at night", "Switching to solar-only power", "Adding materials around rooftop fans and installing taller exhaust vents", "Moving buildings underground"],
+      "answer": "Adding materials around rooftop fans and installing taller exhaust vents"
+    },
+    {
+      "id": "S2Q5",
+      "group": "S2 Living Next Door",
+      "type": "multiple_choice",
+      "question": "What key conflict Donna highlights about siting?",
+      "options": ["Centers should be built inside shopping malls", "Centers are necessary but shouldn’t be placed next to homes, schools, or hospitals", "Centers are unnecessary in any form", "Centers only belong in deserts"],
+      "answer": "Centers are necessary but shouldn’t be placed next to homes, schools, or hospitals"
+    },
 
-    { "id": "S4Q1", "group": "Section 4", "type": "short_answer", "question": "How do data centers use water, and why is that a problem in drought-stricken areas?" },
-    { "id": "S4Q2", "group": "Section 4", "type": "short_answer", "question": "What does it mean for a company to promise to be 'water positive' by 2030?" },
-    { "id": "S4Q3", "group": "Section 4", "type": "short_answer", "question": "How are data centers affecting states’ renewable-energy and emissions goals?" },
-    { "id": "S4Q4", "group": "Section 4", "type": "short_answer", "question": "Why might utilities keep coal or gas plants running to meet growing AI power demand?" },
 
-    { "id": "S5Q1", "group": "Section 5", "type": "short_answer", "question": "What kinds of tax breaks or incentives attract data centers to certain regions?" },
-    { "id": "S5Q2", "group": "Section 5", "type": "short_answer", "question": "Do these massive facilities create many permanent local jobs?" },
-    { "id": "S5Q3", "group": "Section 5", "type": "short_answer", "question": "What trade-offs are communities making when they welcome data centers?" },
-    { "id": "S5Q4", "group": "Section 5", "type": "short_answer", "question": "How does Donna’s story reflect the human cost of the AI and cloud-computing boom?" },
+    {
+      "id": "S3Q1",
+      "group": "S3 Mapping the Boom",
+      "type": "multiple_choice",
+      "question": "Which document did reporters use nationwide to infer data-center locations and power needs?",
+      "options": ["Zoning change flyers", "Property-tax receipts", "Air-quality permits for backup generators", "Shipping manifests"],
+      "answer": "Air-quality permits for backup generators"
+    },
+    {
+      "id": "S3Q2",
+      "group": "S3 Mapping the Boom",
+      "type": "multiple_choice",
+      "question": "Why did companies sometimes file information under shell LLCs?",
+      "options": ["To advertise widely", "To increase property taxes", "To obscure ownership and claim trade-secret exemptions", "To qualify for federal disaster aid"],
+      "answer": "To obscure ownership and claim trade-secret exemptions"
+    },
+    {
+      "id": "S3Q3",
+      "group": "S3 Mapping the Boom",
+      "type": "multiple_choice",
+      "question": "By the end of 2024, about how many U.S. data centers did the investigation tally (built or approved)?",
+      "options": ["Around 240", "Around 1,240", "Around 12,400", "Fewer than 100"],
+      "answer": "Around 1,240"
+    },
+    {
+      "id": "S3Q4",
+      "group": "S3 Mapping the Boom",
+      "type": "multiple_choice",
+      "question": "Which companies were among the largest operators mentioned?",
+      "options": ["Amazon, Microsoft, Google, Meta, QTS", "Yahoo, AOL, MySpace", "NVIDIA, AMD, Intel only", "Only municipal utilities"],
+      "answer": "Amazon, Microsoft, Google, Meta, QTS"
+    },
+    {
+      "id": "S3Q5",
+      "group": "S3 Mapping the Boom",
+      "type": "multiple_choice",
+      "question": "What was one way reporters pierced LLC secrecy to find true owners?",
+      "options": ["Guessing from building color", "Using drone thermal scans", "Cross-referencing required corporate ownership disclosures", "Crowdsourcing from social media likes"],
+      "answer": "Cross-referencing required corporate ownership disclosures"
+    },
 
-    { "id": "S6Q1", "group": "Section 6", "type": "short_answer", "question": "How did this video change the way you think about where 'the cloud' actually lives?" },
-    { "id": "S6Q2", "group": "Section 6", "type": "short_answer", "question": "Which moment or story in the video (Donna, Carlos, the drought, the coal plants, etc.) stuck with you most — and why?" },
-    { "id": "S6Q3", "group": "Section 6", "type": "short_answer", "question": "Do you think the growth of AI and data centers represents progress, danger, or both? Explain your reasoning." },
-    { "id": "S6Q4", "group": "Section 6", "type": "short_answer", "question": "What responsibilities do tech companies — and we as users — have for the environmental and social costs of our digital lives?" }
+
+    {
+      "id": "S4Q1",
+      "group": "S4 Inside & Operations",
+      "type": "multiple_choice",
+      "question": "What basic process keeps servers from overheating in many facilities?",
+      "options": ["Ice blocks placed nightly", "Passing hot air through cooling units and recirculating cooled air", "Opening roof hatches during winter", "Running computers at half speed"],
+      "answer": "Passing hot air through cooling units and recirculating cooled air"
+    },
+    {
+      "id": "S4Q2",
+      "group": "S4 Inside & Operations",
+      "type": "multiple_choice",
+      "question": "Compared with typical racks, AI/GPU racks can raise per-cabinet power from roughly 5–10 kW up to what range?",
+      "options": ["15–20 kW", "30–40 kW", "70–100 kW", "120–150 kW"],
+      "answer": "70–100 kW"
+    },
+    {
+      "id": "S4Q3",
+      "group": "S4 Inside & Operations",
+      "type": "multiple_choice",
+      "question": "Why can cooler climates like Wyoming reduce operating costs?",
+      "options": ["Less need for cooling energy and water, improving PUE", "Free government electricity", "Servers run slower", "No property taxes"],
+      "answer": "Less need for cooling energy and water, improving PUE"
+    },
+    {
+      "id": "S4Q4",
+      "group": "S4 Inside & Operations",
+      "type": "multiple_choice",
+      "question": "About how much electricity can the largest data centers consume annually, according to the video?",
+      "options": ["As much as 200 homes", "As much as 2,000 homes", "Over 2 terawatt-hours (≈200,000 homes)", "Less than a small office"],
+      "answer": "Over 2 terawatt-hours (≈200,000 homes)"
+    },
+    {
+      "id": "S4Q5",
+      "group": "S4 Inside & Operations",
+      "type": "multiple_choice",
+      "question": "What equipment requires permits and was central to the map-building approach?",
+      "options": ["GPU racks", "Diesel backup generators", "Fiber patch panels", "Cooling towers"],
+      "answer": "Diesel backup generators"
+    },
+
+
+    {
+      "id": "S5Q1",
+      "group": "S5 Water & Drought",
+      "type": "multiple_choice",
+      "question": "In drought-stressed Arizona, Microsoft planning documents cited what daily water use per building?",
+      "options": ["10,000 gallons/day", "100,000 gallons/day", "1 million gallons/day", "Zero water by default"],
+      "answer": "1 million gallons/day"
+    },
+    {
+      "id": "S5Q2",
+      "group": "S5 Water & Drought",
+      "type": "multiple_choice",
+      "question": "What share of the largest U.S. data centers did the investigation find located in high or extremely high water-stress areas?",
+      "options": ["About 5%", "About 15%", "Up to 43%", "100%"],
+      "answer": "Up to 43%"
+    },
+    {
+      "id": "S5Q3",
+      "group": "S5 Water & Drought",
+      "type": "multiple_choice",
+      "question": "What does 'water positive by 2030' mean in company pledges?",
+      "options": ["Using only rainwater", "Restoring or saving more water than they consume, often via credits/offsets", "Building only near rivers", "Eliminating cooling"],
+      "answer": "Restoring or saving more water than they consume, often via credits/offsets"
+    },
+    {
+      "id": "S5Q4",
+      "group": "S5 Water & Drought",
+      "type": "multiple_choice",
+      "question": "What tradeoff is highlighted when switching from water-intensive cooling to air/closed-loop systems?",
+      "options": ["No tradeoff exists", "Water use drops but total power demand can increase", "Both water and power drop to near zero", "Noise always disappears"],
+      "answer": "Water use drops but total power demand can increase"
+    },
+    {
+      "id": "S5Q5",
+      "group": "S5 Water & Drought",
+      "type": "multiple_choice",
+      "question": "Which example showed landscaping water use exceeding cooling water use?",
+      "options": ["Microsoft in Phoenix", "Meta in Nebraska", "QTS in Aurora, Colorado", "Google in Virginia"],
+      "answer": "QTS in Aurora, Colorado"
+    },
+
+
+    {
+      "id": "S6Q1",
+      "group": "S6 Energy, Grid & Future",
+      "type": "multiple_choice",
+      "question": "By 2028, data centers (especially for AI) could use how much electricity, according to the video?",
+      "options": ["6 terawatt-hours", "60 terawatt-hours", "600 terawatt-hours", "No measurable amount"],
+      "answer": "600 terawatt-hours"
+    },
+    {
+      "id": "S6Q2",
+      "group": "S6 Energy, Grid & Future",
+      "type": "multiple_choice",
+      "question": "What grid consequence did a Virginia utility project by 2039?",
+      "options": ["Little or no change in demand", "A need to roughly double generation, raising residential bills up to ~50%", "Immediate closure of all fossil plants", "Universal free electricity"],
+      "answer": "A need to roughly double generation, raising residential bills up to ~50%"
+    },
+    {
+      "id": "S6Q3",
+      "group": "S6 Energy, Grid & Future",
+      "type": "multiple_choice",
+      "question": "What did the investigation find about permanent jobs at even very large data centers?",
+      "options": ["Tens of thousands per site", "Usually under 150, sometimes ~25", "Exactly 500 per center", "They are fully automated with zero workers"],
+      "answer": "Usually under 150, sometimes ~25"
+    },
+    {
+      "id": "S6Q4",
+      "group": "S6 Energy, Grid & Future",
+      "type": "multiple_choice",
+      "question": "How many states were tracked offering some form of data-center tax incentive?",
+      "options": ["7 states", "17 states", "27 states", "37 states"],
+      "answer": "37 states"
+    },
+    {
+      "id": "S6Q5",
+      "group": "S6 Energy, Grid & Future",
+      "type": "multiple_choice",
+      "question": "Which example illustrates companies procuring or offsetting power rather than directly greening the local grid?",
+      "options": ["Buying power from a reopened Three Mile Island plant under a deal", "Installing rooftop solar on every rack", "Running only on batteries", "Replacing servers with laptops"],
+      "answer": "Buying power from a reopened Three Mile Island plant under a deal"
+    },
+
+ 
+    {
+      "id": "S7Q1",
+      "group": "S7 Short Answer",
+      "type": "short_answer",
+      "question": "APPLIED COMPREHENSION: Choose one concrete example from the video (e.g., Donna’s neighborhood, Carlos’s measurements, Arizona permits). Explain the cause → effect chain (What decision was made? What immediate impacts followed? What longer-term risks or tradeoffs were described?)."
+    },
+    {
+      "id": "S7Q2",
+      "group": "S7 Short Answer",
+      "type": "short_answer",
+      "question": "DATA-SCIENCE CONNECTION: If you were analyzing the regional impact of data centers, what 3–5 variables would you track in a spreadsheet (e.g., water use, PUE, noise dB, distance to homes, tax incentives)? For each variable, briefly say how you’d measure or obtain it."
+    },
+    {
+      "id": "S7Q3",
+      "group": "S7 Short Answer",
+      "type": "short_answer",
+      "question": "SYSTEMS & TRADEOFFS: Give one example from the video where reducing one harm (water use, noise, emissions, etc.) increases another cost or risk. Explain why that tradeoff occurs and how a decision-maker might evaluate it."
+    },
+
+   
+    {
+      "id": "S8Q1",
+      "group": "S8 Reflection",
+      "type": "reflection",
+      "question": "Thinking of the data science lab Mr. Mugg is trying to build here at New Harmony High, and the skills he is teaching his students, why did he show his classes this video?"
+    },
+    {
+      "id": "S8Q2",
+      "group": "S8 Reflection",
+      "type": "reflection",
+      "question": "Mr. Mugg is strongly considering doing his own Data Science Final Project/Capstone. Based on what you know about United Nations Development Goals, about Mr. Mugg's overall course goals, brainstorm a possible topic Mr. Mugg could do his project on."
+    }
   ],
-  "reflection_instructions": "Answer all reflection questions if possible; at least two are required."
+  "reflection_instructions": "Answer both reflection questions thoughtfully, connecting ideas from the video to our class goals and the UN SDGs."
 }

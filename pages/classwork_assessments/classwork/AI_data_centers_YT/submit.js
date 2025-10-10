@@ -1,155 +1,291 @@
+// =============================================
+// Muggs of Data Science — Data Centers Activity
+// submit.js — FINAL FIXED VERSION (2025-10-09)
+// =============================================
+
 let activityData;
 let currentIndex = 0;
 let responses = {};
 let selectedQuestions = [];
-let username = ""; // 🔹 store temporarily for this session only
+let username = "";
+let pin = "";
+let isDraftLoaded = false;
 
+// ---------- INITIAL LOAD ----------
 document.addEventListener("DOMContentLoaded", () => {
-  loadActivity();
+  const startBtn = document.getElementById("startActivityBtn");
+  if (startBtn) startBtn.addEventListener("click", loginAndLoad);
 });
 
+// ---------- LOGIN ----------
+async function loginAndLoad() {
+  username = prompt("Enter your username:")?.trim();
+  pin = prompt("Enter your 6-digit PIN:")?.trim();
+  if (!username || !pin) return alert("Login cancelled.");
+
+  try {
+    const res = await fetch("./auth.json"); // ✅ same folder
+    const authList = await res.json();
+
+    const key = Object.keys(authList).find(
+      (k) => k.toLowerCase() === username.toLowerCase()
+    );
+    const match = key ? authList[key] : null;
+
+    if (!match || String(match.pin) !== String(pin)) {
+      alert("Invalid username or PIN.");
+      location.reload();
+      return;
+    }
+
+    localStorage.setItem("studentUsername", username);
+
+    document.getElementById("info").style.display = "none";
+    const container = document.getElementById("question-container");
+    container.style.display = "block";
+    container.innerHTML = "<h3>Loading activity...</h3>";
+
+    await loadActivity();
+  } catch (err) {
+    console.error("Auth error:", err);
+    alert("Auth error — tell your teacher.");
+  }
+}
+
+// ---------- LOAD ACTIVITY ----------
 async function loadActivity() {
   try {
     const res = await fetch("activity.json");
     activityData = await res.json();
-    document.getElementById("activityTitle").textContent = activityData.title;
 
-    // Prepare random question set before the activity starts
-    selectedQuestions = selectQuestionsBySection(activityData.questions);
+    selectedQuestions = selectChronologicalQuestions(activityData.questions);
 
-    const startBtn = document.getElementById("startActivityBtn");
-    if (startBtn) startBtn.addEventListener("click", startActivity);
+    const draftKey = `draft_${username}_${activityData.activity_id}`;
+    const localDraft = localStorage.getItem(draftKey);
+    if (localDraft) {
+      responses = JSON.parse(localDraft);
+      isDraftLoaded = true;
+      alert("💾 Local draft loaded!");
+    }
+
+    showQuestion();
   } catch (err) {
-    console.error("❌ Error loading activity.json:", err);
-    document.getElementById("info").innerHTML = `<p style="color:#f88;">Error loading activity data. Please check activity.json.</p>`;
+    console.error("Activity load error:", err);
+    alert("Could not load activity.json.");
   }
 }
 
-// 🧩 Select 2 random questions per section (S1–S5), keep order
-function selectQuestionsBySection(questions) {
+// ---------- SELECT QUESTIONS ----------
+function selectChronologicalQuestions(questions) {
   const selected = [];
-  for (let i = 1; i <= 5; i++) {
-    const group = questions.filter(q => q.id.startsWith(`S${i}`));
-    const shuffled = group.sort(() => Math.random() - 0.5).slice(0, 2);
-    selected.push(...shuffled);
+  for (let i = 1; i <= 6; i++) {
+    const sectionQs = questions.filter(
+      (q) => q.id.startsWith(`S${i}Q`) && q.type === "multiple_choice"
+    );
+    const count = Math.random() < 0.5 ? 2 : 3;
+    const subset = sectionQs.sort(() => Math.random() - 0.5).slice(0, count);
+    selected.push(...subset);
   }
-  // Sort by section number to preserve sequence order
   return selected.sort((a, b) => a.id.localeCompare(b.id));
 }
 
-function startActivity() {
-  // ✅ Always ask for username on every start
-  username = prompt("Enter your username:");
-  if (!username || !username.trim()) {
-    alert("You must enter a username to start.");
-    return;
-  }
-  username = username.trim();
-
-  document.getElementById("startActivityBtn").disabled = true;
-  showQuestion();
-}
-
+// ---------- MULTIPLE CHOICE ----------
 function showQuestion() {
   const container = document.getElementById("question-container");
   const q = selectedQuestions[currentIndex];
+  if (!q) return showShortAnswers();
 
-  if (!q) {
-    showReflections();
-    return;
-  }
+  let html = `
+    <h3>Question ${currentIndex + 1} of ${selectedQuestions.length}</h3>
+    <p>${q.question}</p>
+  `;
 
-  let html = `<h3>Question ${currentIndex + 1} of ${selectedQuestions.length}</h3><p>${q.question}</p>`;
-  html += `<textarea id="short-${q.id}" rows="4" placeholder="Write your answer..."></textarea>`;
-  html += `<button id="nextBtn">Next →</button>`;
+  q.options.forEach((opt) => {
+    const checked = responses[q.id] === opt ? "checked" : "";
+    html += `
+      <label style="display:block;margin:0.4rem 0;">
+        <input type="radio" name="choice" value="${opt}" ${checked}> ${opt}
+      </label>`;
+  });
+
+  html += `
+    <div style="margin-top:1rem;">
+      ${currentIndex > 0 ? `<button id="prevBtn">← Previous</button>` : ""}
+      ${currentIndex < selectedQuestions.length - 1
+        ? `<button id="nextBtn">Next →</button>`
+        : `<button id="toShortAnswerBtn">Continue → Short Answer</button>`}
+    </div>
+    <div style="margin-top:1.5rem;">
+      <button id="saveDraftBtn">💾 Save Without Submitting Final</button>
+      <button id="submitFinalBtn">✅ Submit For Grading</button>
+    </div>
+  `;
+
   container.innerHTML = html;
-  container.style.display = "block";
 
-  document.getElementById("nextBtn").onclick = () => {
-    const val = document.getElementById(`short-${q.id}`).value.trim();
-    if (!val) return alert("Please enter a response.");
-    responses[q.id] = val;
-    currentIndex++;
-    showQuestion();
-  };
+  if (document.getElementById("prevBtn"))
+    document.getElementById("prevBtn").onclick = prevQuestion;
+  if (document.getElementById("nextBtn"))
+    document.getElementById("nextBtn").onclick = nextQuestion;
+  if (document.getElementById("toShortAnswerBtn"))
+    document.getElementById("toShortAnswerBtn").onclick = showShortAnswers;
+  document.getElementById("saveDraftBtn").onclick = saveDraft;
+  document.getElementById("submitFinalBtn").onclick = submitResponses;
 }
 
+function prevQuestion() {
+  saveCurrentAnswer();
+  if (currentIndex > 0) currentIndex--;
+  showQuestion();
+}
+
+function nextQuestion() {
+  saveCurrentAnswer();
+  if (currentIndex < selectedQuestions.length - 1) currentIndex++;
+  showQuestion();
+}
+
+function saveCurrentAnswer() {
+  const q = selectedQuestions[currentIndex];
+  const selected = document.querySelector('input[name="choice"]:checked');
+  if (selected) responses[q.id] = selected.value;
+}
+
+// ---------- SHORT ANSWERS ----------
+function showShortAnswers() {
+  const container = document.getElementById("question-container");
+  const shortQs = activityData.questions.filter((q) => q.id.startsWith("S7"));
+  if (!shortQs.length) return showReflections();
+
+  let html = `<h2>Short Answer Questions</h2>`;
+  shortQs.forEach((q) => {
+    html += `
+      <div style="margin-bottom:1rem;">
+        <p><strong>${q.question}</strong></p>
+        <textarea id="${q.id}" rows="4" style="width:90%;" 
+          oninput="responses['${q.id}']=this.value;">${responses[q.id] || ""}</textarea>
+      </div>`;
+  });
+  html += `
+    <button id="saveDraftBtn">💾 Save Without Submitting Final</button>
+    <button id="toReflectionBtn">Continue → Reflection</button>
+  `;
+  container.innerHTML = html;
+  document.getElementById("saveDraftBtn").onclick = saveDraft;
+  document.getElementById("toReflectionBtn").onclick = showReflections;
+}
+
+// ---------- REFLECTION ----------
 function showReflections() {
   const container = document.getElementById("question-container");
-  let html = `<h2>Reflection Questions</h2><p>${activityData.reflection_instructions}</p><ol>`;
+  const reflQs = activityData.questions.filter((q) => q.id.startsWith("S8"));
+  if (!reflQs.length) return showCompletionScreen(true, null, 0);
 
-  // Section 6 reflections only
-  const reflectionQs = activityData.questions.filter(q => q.id.startsWith("S6"));
-  reflectionQs.forEach(r => {
+  let html = `<h2>Reflection</h2><p>${activityData.reflection_instructions}</p>`;
+  reflQs.forEach((q) => {
     html += `
-      <li><p>${r.question}</p>
-      <textarea id="${r.id}" rows="4" placeholder="Write your reflection..."></textarea></li>`;
+      <div style="margin-bottom:1rem;">
+        <p><strong>${q.question}</strong></p>
+        <textarea id="${q.id}" rows="4" style="width:90%;" 
+          oninput="responses['${q.id}']=this.value;">${responses[q.id] || ""}</textarea>
+      </div>`;
   });
-
-  html += `</ol><button id="submitBtn">Submit Activity</button>
-           <p id="submitMessage" style="margin-top:1rem;"></p>`;
+  html += `
+    <button id="saveDraftBtn">💾 Save Without Submitting Final</button>
+    <button id="submitFinalBtn">✅ Submit For Grading</button>
+  `;
   container.innerHTML = html;
-
-  document.getElementById("submitBtn").onclick = handleSubmit;
+  document.getElementById("saveDraftBtn").onclick = saveDraft;
+  document.getElementById("submitFinalBtn").onclick = submitResponses;
 }
 
-async function handleSubmit() {
-  const reflectionResponses = {};
-  let answered = 0;
+// ---------- SAVE DRAFT ----------
+async function saveDraft() {
+  saveCurrentAnswer();
+  const draftKey = `draft_${username}_${activityData.activity_id}`;
+  localStorage.setItem(draftKey, JSON.stringify(responses));
 
-  const reflectionQs = activityData.questions.filter(q => q.id.startsWith("S6"));
-  reflectionQs.forEach(r => {
-    const val = document.getElementById(r.id).value.trim();
-    if (val) answered++;
-    reflectionResponses[r.id] = val;
+  const payload = {
+    username,
+    activity_id: activityData.activity_id,
+    timestamp: new Date().toISOString(),
+    draft: true,
+    responses,
+  };
+
+  try {
+    await fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    alert("✅ Draft saved (local + Cloudflare).");
+  } catch (err) {
+    console.warn("Draft save failed:", err);
+    alert("⚠️ Draft saved locally only.");
+  }
+}
+
+// ---------- SUBMIT FINAL ----------
+async function submitResponses() {
+  document.querySelectorAll("textarea").forEach((t) => {
+    responses[t.id] = t.value.trim();
   });
 
-  if (answered < 2) return alert("Please answer at least two reflection questions.");
-
-  const correct = 0;
-  const total = selectedQuestions.length + reflectionQs.length;
-  const percent = 0;
-
-  const msg = document.getElementById("submitMessage");
-  msg.style.color = "#d4af37";
-  msg.innerHTML = `Submitting...`;
+  let correct = 0;
+  selectedQuestions.forEach((q) => {
+    if (responses[q.id] === q.answer) correct++;
+  });
+  const total = selectedQuestions.length;
+  const percent = Math.round((correct / total) * 100);
 
   const submission = {
     username,
     activity_id: activityData.activity_id,
     timestamp: new Date().toISOString(),
+    draft: false,
+    selected_questions: selectedQuestions.map((q) => q.id),
     responses,
-    reflections: reflectionResponses,
-    score: { correct, total, percent }
+    score: { correct, total, percent },
   };
 
   try {
-    const res = await fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(submission)
-    });
+    const res = await fetch(
+      "https://muggs-data-worker.sean-muggivan.workers.dev/save",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(submission),
+      }
+    );
     const data = await res.json();
-    showCompletionScreen(true, data.key);
+    showCompletionScreen(true, data.key, percent);
   } catch (err) {
-    localStorage.setItem(`submission_${username}_${activityData.activity_id}`, JSON.stringify(submission));
-    showCompletionScreen(false, null);
+    console.error("Final submit failed:", err);
+    localStorage.setItem(
+      `submission_${username}_${activityData.activity_id}`,
+      JSON.stringify(submission)
+    );
+    showCompletionScreen(false, null, percent);
   }
 }
 
-function showCompletionScreen(success, recordId) {
+// ---------- COMPLETION ----------
+function showCompletionScreen(success, recordId, percent) {
   const container = document.getElementById("question-container");
-  let html = `
+  container.innerHTML = `
     <div style="text-align:center;">
       <h2>${success ? "✅ Submission Complete!" : "⚠️ Saved Locally"}</h2>
-      <p>${success
-        ? `Your work was successfully submitted to Cloudflare.<br><small>Record ID: ${recordId}</small>`
-        : `There was a connection issue. Your work was saved locally and can be re-submitted later.`}</p>
+      <p>You answered <strong>${percent}%</strong> correctly on the multiple-choice section.</p>
+      <p>${
+        success
+          ? `Submitted to Cloudflare.<br><small>Record ID: ${recordId}</small>`
+          : `Saved locally; can be re-submitted later.`
+      }</p>
       <button id="doneBtn">Finish</button>
-    </div>
-  `;
-  container.innerHTML = html;
+    </div>`;
   document.getElementById("doneBtn").onclick = () => {
-    container.innerHTML = `<h3>🎉 Thank you for completing this activity!</h3><p>You may now close this tab.</p>`;
+    container.innerHTML =
+      "<h3>🎉 Thank you for completing this activity!</h3><p>Your work has been recorded.</p>";
   };
 }

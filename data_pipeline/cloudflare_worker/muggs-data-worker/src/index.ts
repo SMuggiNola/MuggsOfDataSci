@@ -1,65 +1,67 @@
-export interface Env {
-  SUBMISSIONS: KVNamespace;
-}
-
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
-    const { SUBMISSIONS } = env;
     const url = new URL(request.url);
 
-    const cors = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    };
-
-    // Handle CORS preflight
-    if (request.method === "OPTIONS") {
-      return new Response(null, { headers: cors });
-    }
-
-    // POST /save — Save a submission
-    if (request.method === "POST" && url.pathname === "/save") {
+    // ====== 1️⃣ SAVE ENDPOINT ======
+    if (url.pathname.endsWith("/save") && request.method === "POST") {
       try {
-        const data = await request.json();
-        if (!data.username || !data.activity_id) {
-          return new Response(JSON.stringify({ error: "Missing username or activity_id" }), {
-            status: 400,
-            headers: { ...cors, "Content-Type": "application/json" },
-          });
-        }
+        const body = await request.json();
+        const { username, activity_id, draft, responses, score, timestamp } = body;
 
-        const key = `${data.username}_${data.activity_id}_${Date.now()}`;
-        await SUBMISSIONS.put(key, JSON.stringify(data));
+        if (!username || !activity_id)
+          return new Response("Missing username or activity_id", { status: 400 });
 
-        return new Response(JSON.stringify({ status: "ok", key }), {
-          headers: { ...cors, "Content-Type": "application/json" },
-        });
-      } catch (err) {
-        return new Response(JSON.stringify({ error: err.toString() }), {
-          status: 500,
-          headers: { ...cors, "Content-Type": "application/json" },
-        });
+        // Separate keys for draft vs final
+        const key = draft
+          ? `draft:${username}:${activity_id}`
+          : `final:${username}:${activity_id}:${Date.now()}`;
+
+        const data = {
+          username,
+          activity_id,
+          draft: !!draft,
+          timestamp: timestamp || new Date().toISOString(),
+          responses: responses || {},
+          score: score || null,
+        };
+
+        await env.SUBMISSIONS.put(key, JSON.stringify(data));
+
+        return new Response(
+          JSON.stringify({ success: true, key, type: draft ? "draft" : "final" }),
+          { headers: { "Content-Type": "application/json" } }
+        );
+      } catch (err: any) {
+        return new Response(`Error saving: ${err.message}`, { status: 500 });
       }
     }
 
-    // GET /student/<username> — Retrieve all submissions for that user
-    if (request.method === "GET" && url.pathname.startsWith("/student/")) {
-      const username = url.pathname.split("/").pop()!;
-      const list = await SUBMISSIONS.list({ prefix: `${username}_` });
-      const results: any[] = [];
+    // ====== 2️⃣ LOAD ENDPOINT ======
+    if (url.pathname.endsWith("/load") && request.method === "GET") {
+      const username = url.searchParams.get("username");
+      const activity_id = url.searchParams.get("activity_id");
 
-      for (const k of list.keys) {
-        const v = await SUBMISSIONS.get(k.name);
-        if (v) results.push(JSON.parse(v));
-      }
+      if (!username || !activity_id)
+        return new Response("Missing username or activity_id", { status: 400 });
 
-      return new Response(JSON.stringify(results), {
-        headers: { ...cors, "Content-Type": "application/json" },
+      const key = `draft:${username}:${activity_id}`;
+      const stored = await env.SUBMISSIONS.get(key);
+
+      if (!stored)
+        return new Response(JSON.stringify({ found: false }), {
+          headers: { "Content-Type": "application/json" },
+          status: 404,
+        });
+
+      const data = JSON.parse(stored);
+      return new Response(JSON.stringify(data), {
+        headers: { "Content-Type": "application/json" },
       });
     }
 
-    // Default 404
-    return new Response("Not Found", { status: 404, headers: cors });
+    // ====== 3️⃣ DEFAULT ROUTE ======
+    return new Response("✅ Muggs Data Worker active. Use /save or /load endpoints.", {
+      status: 200,
+    });
   },
 };

@@ -91,12 +91,6 @@
       font-size: 0.9rem;
     }
 
-    .option {
-      display: block;
-      margin: 0.4rem 0;
-      cursor: pointer;
-    }
-
     .back-button {
       display: inline-block;
       background-color: #c89b3c;
@@ -120,36 +114,35 @@
 <body>
   <h1>Workslop and Authentic Work</h1>
 
-  <div class="info">
-  <h2>Directions</h2>
-  <p><strong>Access the article:</strong> 
-    <a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity" target="_blank">
-      AI-Generated “Workslop” Is Destroying Productivity
-    </a> (Harvard Business Review, 2025).
-  </p>
+  <div class="info" id="info">
+    <h2>Directions</h2>
+    <p><strong>Access the article:</strong> 
+      <a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity" target="_blank">
+        AI-Generated “Workslop” Is Destroying Productivity
+      </a> (Harvard Business Review, 2025).
+    </p>
 
-  <p><strong>Offline Access:</strong> 
-    <a href="AI-Generated_Workslop_Is_Destroying_Productivity.pdf" download>
-      Download PDF Version
-    </a>
-  </p>
+    <p><strong>Offline Access:</strong> 
+      <a href="AI-Generated_Workslop_Is_Destroying_Productivity.pdf" download>
+        Download PDF Version
+      </a>
+    </p>
 
-  <p><strong>Slide Deck for Instruction:</strong> 
-    <a href="https://docs.google.com/presentation/d/e/2PACX-1vT7yx-fTVVMNm7uhTnvlLK-pkDBqPQslwDjKhhtiNmP_q6o5QUdmg34xh22BFZOB6RFQxWv11ykZk8B/pub?start=false&loop=false&delayms=3000"
-       target="_blank">
-      View Google Slides Presentation
-    </a>
-  </p>
+    <p><strong>Slide Deck for Instruction:</strong> 
+      <a href="https://docs.google.com/presentation/d/e/2PACX-1vT7yx-fTVVMNm7uhTnvlLK-pkDBqPQslwDjKhhtiNmP_q6o5QUdmg34xh22BFZOB6RFQxWv11ykZk8B/pub?start=false&loop=false&delayms=3000"
+         target="_blank">
+        View Google Slides Presentation
+      </a>
+    </p>
 
-  <p><strong>Summary:</strong> This article describes how widespread use of generative AI has produced “workslop”—content that appears polished but lacks substance, offloading cognitive labor onto others and eroding productivity, trust, and collaboration. Research from BetterUp Labs and Stanford found that 41% of workers encountered workslop, losing nearly two hours of rework per instance. The authors urge leaders to model thoughtful AI use and promote a “pilot mindset” combining high agency and optimism.</p>
+    <p><strong>Summary:</strong> This article describes how widespread use of generative AI has produced “workslop”—content that appears polished but lacks substance, offloading cognitive labor onto others and eroding productivity, trust, and collaboration. Research from BetterUp Labs and Stanford found that 41% of workers encountered workslop, losing nearly two hours of rework per instance. The authors urge leaders to model thoughtful AI use and promote a “pilot mindset” combining high agency and optimism.</p>
 
-  <p><strong>Instructions:</strong> You will answer one question at a time. Once you submit an answer, you cannot return to previous questions. After completing the quiz, respond to at least two reflection questions to finish.</p>
+    <p><strong>Instructions:</strong> You will answer one question at a time. Once you submit an answer, you cannot return to previous questions. After completing the quiz, respond to at least two reflection questions to finish.</p>
 
-  <button id="startActivityBtn">Start Activity</button>
-</div>
+    <button id="startActivityBtn">Start Activity</button>
+  </div>
 
-
-
+  <!-- Question container that will appear after login -->
   <div id="question-container" class="question-box" style="display:none;">
     <h2>Loading activity...</h2>
   </div>
@@ -160,144 +153,8 @@
     Designed for <strong>Muggs of Data Science</strong> · Built for educational use only
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const startBtn = document.getElementById('startActivityBtn');
-      const questionBox = document.getElementById('question-container');
-      let activity, questions, currentIndex = 0, responses = {};
-
-      startBtn.addEventListener('click', async () => {
-        const username = prompt("Enter your username to begin.\n(For now, any name will work.)");
-        if (!username || username.trim() === "") {
-          alert("Please enter a username to start.");
-          return;
-        }
-
-        localStorage.setItem('studentUsername', username.trim());
-        startBtn.disabled = true;
-        startBtn.innerText = "Activity Started...";
-
-        try {
-          const response = await fetch('activity.json');
-          if (!response.ok) throw new Error("Could not load activity file.");
-          activity = await response.json();
-
-          // Randomize and select 5 from each group
-          const groupA = activity.questions.filter(q => q.group === "A").sort(() => Math.random() - 0.5).slice(0, 5);
-          const groupB = activity.questions.filter(q => q.group === "B").sort(() => Math.random() - 0.5).slice(0, 5);
-          questions = [...groupA, ...groupB].sort(() => Math.random() - 0.5);
-
-          showQuestion();
-        } catch (err) {
-          questionBox.innerHTML = `<p style="color:#ffb347;">Error loading activity: ${err.message}</p>`;
-        }
-      });
-
-      function showQuestion() {
-        if (currentIndex >= questions.length) {
-          showReflections();
-          return;
-        }
-
-        const q = questions[currentIndex];
-        let html = `
-          <h2>Question ${currentIndex + 1} of ${questions.length}</h2>
-          <p><strong>${q.question}</strong></p>
-        `;
-
-        html += q.options.map(opt => `
-          <label class="option">
-            <input type="radio" name="q${q.id}" value="${opt}"> ${opt}
-          </label>
-        `).join('');
-
-        html += `<button id="nextBtn">Next Question →</button>`;
-        questionBox.innerHTML = html;
-        questionBox.style.display = 'block';
-
-        document.getElementById('nextBtn').onclick = () => {
-          const selected = document.querySelector(`input[name="q${q.id}"]:checked`);
-          if (!selected) return alert("Please choose an answer.");
-          responses[q.id] = selected.value;
-          currentIndex++;
-          showQuestion();
-        };
-      }
-
-      function showReflections() {
-        let html = `<h2>Reflection Questions</h2><p>Answer at least two to complete the activity.</p><ol>`;
-        activity.reflections.forEach(r => {
-          html += `
-            <li style="margin-bottom:1rem;">
-              <p><strong>${r.question}</strong></p>
-              <textarea id="${r.id}" rows="4" placeholder="Write your response..."></textarea>
-            </li>
-          `;
-        });
-        html += `</ol><button id="submitBtn">Submit Activity</button><p id="submitMessage" style="margin-top:1rem;"></p>`;
-        questionBox.innerHTML = html;
-        document.getElementById('submitBtn').addEventListener('click', handleSubmit);
-      }
-
-      function handleSubmit() {
-        const username = localStorage.getItem('studentUsername') || "anonymous";
-        const reflectionResponses = {};
-        let reflectionCount = 0;
-
-        activity.reflections.forEach(r => {
-          const val = document.getElementById(r.id).value.trim();
-          if (val) reflectionCount++;
-          reflectionResponses[r.id] = val;
-        });
-
-        if (reflectionCount < 2) {
-          alert("Please answer at least two reflection questions before submitting.");
-          return;
-        }
-
-        let correct = 0;
-        let total = questions.length;
-        questions.forEach(q => {
-          if (q.answer && responses[q.id] === q.answer) correct++;
-        });
-        const percent = Math.round((correct / total) * 100);
-
-        const msg = document.getElementById('submitMessage');
-        msg.style.color = '#d4af37';
-        msg.innerHTML = `
-          ✅ You answered ${correct} out of ${total} correctly.
-          <br><strong>Score: ${percent}%</strong>
-          <br>Submitting your responses to the cloud...
-        `;
-
-        const submission = {
-          username,
-          activity_id: activity.activity_id,
-          timestamp: new Date().toISOString(),
-          responses,
-          reflections: reflectionResponses,
-          score: { correct, total, percent }
-        };
-
-        fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(submission)
-        })
-          .then(res => res.json())
-          .then(data => {
-            msg.innerHTML += `
-              <br><br>☁️ <strong>Cloudflare submission successful!</strong>
-              <br>Record ID: ${data.key}
-            `;
-          })
-          .catch(err => {
-            msg.innerHTML += `
-              <br><br>⚠️ <strong>Cloudflare submission failed:</strong> ${err.message}
-            `;
-          });
-      }
-    });
-  </script>
+  <!-- External JS: login, questions, Cloudflare save -->
+  <script src="save_to_cloudflare.js?v=2"></script>
+  <script src="submit.js?v=2"></script>
 </body>
 </html>
