@@ -236,62 +236,6 @@
       color: #d4af37;
       text-decoration: underline;
     }
-
-    /* --- Dropdown Style Matching Lecture Page --- */
-details.lab-note {
-  max-width: 900px;
-  margin: 3rem auto;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(200,155,60,0.4);
-  border-radius: 10px;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.25);
-  text-align: left;
-  position: relative;
-  z-index: 2;
-}
-
-details.lab-note summary {
-  cursor: pointer;
-  font-family: 'Cinzel Decorative', serif;
-  color: #d4af37;
-  font-size: clamp(1.3rem, 3vw, 1.6rem);
-  font-weight: 600;
-  text-shadow: 0 0 8px rgba(200,155,60,0.5);
-  list-style: none;
-}
-
-details.lab-note summary::marker {
-  display: none;
-}
-
-details.lab-note[open] summary {
-  color: #f5d87a;
-}
-
-details.lab-note ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-top: 1rem;
-}
-
-details.lab-note li {
-  margin-bottom: 1rem;
-  font-size: clamp(1rem, 3vw, 1.1rem);
-  line-height: 1.6;
-  color: #efe8d1;
-}
-
-details.lab-note blockquote {
-  font-style: italic;
-  border-left: 3px solid rgba(200,155,60,0.6);
-  background: rgba(255,255,255,0.05);
-  padding-left: 1rem;
-  margin: 0.8rem 0;
-  color: #f5eedb;
-}
-S
-
   </style>
 </head>
 
@@ -338,45 +282,46 @@ S
       <div class="nav-card">
         <h3>Data Science Final Project</h3>
         <p>DSFP Overview, guidance, rubrics and ideas to help jumpstart your DSFP/Senior Capstone experience.</p>
-        <a href="../assessments/">Assessment Portal →</a>
+        <a href="./DSFP/dsfp.html">D.S.F.P. Portal →</a>
       </div>
     </div>
 
-   <!-- 🧾 Dropdown Note on TXT Files -->
-<details class="lab-note">
-  <summary>🗒️ About those .txt files...</summary>
-  <ul>
-    <li>
-      The AI we are most familiar with using are all <strong>Language Models</strong> —
-      <abbr title="Large Language Model">LLMs</abbr>, <abbr title="Medium Language Model">MLMs</abbr>, and so on. 
-      They were trained on massive datasets of language.
-    </li>
+    <!-- 🧾 Dropdown Note on TXT Files -->
+    <details class="lab-note">
+      <summary>🗒️ About those .txt files...</summary>
+      <ul>
+        <li>
+          The AI we are most familiar with using are all <strong>Language Models</strong> —
+          <abbr title="Large Language Model">LLMs</abbr>, <abbr title="Medium Language Model">MLMs</abbr>, and so on. 
+          They were trained on massive datasets of language.
+        </li>
 
-    <li>
-      When you encounter most resources (<code>HTML</code>, <code>PDF</code>, <code>DOCX</code>, etc.), it’s easy enough to extract text with 
-      <strong>CTRL+A</strong> → <strong>CTRL+C</strong>, then use <strong>CTRL+V</strong> to drop it into a model with a directions prompt like:
-      <blockquote>
-        “You are a professor specializing in floating photovoltaic panels (FPVs). I am a student working on…”  
-        <br>
-        “ARTICLE CHUNK BELOW:”
-      </blockquote>
-    </li>
+        <li>
+          When you encounter most resources (<code>HTML</code>, <code>PDF</code>, <code>DOCX</code>, etc.), it’s easy enough to extract text with 
+          <strong>CTRL+A</strong> → <strong>CTRL+C</strong>, then use <strong>CTRL+V</strong> to drop it into a model with a directions prompt like:
+          <blockquote>
+            “You are a professor specializing in floating photovoltaic panels (FPVs). I am a student working on…”  
+            <br>
+            “ARTICLE CHUNK BELOW:”
+          </blockquote>
+        </li>
 
-    <li>
-      Slideshows are a bit different. Because of how I share them (“Published to the Web” mode), you can’t easily copy 
-      text or download them as plain text. If you had edit access, you could go to 
-      <em>File → Download → Plain Text (.txt)</em> — but that’s not possible from the public view I am using.
-    </li>
+        <li>
+          Slideshows are a bit different. Because of how I share them (“Published to the Web” mode), you can’t easily copy 
+          text or download them as plain text. If you had edit access, you could go to 
+          <em>File → Download → Plain Text (.txt)</em> — but that’s not possible from the public view I am using.
+        </li>
 
-    <li>
-      So I provide the <strong>.txt versions</strong> of every slideshow for one key reason:
-      they make it easier for you to copy, paste, and work directly with the language of the slides in your 
-      AI models. These files are provided for educational use — to make your data science work and 
-      AI-assisted analysis smoother, reproducible, and accessible offline.
-    </li>
-  </ul>
-</details>
+        <li>
+          So I provide the <strong>.txt versions</strong> of every slideshow for one key reason:
+          they make it easier for you to copy, paste, and work directly with the language of the slides in your 
+          AI models. These files are provided for educational use — to make your data science work and 
+          AI-assisted analysis smoother, reproducible, and accessible offline.
+        </li>
+      </ul>
+    </details>
 
+  </main>
 
   <footer>
     Designed and developed by <strong>Seán Muggivan</strong> — 

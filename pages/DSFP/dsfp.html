@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Data Science Final Project | Muggs of Data Science</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      color: #f5eedb;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
+      background-blend-mode: multiply;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .watermark {
+      position: fixed;
+      inset: 0;
+      background: url('../book-of-kells.jpg') center center / cover no-repeat;
+      opacity: 0.25;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    .border {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
+      background-repeat: repeat;
+      background-size: 300px;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3rem, 9vw, 5rem);
+      color: #1a1410;
+      text-shadow:
+        0 0 12px rgba(255,180,60,0.55),
+        0 0 20px rgba(255,150,40,0.35);
+      margin-top: 2.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    iframe {
+      width: 90%;
+      height: 550px;
+      border: none;
+      border-radius: 10px;
+      margin: 2rem auto;
+      display: block;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      z-index: 2;
+      position: relative;
+    }
+
+    details.project-note {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: rgba(255,255,white,0.05);
+      border: 1px solid rgba(200,155,60,0.4);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.25);
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    details.project-note summary {
+      cursor: pointer;
+      font-family: 'Cinzel Decorative', serif;
+      color: #d4af37;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(200,155,60,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      color: #b3a37d;
+      background: rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+      margin-top: 2rem;
+    }
+
+    footer a {
+      color: #c89b3c;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="watermark"></div>
+  <div class="border"></div>
+
+  <main>
+    <h1>Data Science Final Project</h1>
+
+    <!-- 🧭 Main Slideshow -->
+    <iframe 
+      src="https://docs.google.com/presentation/d/e/2PACX-1vQdfJAD054Ge-X4eTxHg-Ulw9EUpMU-igKob_3EOfoOb62RDZO36xkI-pCuB2dyryNtwmjjaz6w48Ak/pub?start=false&loop=false&delayms=3000"
+      allowfullscreen>
+    </iframe>
+
+    <details class="project-note">
+      <summary>🧾 About This Project Overview</summary>
+      <p>This slideshow introduces the goals, deliverables, and guiding principles of the <strong>Data Science Final Project (DSFP)</strong>.</p>
+      <ul>
+        <li>Shows how the DSFP connects to your Capstone and UN Sustainable Development Goals.</li>
+        <li>Walks you through the 5-stage data science process used throughout the course.</li>
+        <li>Helps you start planning your own project idea — one major component at a time.</li>
+      </ul>
+      <blockquote>“Your DSFP is your bridge between learning and creating — between understanding and contributing.”</blockquote>
+    </details>
+
+  </main>
+
+  <footer>
+    Designed and developed by <strong>Seán Muggivan</strong> — 
+    content and code released under the 
+    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
+    <br>
+    View the project on 
+    <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
+  </footer>
+</body>
+</html>
