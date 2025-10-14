@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Data Science Final Project | Muggs of Data Science</title>
+  <title>Data Science Final Project | Stages & Slides</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
@@ -13,95 +13,160 @@
       margin: 0;
       font-family: 'Cormorant Garamond', serif;
       color: #f5eedb;
-      display: flex;
-      flex-direction: column;
+      background: radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       text-align: center;
       overflow-x: hidden;
-      background:
-        radial-gradient(circle at center, #0e2a1b 0%, #153b26 100%);
-      background-blend-mode: multiply;
-      background-size: cover;
-      background-attachment: fixed;
+      position: relative;
+      padding: 2rem;
     }
 
     .watermark {
       position: fixed;
       inset: 0;
-      background: url('../book-of-kells.jpg') center center / cover no-repeat;
+      background: url('book_of_kells.jpg') center center / cover no-repeat;
       opacity: 0.25;
-      z-index: 0;
-      pointer-events: none;
       mix-blend-mode: multiply;
-    }
-
-    .border {
-      position: fixed;
-      inset: 0;
       pointer-events: none;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/86/Celtic-knot-thin-border.svg');
-      background-repeat: repeat;
-      background-size: 300px;
-      opacity: 0.08;
-      z-index: 1;
+      z-index: 0;
     }
 
     h1 {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(3rem, 9vw, 5rem);
+      font-size: clamp(3rem, 8vw, 4.5rem);
       color: #1a1410;
-      text-shadow:
-        0 0 12px rgba(255,180,60,0.55),
-        0 0 20px rgba(255,150,40,0.35);
-      margin-top: 2.5rem;
-      margin-bottom: 0.5rem;
+      text-shadow: 0 0 12px rgba(255,180,60,0.55),
+                   0 0 20px rgba(255,150,40,0.35);
+      margin-top: 2rem;
       position: relative;
       z-index: 2;
     }
 
-    iframe {
-      width: 90%;
-      height: 550px;
-      border: none;
+    p.intro {
+      max-width: 850px;
+      margin: 1rem auto 2rem auto;
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      line-height: 1.6;
+      color: #efe8d1;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Slideshow link button */
+    .slideshow-link {
+      text-align: center;
+      margin: 2rem auto 3rem auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .slideshow-link a {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: rgba(200,155,60,0.15);
+      border: 1px solid rgba(200,155,60,0.5);
       border-radius: 10px;
-      margin: 2rem auto;
-      display: block;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      z-index: 2;
-      position: relative;
-    }
-
-    details.project-note {
-      max-width: 900px;
-      margin: 2rem auto;
-      background: rgba(255,255,white,0.05);
-      border: 1px solid rgba(200,155,60,0.4);
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.25);
-      text-align: left;
-      position: relative;
-      z-index: 2;
-    }
-
-    details.project-note summary {
-      cursor: pointer;
-      font-family: 'Cinzel Decorative', serif;
       color: #d4af37;
-      font-size: clamp(1.3rem, 3vw, 1.6rem);
-      font-weight: 600;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      text-decoration: none;
       text-shadow: 0 0 8px rgba(200,155,60,0.5);
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .slideshow-link a:hover {
+      background: rgba(200,155,60,0.25);
+      color: #ffdb7f;
+      transform: scale(1.02);
+    }
+
+    details {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,155,60,0.4);
+      border-radius: 12px;
+      margin: 1.5rem auto;
+      max-width: 800px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    summary {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      color: #c89b3c;
+      cursor: pointer;
+    }
+
+    details[open] summary {
+      color: #d4af37;
+      text-shadow: 0 0 6px rgba(255,180,60,0.5);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+    }
+
+    li {
+      margin: 0.6rem 0;
+      font-size: 1.05rem;
+    }
+
+    a {
+      color: #c89b3c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+
+    .return-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 3rem auto 0 auto;
+      z-index: 2;
+      position: relative;
+    }
+
+    .return-button a {
+      display: inline-block;
+      background: rgba(200,155,60,0.2);
+      color: #f5eedb;
+      border: 1px solid rgba(200,155,60,0.4);
+      border-radius: 8px;
+      padding: 0.8rem 1.8rem;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: all 0.25s ease;
+    }
+
+    .return-button a:hover {
+      background: rgba(200,155,60,0.4);
+      color: #fff3c0;
+      transform: translateY(-2px);
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      font-size: 1rem;
       color: #b3a37d;
-      background: rgba(0,0,0,0.2);
-      position: relative;
+      margin-top: 3rem;
       z-index: 2;
-      margin-top: 2rem;
+      position: relative;
     }
 
     footer a {
@@ -118,36 +183,62 @@
 
 <body>
   <div class="watermark"></div>
-  <div class="border"></div>
 
   <main>
     <h1>Data Science Final Project</h1>
+    <p class="intro">
+      This page collects all slides and notes connected to each stage of the <strong>Data Science Final Project (DSFP)</strong>.
+      Begin with the overview, then explore the individual stages below.
+    </p>
 
-    <!-- 🧭 Main Slideshow -->
-    <iframe 
-      src="https://docs.google.com/presentation/d/e/2PACX-1vQdfJAD054Ge-X4eTxHg-Ulw9EUpMU-igKob_3EOfoOb62RDZO36xkI-pCuB2dyryNtwmjjaz6w48Ak/pub?start=false&loop=false&delayms=3000"
-      allowfullscreen>
-    </iframe>
+    <!--Overview slideshow button -->
+    <div class="slideshow-link">
+      <a href="https://docs.google.com/presentation/d/e/2PACX-1vQdfJAD054Ge-X4eTxHg-Ulw9EUpMU-igKob_3EOfoOb62RDZO36xkI-pCuB2dyryNtwmjjaz6w48Ak/pub?start=false&loop=false&delayms=3000"
+         target="_blank" rel="noopener noreferrer">
+        View DSFP Overview Slideshow
+      </a>
+    </div>
 
-    <details class="project-note">
-      <summary>🧾 About This Project Overview</summary>
-      <p>This slideshow introduces the goals, deliverables, and guiding principles of the <strong>Data Science Final Project (DSFP)</strong>.</p>
+    <!--Ask Questions -->
+    <details>
+      <summary>1) Ask Questions</summary>
       <ul>
-        <li>Shows how the DSFP connects to your Capstone and UN Sustainable Development Goals.</li>
-        <li>Walks you through the 5-stage data science process used throughout the course.</li>
-        <li>Helps you start planning your own project idea — one major component at a time.</li>
+<li> 
+  <a href="https://docs.google.com/presentation/d/e/2PACX-1vSVpym7MjobeN45gZLX-erqsQuIl0dH0BtrTaFUBV0D-kxSp53UMt2B68AO8vvu_Ig0IvxNDgzZ3Cyb/pub?start=false&loop=false&delayms=3000"
+     target="_blank" rel="noopener noreferrer"><strong>1.1) From Idea to Topic - Discovering Your Project</strong></a>
+  — <a href="#">🗒️ Notes</a>
+</li>
       </ul>
-      <blockquote>“Your DSFP is your bridge between learning and creating — between understanding and contributing.”</blockquote>
     </details>
 
+    <!-- Gather & Organize Data -->
+    <details>
+      <summary> Gather & Organize Data</summary>
+      <ul>
+        <li><a href="#" target="_blank"><strong>Finding and Cleaning Your Dataset</strong></a> — <a href="#">🗒️ Notes</a></li>
+        <li><a href="#" target="_blank"><strong>Survey Design and Data Entry</strong></a> — <a href="#">🗒️ Notes</a></li>
+      </ul>
+    </details>
+
+    <!-- Model -->
+    <details>
+      <summary>Model</summary>
+      <ul>
+        <li> <a href="#" target="_blank"><strong>Intro to Modeling in Excel & Python</strong></a> — <a href="#">🗒️ Notes</a></li>
+        <li> <a href="#" target="_blank"><strong>Testing Relationships Between Variables</strong></a> — <a href="#">🗒️ Notes</a></li>
+      </ul>
+    </details>
+
+    <div class="return-button">
+      <a href="../index.html">← Back to Class Hub</a>
+    </div>
   </main>
 
   <footer>
     Designed and developed by <strong>Seán Muggivan</strong> — 
     content and code released under the 
-    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
-    <br>
-    View the project on 
+    <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.<br>
+    View the full project on 
     <a href="https://github.com/SMuggiNola/MuggsOfDataSci" target="_blank">GitHub</a>.
   </footer>
 </body>
