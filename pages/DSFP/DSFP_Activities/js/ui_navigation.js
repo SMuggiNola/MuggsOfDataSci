@@ -1,12 +1,22 @@
 // ======================================================
-// ui_navigation.js — Dynamic JSON-driven activity builder
-// with draft retrieval + auto-load
+// ui_navigation.js — JSON-driven activity builder
+// Auto-loads drafts + inline button handling
 // ======================================================
 
 import { verifyLogin } from "./auth_check.js";
 import { saveDraft, submitFinal } from "./draft_submit.js";
 
 export async function initActivity(activityJSONPath, authJSONPath) {
+  document.addEventListener("DOMContentLoaded", () => start(activityJSONPath, authJSONPath));
+}
+
+async function start(activityJSONPath, authJSONPath) {
+  const app = document.getElementById("app");
+  if (!app) {
+    console.error("❌ #app not found in document.");
+    return;
+  }
+
   // ---------- Load Activity JSON ----------
   let activity;
   try {
@@ -14,32 +24,24 @@ export async function initActivity(activityJSONPath, authJSONPath) {
     if (!res.ok) throw new Error(`HTTP ${res.status} loading activity JSON`);
     activity = await res.json();
   } catch (err) {
-    console.error("❌ Could not load activity JSON:", err);
-    document.getElementById("app").innerHTML =
-      `<p style="color:red">Could not load activity file.<br>${err}</p>`;
+    app.innerHTML = `<p style="color:red">Could not load activity JSON.<br>${err}</p>`;
     return;
   }
 
-  // ---------- State ----------
   let username = "", pin = "", screen = 0;
   const answers = {};
-  const app = document.getElementById("app");
 
-  // ---------- Helper: load draft ----------
+  // ---------- Load draft helper ----------
   async function loadDraft(username, activity_id) {
-    // check localStorage first
     const localKey = `draft_${username}_${activity_id}`;
     const local = localStorage.getItem(localKey);
     if (local) return JSON.parse(local);
 
-    // fallback: Cloudflare KV
     try {
       const res = await fetch(`https://muggsofdatasci.net/student/${username}`);
       if (res.ok) {
         const all = await res.json();
-        const match = all.find(
-          d => d.activity_id === activity_id && d.draft
-        );
+        const match = all.find(d => d.activity_id === activity_id && d.draft);
         return match || null;
       }
     } catch (err) {
@@ -48,54 +50,54 @@ export async function initActivity(activityJSONPath, authJSONPath) {
     return null;
   }
 
-  // ---------- Screens ----------
+  // ---------- Renderers ----------
   const stages = [
-    renderLanding,
+    renderLogin,
     ...activity.sections.map(sec => () => renderSection(sec)),
     renderAfterword
   ];
 
   function show(n) {
     screen = n;
+    window.scrollTo({ top: 0, behavior: "smooth" });
     stages[n]();
   }
 
-  // ---------- Screen 0 — Landing ----------
-  function renderLanding() {
+  // ---------- Login Screen ----------
+  function renderLogin() {
     app.innerHTML = `
-      <h1>${activity.title}</h1>
-      <p style="max-width:800px;margin:auto;">${activity.instructions.overview}</p>
-      <p style="margin-top:1rem;"><em>${activity.instructions.mechanics}</em></p>
-      <div style="margin-top:1.5rem;">
-        <button id="beginBtn">Begin Inquiry</button>
-        <button id="retrieveBtn">📂 Retrieve Draft</button>
+      <div style="text-align:center;">
+        <h1>${activity.title}</h1>
+        <p style="max-width:800px;margin:auto;">${activity.instructions.overview}</p>
+        <p style="margin-top:1rem;"><em>${activity.instructions.mechanics}</em></p>
+        <button type="button" id="loginBtn">🔐 Log In</button>
       </div>
     `;
 
-    async function handleLogin(loadExisting) {
+    document.getElementById("loginBtn").onclick = async e => {
+      e.preventDefault();
       username = prompt("Enter your username:")?.trim();
       pin = prompt("Enter your PIN:")?.trim();
-      if (!username || !pin) return alert("Login cancelled.");
+      if (!username || !pin) {
+        alert("Login cancelled.");
+        return;
+      }
+
       const ok = await verifyLogin(authJSONPath, username, pin);
       if (!ok) return;
 
-      // Auto-load draft if exists or if explicitly requested
+      // try to auto-load previous draft
       const draft = await loadDraft(username, activity.activity_id);
       if (draft && draft.responses) {
         Object.assign(answers, draft.responses);
-        alert("✅ Previous draft loaded.");
-      } else if (loadExisting) {
-        alert("⚠️ No saved draft found for this user.");
+        alert("✅ Draft found and loaded automatically.");
       }
 
       show(1);
-    }
-
-    document.getElementById("beginBtn").onclick = () => handleLogin(false);
-    document.getElementById("retrieveBtn").onclick = () => handleLogin(true);
+    };
   }
 
-  // ---------- Core Writing Screens ----------
+  // ---------- Activity Sections ----------
   function renderSection(sec) {
     const key = sec.id;
     app.innerHTML = `
@@ -104,22 +106,30 @@ export async function initActivity(activityJSONPath, authJSONPath) {
       <textarea id="textInput">${answers[key] || ""}</textarea>
       <div class="reminder">${activity.instructions.reminder}</div>
       <div>
-        ${screen > 1 ? `<button id="backBtn">← Back</button>` : ""}
-        <button id="saveBtn">💾 Save Draft</button>
-        <button id="nextBtn">Next →</button>
+        ${screen > 1 ? `<button type="button" id="backBtn">← Back</button>` : ""}
+        <button type="button" id="saveBtn">💾 Save Draft</button>
+        <button type="button" id="nextBtn">Next →</button>
       </div>
+      <p style="margin-top:1rem;font-size:0.9rem;color:#b3a37d;">Logged in as <strong>${username}</strong></p>
     `;
 
-    document.getElementById("textInput").oninput = e =>
-      (answers[key] = e.target.value);
+    document.getElementById("textInput").oninput = e => (answers[key] = e.target.value);
 
     if (document.getElementById("backBtn"))
-      document.getElementById("backBtn").onclick = () => show(screen - 1);
+      document.getElementById("backBtn").onclick = e => {
+        e.preventDefault();
+        show(screen - 1);
+      };
 
-    document.getElementById("saveBtn").onclick = () =>
+    document.getElementById("saveBtn").onclick = e => {
+      e.preventDefault();
       saveDraft(username, pin, activity.activity_id, answers);
+    };
 
-    document.getElementById("nextBtn").onclick = () => show(screen + 1);
+    document.getElementById("nextBtn").onclick = e => {
+      e.preventDefault();
+      show(screen + 1);
+    };
   }
 
   // ---------- Final Screen ----------
@@ -131,18 +141,23 @@ export async function initActivity(activityJSONPath, authJSONPath) {
       </p>
       <p class="reminder">${activity.instructions.reminder}</p>
       <div>
-        <button id="submitBtn">✅ Submit Final</button>
-        <button id="returnBtn">⬅️ Return to DSFP Portal</button>
+        <button type="button" id="submitBtn">✅ Submit Final</button>
+        <button type="button" id="returnBtn">⬅️ Return to DSFP Portal</button>
       </div>
+      <p style="margin-top:1rem;font-size:0.9rem;color:#b3a37d;">Logged in as <strong>${username}</strong></p>
     `;
 
-    document.getElementById("submitBtn").onclick = () =>
+    document.getElementById("submitBtn").onclick = e => {
+      e.preventDefault();
       submitFinal(username, pin, activity.activity_id, answers);
+    };
 
-    document.getElementById("returnBtn").onclick = () =>
-      (window.location.href = "../dsfp.html");
+    document.getElementById("returnBtn").onclick = e => {
+      e.preventDefault();
+      window.location.href = "../dsfp.html";
+    };
   }
 
-  // ---------- Start ----------
+  // ---------- Launch ----------
   show(0);
 }

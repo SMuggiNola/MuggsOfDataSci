@@ -7,7 +7,7 @@
 
 <!-- Fonts and Styles -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../style.css">
+<link rel="stylesheet" href="../style.css"> <!-- ✅ FIXED: only one level up -->
 
 <style>
 body {
@@ -24,7 +24,7 @@ body {
 }
 .watermark {
   position:fixed;inset:0;
-  background:url('../../book_of_kells.jpg') center/cover no-repeat;
+  background:url('../book_of_kells.jpg') center/cover no-repeat; /* ✅ FIXED path */
   opacity:0.25;mix-blend-mode:multiply;pointer-events:none;z-index:0;
 }
 h1,h2 {font-family:'Cinzel Decorative',serif;text-shadow:0 0 10px rgba(200,155,60,0.4);}
@@ -50,47 +50,17 @@ footer {margin-top:2rem;color:#b3a37d;font-size:0.95rem;}
 
 <body>
 <div class="watermark"></div>
+<main id="app"></main>
 
-<!-- ✅ Hard-coded introduction -->
-<section id="intro">
-  <h1>FP 1.2 — Questions, Questions, Questions…</h1>
-  <p style="max-width:800px;margin:auto;">
-    Questions perpetuate investigation and discovery. Answers imply completion.<br><br>
-    “If the doors of perception were cleansed, everything would appear to [us] as it is, infinite.”
-  </p>
-  <p>— <em>William Blake, <span style="font-style:normal;">The Marriage of Heaven and Hell</span></em><br><br>
-    If the door to discovery is a question, an answer is the lock.
-  </p>
-  <p><strong>Leave the door unlocked.</strong></p>
-  <p style="max-width:800px;margin:2rem auto;">
-    This reflective activity has five parts.
-  </p>
-  <button id="beginBtn">Begin Inquiry</button>
-  <div style="text-align:center;margin-top:3rem;">
-    <!-- ✅ Permanent Return button -->
-    <button onclick="window.location.href='../dsfp.html'">⬅️ Return to DSFP Portal</button>
-  </div>
-</section>
-
-<!-- App container for dynamic content -->
-<main id="app" style="display:none;"></main>
-
+<!-- ✅ Correct Script Call -->
 <script type="module">
-import { initActivity } from "./js/ui_navigation.js";
+  import { initActivity } from "./js/ui_navigation.js";
 
-const app = document.getElementById("app");
-const intro = document.getElementById("intro");
-const beginBtn = document.getElementById("beginBtn");
-
-// when user clicks Begin Inquiry, hide intro & start the activity
-beginBtn.addEventListener("click", () => {
-  intro.style.display = "none";
-  app.style.display = "block";
+  // Launch the activity dynamically from JSON
   initActivity(
-    "./activity_JSONs/questions_questions.json",
-    "./activity_JSONs/auth.json"
+    "./activity_JSONs/questions_questions.json",  // activity content
+    "./activity_JSONs/auth.json"                  // login credentials
   );
-});
 </script>
 
 <footer>
