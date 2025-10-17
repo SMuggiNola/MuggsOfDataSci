@@ -5,7 +5,7 @@
 
 export async function saveToCloudflare(submission) {
   try {
-    const res = await fetch("https://muggs-data-worker.sean-muggivan.workers.dev/save", {
+    const res = await fetch("https://muggsofdatasci.net/save", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(submission)
