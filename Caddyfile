@@ -1,0 +1,55 @@
+# === Main Site ===
+http://muggsofdatasci.net {
+
+    # Serve static pages
+    root * C:\MuggsOfDataSci
+    file_server
+
+    # Proxy API calls to FastAPI backend
+    reverse_proxy /api/* http://localhost:8089
+
+    # Compression & CORS headers
+    encode gzip zstd
+    header {
+        Access-Control-Allow-Origin *
+        Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Access-Control-Allow-Headers "Content-Type, Authorization"
+    }
+
+    # Optional access logs
+    log {
+        output file C:\MuggsOfDataSci\caddy_access.log
+    }
+
+    # Redirect www to root
+    redir https://muggsofdatasci.net{uri} permanent
+}
+
+# === Etiquette Subdomain (your 4090-hosted Prompting Etiquette app) ===
+http://etiquette.muggsofdatasci.net {
+
+    # Serve same base folder
+    root * C:\MuggsOfDataSci
+    file_server
+
+    # API goes to FastAPI backend on local 4090
+    reverse_proxy /api/* http://localhost:8089
+
+    encode gzip zstd
+    header {
+        Access-Control-Allow-Origin *
+        Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Access-Control-Allow-Headers "Content-Type, Authorization"
+    }
+
+    log {
+        output file C:\MuggsOfDataSci\caddy_etiquette.log
+    }
+}
+
+# === Local testing ===
+:8080 {
+    root * C:\MuggsOfDataSci
+    file_server
+    reverse_proxy /api/* http://localhost:8089
+}

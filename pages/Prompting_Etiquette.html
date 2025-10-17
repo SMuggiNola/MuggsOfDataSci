@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prompting Etiquette · Manners Ma’am</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Students paste a prompt. Manners Ma’am checks etiquette and suggests a polished revision." />
+  <style>
+    /* Soft card glow */
+    .card { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .kells { font-variant-caps: small-caps; letter-spacing: .02em; }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-100 text-neutral-900">
+  <header class="bg-emerald-900 text-white">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
+      <h1 class="text-xl sm:text-2xl font-semibold kells">Prompting Etiquette · <span class="opacity-90">Manners Ma’am</span></h1>
+      <div class="text-sm" id="healthDot">
+        <span class="inline-flex items-center gap-2"><span id="healthLight" class="inline-block w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse"></span><span id="healthText">checking…</span></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-6">
+    <!-- Hero -->
+    <section class="mb-6">
+      <div class="card rounded-2xl bg-white p-6">
+        <h2 class="text-lg font-semibold">“Gentle Prompter, mind your manners.”</h2>
+        <p class="mt-2 text-sm text-neutral-600">Paste the prompt you intend to use. Manners Ma’am checks etiquette:
+          identity, user role, task clarity/scope, and proper harnessing of AI. Then she offers a score and a polite revision.</p>
+      </div>
+    </section>
+
+    <!-- Form Card -->
+    <section class="grid lg:grid-cols-5 gap-6 items-start">
+      <div class="lg:col-span-3 card rounded-2xl bg-white">
+        <form id="etiquetteForm" class="p-6 space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium">Username</label>
+              <input id="username" class="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="gael.student" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium">PIN</label>
+              <input id="pin" class="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="****" type="password" />
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-baseline justify-between">
+              <label for="prompt" class="block text-sm font-medium">Your Prompt</label>
+              <span id="charCount" class="text-xs text-neutral-500">0 / 800 words</span>
+            </div>
+            <textarea id="prompt" rows="10" class="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Paste your prompt here, gentle prompter…"></textarea>
+            <p class="mt-1 text-xs text-neutral-500">Tip: Keep it focused. Aim for one concrete task the AI can assist with.</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium">Model</label>
+              <select id="model" class="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <option value="mistral">Mistral 7B</option>
+                <option value="hermes">Hermes 2 (Llama 3.1‑8B‑Instruct‑style)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium">Max Output Tokens</label>
+              <input id="maxTokens" type="number" min="128" max="1024" value="512" class="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 items-center">
+            <button id="analyzeBtn" class="px-4 py-2 rounded-xl bg-emerald-700 text-white hover:bg-emerald-800 disabled:opacity-50">Check Etiquette</button>
+            <button id="polishBtn" type="button" class="px-4 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 border">Polish My Prompt</button>
+            <label class="inline-flex items-center gap-2 text-sm"><input id="publicDemo" type="checkbox" class="rounded" /> Public demo mode</label>
+          </div>
+
+          <p class="text-xs text-neutral-500">By using this tool you agree not to submit sensitive personal data. Word limit: 800 words.</p>
+        </form>
+      </div>
+
+      <!-- Checklist Card -->
+      <aside class="lg:col-span-2 card rounded-2xl bg-white p-6">
+        <h3 class="text-sm font-semibold">Checklist</h3>
+        <ul class="mt-3 space-y-2 text-sm" id="checklist">
+          <li class="flex gap-2"><span class="w-5 h-5 rounded-full border flex items-center justify-center" id="c1">–</span> AI assigned a clear <strong>identity/role</strong>.</li>
+          <li class="flex gap-2"><span class="w-5 h-5 rounded-full border flex items-center justify-center" id="c2">–</span> <strong>Your role</strong> or context stated.</li>
+          <li class="flex gap-2"><span class="w-5 h-5 rounded-full border flex items-center justify-center" id="c3">–</span> <strong>Task</strong> is specific and right‑sized.</li>
+          <li class="flex gap-2"><span class="w-5 h-5 rounded-full border flex items-center justify-center" id="c4">–</span> AI is <strong>properly harnessed</strong> (assist, don’t replace).</li>
+        </ul>
+        <div class="mt-4 text-xs text-neutral-500">
+          If the door to discovery is a question, an answer is the lock. Leave the door unlocked.
+        </div>
+      </aside>
+    </section>
+
+    <!-- Output Cards -->
+    <section class="mt-6 grid md:grid-cols-2 gap-6">
+      <div class="card rounded-2xl bg-white p-6">
+        <div class="flex items-baseline justify-between">
+          <h3 class="text-sm font-semibold">Manners Ma’am Feedback</h3>
+          <div id="scoreBadge" class="text-xs px-2 py-1 rounded-full bg-neutral-100">Score —</div>
+        </div>
+        <div id="feedback" class="prose prose-sm max-w-none mt-3"></div>
+      </div>
+      <div class="card rounded-2xl bg-white p-6">
+        <h3 class="text-sm font-semibold">Polished Prompt</h3>
+        <textarea id="polished" rows="12" class="mt-3 w-full rounded-xl border border-neutral-300 px-3 py-2"></textarea>
+        <div class="mt-3 flex gap-2">
+          <button id="copyPolished" class="px-3 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 border">Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diagnostics -->
+    <section class="mt-6">
+      <div class="card rounded-2xl bg-white p-6">
+        <h3 class="text-sm font-semibold">Diagnostics</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm mt-3">
+          <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neutral-300" id="diagAuth"></span><span id="diagAuthText">Auth: —</span></div>
+          <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neutral-300" id="diagRate"></span><span id="diagRateText">Rate limit: —</span></div>
+          <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neutral-300" id="diagTPS"></span><span id="diagTPSText">Throughput: —</span></div>
+          <div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-neutral-300" id="diagModel"></span><span id="diagModelText">Model: —</span></div>
+        </div>
+        <pre id="raw" class="mt-4 text-xs bg-neutral-50 rounded-xl p-3 overflow-auto"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-6 py-10 text-xs text-neutral-500">
+    © <span id="year"></span> Muggs of Data Science · Built for offline-first classrooms
+  </footer>
+
+  <script>
+    const API_BASE = "/api"; // reverse-proxy this to your FastAPI on the 4090 (e.g., /api -> http://4090-box:8089)
+    const WORD_LIMIT = 800;
+
+    const el = (id) => document.getElementById(id);
+
+    function countWords(text){
+      return (text.trim().match(/\b\w+\b/g) || []).length;
+    }
+
+    // Health check on load
+    async function checkHealth(){
+      try {
+        const r = await fetch(`${API_BASE}/health`);
+        if(!r.ok) throw new Error("bad status");
+        const j = await r.json();
+        el('healthLight').className = 'inline-block w-2.5 h-2.5 rounded-full bg-emerald-500';
+        el('healthText').textContent = `online · ${j.model || 'model?'}`;
+        el('diagModel').className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+        el('diagModelText').textContent = `Model: ${j.model || '—'}`;
+      } catch(e){
+        el('healthLight').className = 'inline-block w-2.5 h-2.5 rounded-full bg-rose-500';
+        el('healthText').textContent = 'offline';
+      }
+    }
+
+    // Client word limit/live counter
+    el('prompt').addEventListener('input', () => {
+      const w = countWords(el('prompt').value);
+      el('charCount').textContent = `${w} / ${WORD_LIMIT} words`;
+      if(w > WORD_LIMIT){
+        el('charCount').classList.add('text-rose-600','font-semibold');
+      } else {
+        el('charCount').classList.remove('text-rose-600','font-semibold');
+      }
+    });
+
+    // Update checklist icons
+    function setCheck(id, ok){
+      const node = el(id);
+      node.textContent = ok ? '✓' : '–';
+      node.className = 'w-5 h-5 rounded-full border flex items-center justify-center ' + (ok ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : '');
+    }
+
+    // Submit handler
+    el('etiquetteForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      runAnalyze('analyze');
+    });
+
+    el('polishBtn').addEventListener('click', () => runAnalyze('polish'));
+
+    async function runAnalyze(kind){
+      const prompt = el('prompt').value.trim();
+      const words = countWords(prompt);
+      if(!prompt){ alert('Please paste a prompt.'); return; }
+      if(words > WORD_LIMIT){ alert(`Word limit is ${WORD_LIMIT}. You have ${words}.`); return; }
+
+      const body = {
+        prompt,
+        model: el('model').value,
+        max_output_tokens: Number(el('maxTokens').value || 512),
+        username: el('username').value || undefined,
+        pin: el('pin').value || undefined,
+        public_demo: el('publicDemo').checked,
+        mode: kind // 'analyze' or 'polish'
+      };
+
+      el('analyzeBtn').setAttribute('disabled', true);
+      el('polishBtn').setAttribute('disabled', true);
+      el('scoreBadge').textContent = 'Scoring…';
+      el('feedback').textContent = '';
+      el('polished').value = '';
+      el('raw').textContent = '';
+
+      try{
+        const res = await fetch(`${API_BASE}/etiquette/analyze`,{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        el('raw').textContent = JSON.stringify(data,null,2);
+
+        // checklist
+        setCheck('c1', !!data.checks?.identity_assigned);
+        setCheck('c2', !!data.checks?.user_role_stated);
+        setCheck('c3', !!data.checks?.task_specific);
+        setCheck('c4', !!data.checks?.proper_harness);
+
+        // score + feedback
+        if(typeof data.score === 'number'){
+          el('scoreBadge').textContent = `Score ${data.score}/4`;
+        } else {
+          el('scoreBadge').textContent = 'Score —';
+        }
+        el('feedback').innerHTML = data.feedback_html || (data.feedback || '').replaceAll('\n','<br>');
+        if(data.polished_prompt) el('polished').value = data.polished_prompt;
+
+        // diagnostics
+        if(data.auth === true){
+          el('diagAuth').className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+          el('diagAuthText').textContent = 'Auth: ok';
+        } else if(data.public_demo === true){
+          el('diagAuth').className = 'w-2.5 h-2.5 rounded-full bg-amber-500';
+          el('diagAuthText').textContent = 'Auth: public demo';
+        } else {
+          el('diagAuth').className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+          el('diagAuthText').textContent = 'Auth: failed or not required';
+        }
+        if(data.rate_limited){
+          el('diagRate').className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
+          el('diagRateText').textContent = 'Rate limit: exceeded';
+        } else if(typeof data.remaining !== 'undefined'){
+          el('diagRate').className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+          el('diagRateText').textContent = `Rate limit: ${data.remaining} left`;
+        }
+        if(data.tokens && data.duration_ms){
+          const tps = (data.tokens / (data.duration_ms/1000)).toFixed(1);
+          el('diagTPS').className = 'w-2.5 h-2.5 rounded-full bg-emerald-500';
+          el('diagTPSText').textContent = `Throughput: ${tps} tok/s (${data.tokens} in ${(data.duration_ms/1000).toFixed(2)}s)`;
+        }
+      } catch(err){
+        el('feedback').textContent = 'Error contacting server.';
+        console.error(err);
+      } finally {
+        el('analyzeBtn').removeAttribute('disabled');
+        el('polishBtn').removeAttribute('disabled');
+      }
+    }
+
+    el('copyPolished').addEventListener('click', async ()=>{
+      const txt = el('polished').value;
+      if(!txt) return;
+      try { await navigator.clipboard.writeText(txt); } catch {}
+    });
+
+    el('year').textContent = new Date().getFullYear();
+    checkHealth();
+  </script>
+</body>
+</html>
