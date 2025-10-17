@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FP 1.2 — Questions, Questions, Questions…</title>
+
+<!-- Fonts and Styles -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+
+<style>
+body {
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  color:#f5eedb;
+  background:radial-gradient(circle at center,#0e2a1b 0%,#153b26 100%);
+  background-attachment:fixed;
+  min-height:100vh;
+  text-align:center;
+  overflow-x:hidden;
+  padding:2rem;
+  position:relative;
+}
+.watermark {
+  position:fixed;inset:0;
+  background:url('../../book_of_kells.jpg') center/cover no-repeat;
+  opacity:0.25;mix-blend-mode:multiply;pointer-events:none;z-index:0;
+}
+h1,h2 {font-family:'Cinzel Decorative',serif;text-shadow:0 0 10px rgba(200,155,60,0.4);}
+textarea {
+  width:90%;max-width:800px;height:200px;margin-top:1rem;
+  font-size:1.05rem;font-family:'Cormorant Garamond',serif;
+  padding:0.75rem;border-radius:8px;border:1px solid rgba(200,155,60,0.3);
+  background:rgba(255,255,255,0.08);color:#f5eedb;
+}
+button {
+  margin:1rem; padding:0.7rem 1.6rem;
+  background:rgba(200,155,60,0.2);
+  border:1px solid rgba(200,155,60,0.4);
+  border-radius:8px;color:#f5eedb;
+  font-family:'Cinzel Decorative',serif;
+  cursor:pointer;transition:all 0.25s ease;
+}
+button:hover {background:rgba(200,155,60,0.35);transform:translateY(-2px);}
+footer {margin-top:2rem;color:#b3a37d;font-size:0.95rem;}
+.reminder {margin-top:1.8rem;font-style:italic;color:#d4af37;}
+</style>
+</head>
+
+<body>
+<div class="watermark"></div>
+<main id="app"></main>
+
+<script type="module">
+// ============================================
+// FP 1.2 — Questions, Questions, Questions…
+// ============================================
+
+import { verifyLogin } from "./js/auth_check.js";
+import { saveDraft, submitFinal, returnToActivities } from "./js/draft_submit.js";
+
+const AUTH_JSON_PATH = "./activitity_JSONs/auth.json";
+
+let username="", pin="", screen=0;
+let answers={s2:"",s3:"",s4:""};
+const app=document.getElementById("app");
+
+// ---------- Screens ----------
+const stages=[
+  renderLanding,
+  ()=>renderTextScreen("The Apparent Story","Begin by describing what you can see about the house. Ask questions about visible details.","s2"),
+  ()=>renderTextScreen("The Less Apparent Story","Imagine who lived there last and why they might have left. Keep asking, not answering.","s3"),
+  ()=>renderTextScreen("The Even Less Apparent Story","Ask about the world around the house — neighborhood, city, or era. End with a question.","s4"),
+  renderAfterword
+];
+
+// ---------- Login ----------
+async function promptLogin(){
+  username=prompt("Enter your username:")?.trim();
+  pin=prompt("Enter your PIN:")?.trim();
+  if(!username||!pin){alert("Login cancelled.");return;}
+  const ok = await verifyLogin(AUTH_JSON_PATH, username, pin);
+  if(ok){
+    localStorage.setItem("studentUsername",username);
+    showScreen(1);
+  } else {
+    alert("Invalid credentials. Please try again.");
+  }
+}
+
+// ---------- Rendering ----------
+function renderLanding(){
+  app.innerHTML=`
+    <h1>FP 1.2 — Questions, Questions, Questions…</h1>
+    <p style="max-width:800px;margin:auto;">
+      Questions perpetuate investigation and discovery. Answers imply completion.<br><br>
+      “If the doors of perception were cleansed, everything would appear to us as it is, infinite.”  
+      — <em>William Blake, <span style="font-style:normal;">The Marriage of Heaven and Hell</span></em><br><br>
+      If the door to discovery is a question, an answer is the lock.  
+      <strong>Leave the door unlocked.</strong>
+    </p>
+    <p style="max-width:800px;margin:2rem auto;">
+      This reflective activity has five parts. Visitors can read freely; enrolled students click below to begin.
+    </p>
+    <button id="beginBtn">Begin Inquiry</button>
+    <div style="text-align:center;margin-top:3rem;">
+      <button onclick="window.location.href='./index.html'">⬅️ Return to DSFP Activities</button>
+    </div>
+  `;
+  document.getElementById("beginBtn").onclick=promptLogin;
+}
+
+function renderTextScreen(title,instructions,key){
+  app.innerHTML=`
+    <h2>${title}</h2>
+    <p style="max-width:800px;margin:auto;">${instructions}</p>
+    <textarea id="textInput">${answers[key]||""}</textarea>
+    <div class="reminder">
+      If the door to discovery is a question, an answer is the lock. Leave the door unlocked.
+    </div>
+    <div>
+      ${screen>1?'<button id="backBtn">← Back</button>':""}
+      <button id="saveBtn">💾 Save Draft and Return to DSFP Portal</button>
+      <button id="nextBtn">Next →</button>
+      <button id="returnBtn">⬅️ Return to DSFP Activities</button>
+    </div>
+  `;
+  document.getElementById("textInput").oninput=e=>answers[key]=e.target.value;
+  if(document.getElementById("backBtn")) document.getElementById("backBtn").onclick=()=>{screen--;showScreen(screen);}
+  document.getElementById("saveBtn").onclick=()=>saveDraft(username,pin,"FP1_2_QUESTIONS",answers);
+  document.getElementById("nextBtn").onclick=()=>{screen++;showScreen(screen);}
+  document.getElementById("returnBtn").onclick=()=>returnToActivities();
+}
+
+function renderAfterword(){
+  app.innerHTML=`
+    <h2>What Happens Next?</h2>
+    <p style="max-width:800px;margin:auto;">
+      Your questions will join every student's in an AI-assisted analysis.  
+      The model will look for shared themes and recurring curiosities to identify
+      <strong>3–5 potential DSFP research questions</strong> for our next stage.
+    </p>
+    <p class="reminder">
+      If the door to discovery is a question, an answer is the lock. Leave the door unlocked.
+    </p>
+    <div>
+      <button id="submitBtn">✅ Submit Final and Return to DSFP Portal</button>
+      <button id="returnBtn">⬅️ Return to DSFP Activities</button>
+    </div>
+  `;
+  document.getElementById("submitBtn").onclick=()=>submitFinal(username,pin,"FP1_2_QUESTIONS",answers);
+  document.getElementById("returnBtn").onclick=()=>returnToActivities();
+}
+
+// ---------- Navigation ----------
+function showScreen(n){screen=n;stages[n]();}
+
+// ---------- Init ----------
+showScreen(0);
+</script>
+
+<footer>
+  Designed by <strong>Seán Muggivan</strong> — part of the Data Science Final Project sequence.
+</footer>
+</body>
+</html>

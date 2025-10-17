@@ -1,0 +1,50 @@
+{
+  "activity_id": "FP1_2_QUESTIONS",
+  "title": "FP 1.2 — Questions, Questions, Questions…",
+  "author": "Seán Muggivan",
+  "stage": "Stage 1 — Ask Questions",
+  "objective": "To explore curiosity as the foundation of research by learning to ask progressively deeper questions about visible, hidden, and systemic aspects of a phenomenon.",
+  "instructions": {
+    "overview": "Questions perpetuate investigation and discovery. Answers imply completion. This reflective activity invites you to delay answers as long as possible and build your capacity for inquiry.",
+    "mechanics": "Write in full sentences with proper punctuation and capitalization. Each question should feel complete and precise. Let your writing flow—avoid lists or fragments.",
+    "reminder": "If the door to discovery is a question, an answer is the lock. Leave the door unlocked."
+  },
+  "sections": [
+    {
+      "id": "S1",
+      "title": "The Apparent Story",
+      "prompt": "Begin by describing what you can see about the house. Ask questions about its visible details. What draws your attention first?"
+    },
+    {
+      "id": "S2",
+      "title": "The Less Apparent Story",
+      "prompt": "Imagine who lived there last and why they might have left. What clues suggest a story? Keep asking questions rather than assuming answers."
+    },
+    {
+      "id": "S3",
+      "title": "The Even Less Apparent Story",
+      "prompt": "Step back further. What was happening in the neighborhood, city, or society while this house was being abandoned? Ask about the systems surrounding your topic."
+    },
+    {
+      "id": "S4",
+      "title": "Collective Reflection",
+      "prompt": "All student questions from this activity will be analyzed by a local AI model to identify recurring themes and patterns of curiosity. From these, 3–5 potential DSFP research questions may emerge."
+    }
+  ],
+  "reflection_instructions": "When you finish, reread your questions. Notice how your perspective shifted from concrete observation to abstract inquiry. How did your curiosity evolve?",
+  "scoring": {
+    "type": "completion",
+    "weight": 1.0,
+    "criteria": [
+      "Full participation in all three writing stages",
+      "Evidence of thoughtful, open-ended questioning",
+      "Use of correct punctuation and capitalization"
+    ]
+  },
+  "metadata": {
+    "created": "2025-10-17T00:00:00Z",
+    "course": "Data Science with AI",
+    "unit": "Stage 1 — Ask Questions",
+    "sdg_alignment": ["Quality Education (SDG 4)", "Industry, Innovation, and Infrastructure (SDG 9)"]
+  }
+}
