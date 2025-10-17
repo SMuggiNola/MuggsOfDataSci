@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Cloudflare Save Test</h2>
+<script>
+(async () => {
+  const payload = {
+    username: "testUser",
+    activity_id: "TEST_ACTIVITY",
+    data: "Hello from localhost!",
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch("https://muggsofdatasci.net/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const text = await res.text();
+    console.log("Server response:", text);
+    document.body.innerHTML += "<pre>" + text + "</pre>";
+  } catch (err) {
+    console.error("Error:", err);
+    document.body.innerHTML += "<pre style='color:red'>" + err + "</pre>";
+  }
+})();
+</script>
+</body>
+</html>
